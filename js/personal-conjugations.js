@@ -21,3 +21,9 @@ document.querySelector('#finish-conjugations').addEventListener('click', (event)
   localStorage.setItem('lingolab-conjugations-complete', 'true');
   window.location.href = '../finishing-touches.html';
 });
+
+document.querySelectorAll('.verb-grid input').forEach((input) => {
+  const key = `lingolab-verb-${input.dataset.verb}`;
+  input.value = localStorage.getItem(key) || '';
+  input.addEventListener('input', () => localStorage.setItem(key, input.value));
+});

@@ -35,12 +35,11 @@ function requiredFields() {
     case 'sentence-order.html':
       return [{ input: document.querySelector('#sentence-order-select'), message: 'Choose a sentence order before continuing.' }];
     case 'adjectives.html':
-      return [...document.querySelectorAll('.adjective-grid input')].map((input) => ({ input, message: 'Create both adjectives before continuing.' }));
+      return [...document.querySelectorAll('.adjective-grid input')].map((input) => ({ input, message: 'Create all three adjectives before continuing.' }));
     case 'tenses.html':
       return [...document.querySelectorAll('.marker-input')].map((input) => ({ input, message: 'Add a marker for every tense before continuing.' }));
     case 'personal-conjugations.html': {
-      const fields = [...document.querySelectorAll('.pronoun-grid input')].map((input) => ({ input, message: 'Add a word for every pronoun before continuing.' }));
-      if (document.querySelector('input[name="conjugations"]:checked')?.value === 'yes') {
+      const fields = [...document.querySelectorAll('.pronoun-grid input, .verb-grid input')].map((input) => ({ input, message: 'Add a word for every verb and pronoun before continuing.' }));      if (document.querySelector('input[name="conjugations"]:checked')?.value === 'yes') {
         fields.push(...[...document.querySelectorAll('.conjugation-grid input')].map((input) => ({ input, message: 'Add a marker for every person before continuing.' })));
       }
       return fields;

@@ -19,7 +19,7 @@ document.querySelector('#finish-conjugations').addEventListener('click', (event)
   event.currentTarget.innerHTML = 'Language saved ✓';
   event.currentTarget.disabled = true;
   localStorage.setItem('lingolab-conjugations-complete', 'true');
-  window.location.href = '../finishing-touches.html';
+  window.location.href = 'finishing-touches.html';
 });
 
 document.querySelectorAll('.verb-grid input').forEach((input) => {

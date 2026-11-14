@@ -14,5 +14,5 @@ document.querySelector('#finish-language').addEventListener('click', (event) => 
   event.currentTarget.innerHTML = 'Language complete ✓';
   event.currentTarget.disabled = true;
   localStorage.setItem('lingolab-language-complete', 'true');
-  window.location.href = '../language-report.html';
+  window.location.href = 'language-report.html';
 });

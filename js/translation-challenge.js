@@ -1,0 +1,10 @@
+const challenges = [['I see the pink flower.', 'na mira te luma rosa'], ['The turtle waited.', 'ta kura ed'], ['We do not eat the carrot.', 'we not nava ta karu']];
+let current = 0;
+const prompt = document.querySelector('#challenge-prompt');
+const translation = document.querySelector('#challenge-translation');
+const reveal = document.querySelector('#answer-reveal');
+const answer = document.querySelector('#challenge-answer');
+const result = document.querySelector('#challenge-result');
+const next = document.querySelector('#next-challenge');
+document.querySelector('#reveal-answer').addEventListener('click', () => { reveal.hidden = false; translation.textContent = challenges[current][1]; result.textContent = answer.value.trim() ? 'Nice attempt!' : 'Here is one possible answer.'; next.hidden = false; });
+next.addEventListener('click', () => { current = (current + 1) % challenges.length; prompt.textContent = challenges[current][0]; answer.value = ''; reveal.hidden = true; result.textContent = ''; next.hidden = true; document.querySelector('#challenge-number').textContent = `Challenge ${current + 1} of ${challenges.length}`; answer.focus(); });

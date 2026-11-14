@@ -1,0 +1,11 @@
+const read = (key, fallback) => localStorage.getItem(key) || fallback;
+const sounds = JSON.parse(read('lingolab-sounds', '[]'));
+document.querySelector('#report-sounds').textContent = sounds.length ? `${sounds.length} phonemes selected: /${sounds.join('/ /')}/` : 'No sounds selected yet.';
+const orderLabels = { SVO: 'SVO — Subject · Verb · Object', SOV: 'SOV — Subject · Object · Verb', VSO: 'VSO — Verb · Subject · Object', VOS: 'VOS — Verb · Object · Subject', OVS: 'OVS — Object · Verb · Subject', OSV: 'OSV — Object · Subject · Verb' };
+document.querySelector('#report-order').textContent = orderLabels[read('lingolab-sentence-order', 'SVO')];
+const adjectivePlacement = read('lingolab-adjective-placement', 'before');
+document.querySelector('#report-adjectives').textContent = adjectivePlacement === 'after' ? 'After the noun — flower pink' : 'Before the noun — pink flower';
+const pastMarker = read('lingolab-tense-past-marker', 'ed');
+const pastPlacement = read('lingolab-tense-past-placement', 'suffix');
+document.querySelector('#report-tenses').textContent = `Past marker: ${pastMarker || '—'} · ${pastPlacement === 'prefix' ? 'prefix' : pastPlacement === 'suffix' ? 'suffix' : pastPlacement === 'separate-after' ? 'separate word after' : 'separate word before'}`;
+document.querySelector('#report-conjugations').textContent = read('lingolab-personal-conjugations', 'yes') === 'no' ? 'Personal conjugations not used.' : 'Personal conjugations enabled.';

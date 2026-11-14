@@ -106,6 +106,7 @@ function closeAuth(event) {
 }
 
 document.querySelectorAll('[data-action="signin"]').forEach((button) => button.addEventListener('click', openAuth));
+if (window.location.hash === '#auth') openAuth();
 document.querySelectorAll('[data-action="close-auth"]').forEach((button) => button.addEventListener('click', closeAuth));
 document.querySelector('[data-action="create-account"]').addEventListener('click', () => window.alert('Account creation is coming soon.'));
 document.querySelector('[data-action="google-signin"]').addEventListener('click', () => window.alert('Google sign in is coming soon.'));

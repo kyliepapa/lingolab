@@ -198,3 +198,78 @@
 .explore-wireframe-shell main>section{position:relative}
 .explore-wireframe-shell main>section+section{border-top:1px solid var(--line)}
 .explore-wireframe-shell main>section+section::before{background:var(--coral);border-radius:999px;content:'';height:3px;left:50%;position:absolute;top:-2px;transform:translateX(-50%);width:72px}
+
+/* Etymology + rebracketing wireframe refinement */
+.explore-wireframe-shell .etymology-section{display:flex;justify-content:center;max-width:none;padding:95px 34px 105px}
+.explore-wireframe-shell .etymology-definition{border-left-color:#526171;max-width:1080px;padding:12px 0 12px 30px;width:100%}
+.explore-wireframe-shell .etymology-definition h2{font-size:clamp(64px,8vw,104px);letter-spacing:-5px}
+.explore-wireframe-shell .dictionary-type{color:#526171!important;font-size:18px!important;font-weight:500!important;margin-bottom:14px!important}
+.explore-wireframe-shell .dictionary-meaning{font-family:'DM Sans',Arial,sans-serif;font-size:clamp(20px,2.2vw,28px)!important;line-height:1.45!important}
+.explore-wireframe-shell .rebracketing-section{background:#f1f3f6;color:var(--navy);padding-bottom:95px;padding-top:70px}
+.explore-wireframe-shell .rebracketing-section .section-heading{display:block;max-width:1004px}
+.explore-wireframe-shell .rebracketing-section .section-heading h2{color:var(--navy);font-size:clamp(48px,5vw,68px);line-height:.98;margin-bottom:28px}
+.explore-wireframe-shell .rebracketing-section .explain-card{background:#fff;border:2px solid #526171;border-radius:13px;box-shadow:none;color:#334155;font-size:16px;line-height:1.65;margin:0;max-width:none;padding:24px 27px}
+.explore-wireframe-shell .rebracketing-section .explain-card p{margin:0 0 11px}
+.explore-wireframe-shell .rebracketing-section .explain-card p:last-child{font-size:14px;margin-bottom:0}
+.explore-wireframe-shell .rebracketing-section .explain-card strong{color:#273449}
+.explore-wireframe-shell .case-study{background:#fff;border:2px solid #526171;border-radius:13px;box-shadow:none;color:var(--navy);display:block;margin:24px auto 0;max-width:1004px;padding:27px}
+.explore-wireframe-shell .case-study-intro{margin-bottom:23px}
+.explore-wireframe-shell .case-label{color:#526171;display:block;font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase}
+.explore-wireframe-shell .case-study h3{color:var(--navy);font-size:29px;margin:9px 0 6px}
+.explore-wireframe-shell .case-study-intro p{color:#526171;font-size:15px;margin:0}
+.explore-wireframe-shell .case-flow{align-items:stretch;display:grid;gap:12px;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1fr)}
+.explore-wireframe-shell .case-step{background:#f8fafc;border:1px solid #b4bdc9;border-radius:10px;display:flex;flex-direction:column;min-height:168px;padding:16px}
+.explore-wireframe-shell .step-number{align-items:center;background:#243246;border-radius:50%;color:#fff;display:flex;font-size:12px;font-weight:800;height:26px;justify-content:center;margin-bottom:16px;width:26px}
+.explore-wireframe-shell .step-label{color:#526171;font-size:10px;font-weight:800;letter-spacing:1px;margin-bottom:10px;text-transform:uppercase}
+.explore-wireframe-shell .case-step strong{color:#273449;font-family:'Playfair Display',Georgia,serif;font-size:24px}
+.explore-wireframe-shell .case-step small{color:#334155;font-size:12px;line-height:1.45;margin-top:auto;padding-top:13px}
+.explore-wireframe-shell .case-step-final{background:#f8fafc;border-color:#b4bdc9}
+.explore-wireframe-shell .case-arrow{align-self:center;color:#526171;font-size:24px}
+.explore-wireframe-shell .split-demo{margin-top:27px}
+.explore-wireframe-shell .split-label{color:#526171;display:block;font-size:10px;font-weight:800;letter-spacing:1.5px;margin-bottom:10px;text-transform:uppercase}
+.explore-wireframe-shell .split-row{align-items:center;display:grid;gap:18px;grid-template-columns:150px 1fr;margin:9px 0}
+.explore-wireframe-shell .split-row>span{color:#526171;font-size:13px}
+.explore-wireframe-shell .split-row>div{display:flex;gap:7px}
+.explore-wireframe-shell .split-row b{background:#fff;border:2px solid #273449;border-radius:8px;color:#273449;font-size:20px;padding:9px 14px}
+.explore-wireframe-shell .split-row b.split-highlight{background:#dbe4ff;border-color:#3155ca;color:#3155ca}
+.explore-wireframe-shell .split-row em{color:#3155ca;font-size:12px;font-style:normal}
+.explore-wireframe-shell .case-note{background:#f1f3f6;border:1px solid #b4bdc9;border-radius:9px;margin-top:23px;padding:17px 18px}
+.explore-wireframe-shell .case-note p{color:#273449;font-size:13px;line-height:1.55;margin:0 0 6px}
+.explore-wireframe-shell .case-note p:last-child{margin-bottom:0}
+.explore-wireframe-shell .rebracketing-section .game-banner{align-items:center;background:#d7dce4;border:2px solid #273449;border-radius:15px;box-shadow:none;color:#273449;margin:24px auto 0;max-width:1004px;padding:27px 31px}
+.explore-wireframe-shell .rebracketing-section .game-banner h3{color:#273449;font-size:28px;margin:5px 0 10px}
+.explore-wireframe-shell .rebracketing-section .game-banner p{color:#334155;font-size:14px;line-height:1.55;margin:0;max-width:650px}
+.explore-wireframe-shell .rebracketing-section .game-banner .mini-button{background:#fff;border:2px solid #273449;box-shadow:none;color:#273449;margin-top:17px}
+.explore-wireframe-shell .rebracketing-section .gamepad{background:#fff;border:2px dashed #526171;box-shadow:none;font-size:0;height:82px;padding:0;width:82px}
+@media(max-width:750px){.explore-wireframe-shell .etymology-section{padding:72px 20px 80px}.explore-wireframe-shell .etymology-definition{padding-left:20px}.explore-wireframe-shell .rebracketing-section{padding:60px 20px 75px}.explore-wireframe-shell .case-study{padding:21px 17px}.explore-wireframe-shell .case-flow{grid-template-columns:1fr}.explore-wireframe-shell .case-arrow{justify-self:center;transform:rotate(90deg)}.explore-wireframe-shell .split-row{align-items:start;display:block}.explore-wireframe-shell .split-row>div{margin-top:7px;overflow-x:auto;padding-bottom:3px}.explore-wireframe-shell .split-row em{display:block;margin:8px 0 0 0}.explore-wireframe-shell .rebracketing-section .game-banner{align-items:flex-start;gap:18px;padding:22px 19px}}
+
+/* Use the established LingoLab palette for the two wireframe sections. */
+.explore-wireframe-shell .etymology-definition{border-left-color:var(--navy)}
+.explore-wireframe-shell .dictionary-type{color:var(--muted)!important}
+.explore-wireframe-shell .dictionary-meaning{color:var(--navy)!important}
+.explore-wireframe-shell .rebracketing-section{background:var(--cream);color:var(--ink)}
+.explore-wireframe-shell .rebracketing-section .section-heading h2{color:var(--navy)}
+.explore-wireframe-shell .rebracketing-section .explain-card,.explore-wireframe-shell .case-study{background:var(--panel);border-color:var(--line)}
+.explore-wireframe-shell .rebracketing-section .explain-card,.explore-wireframe-shell .case-study h3,.explore-wireframe-shell .case-step strong,.explore-wireframe-shell .case-note strong{color:var(--navy)}
+.explore-wireframe-shell .case-label,.explore-wireframe-shell .split-label{color:var(--teal)}
+.explore-wireframe-shell .case-study-intro p,.explore-wireframe-shell .step-label,.explore-wireframe-shell .split-row>span{color:var(--muted)}
+.explore-wireframe-shell .case-step{background:var(--cream);border-color:var(--line)}
+.explore-wireframe-shell .step-number{background:var(--navy)}
+.explore-wireframe-shell .case-step-final{background:#e9f3ef;border-color:var(--teal)}
+.explore-wireframe-shell .case-step-final .step-number{background:var(--teal)}
+.explore-wireframe-shell .case-arrow{color:var(--coral)}
+.explore-wireframe-shell .split-row b{background:var(--panel);border-color:var(--navy);color:var(--navy)}
+.explore-wireframe-shell .split-row b.split-highlight{background:#dff2ee;border-color:var(--teal);color:var(--teal)}
+.explore-wireframe-shell .split-row em{color:var(--teal)}
+.explore-wireframe-shell .case-note{background:#e9f3ef;border-color:var(--line)}
+.explore-wireframe-shell .case-note p{color:var(--navy)}
+.explore-wireframe-shell .rebracketing-section .game-banner{background:var(--teal);border-color:var(--navy);box-shadow:4px 5px 0 var(--navy);color:var(--panel)}
+.explore-wireframe-shell .rebracketing-section .game-banner h3,.explore-wireframe-shell .rebracketing-section .game-banner p{color:var(--panel)}
+.explore-wireframe-shell .rebracketing-section .game-banner .mini-button{background:var(--panel);border-color:var(--navy);color:var(--navy)}
+.explore-wireframe-shell .rebracketing-section .gamepad{background:var(--panel);border-color:var(--navy)}
+.explore-wireframe-shell .game-card-image{border:2px solid var(--navy);border-radius:16px;display:block;height:88px;object-fit:cover;width:88px}
+@media(max-width:750px){.explore-wireframe-shell .game-card-image{height:66px;width:66px}}
+.explore-wireframe-shell .etymology-definition h2{font-size:clamp(48px,6.5vw,82px);letter-spacing:-3.5px;line-height:.95}
+.explore-wireframe-shell .morphology-definition h2{font-size:clamp(48px,6.5vw,82px);letter-spacing:-3.5px;line-height:.95}
+.explore-wireframe-shell .morphology-definition .dictionary-meaning{font-size:clamp(18px,1.8vw,24px)!important;line-height:1.6!important}
+@media(max-width:750px){.explore-wireframe-shell .etymology-definition h2,.explore-wireframe-shell .morphology-definition h2{font-size:clamp(46px,14vw,60px);letter-spacing:-2.5px}}

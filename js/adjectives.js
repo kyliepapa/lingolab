@@ -20,3 +20,9 @@ placementOptions.forEach((option) => {
 document.querySelector('#save-adjectives').addEventListener('click', () => {
   localStorage.setItem('lingolab-adjective-placement', document.querySelector('input[name="placement"]:checked').value);
 });
+
+document.querySelectorAll('.adjective-grid input').forEach((input) => {
+  const key = `lingolab-adjective-${input.dataset.adjective}`;
+  input.value = localStorage.getItem(key) || '';
+  input.addEventListener('input', () => localStorage.setItem(key, input.value));
+});

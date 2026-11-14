@@ -199,6 +199,43 @@
 .explore-wireframe-shell main>section+section{border-top:1px solid var(--line)}
 .explore-wireframe-shell main>section+section::before{background:var(--coral);border-radius:999px;content:'';height:3px;left:50%;position:absolute;top:-2px;transform:translateX(-50%);width:72px}
 
+<<<<<<< HEAD
+/* Compact typography pass: preserve the existing layout while reducing all Explore copy. */
+.explore-wireframe-shell main{font-size:14px}
+.explore-wireframe-shell .wire-hero h1{font-size:clamp(54px,7.5vw,104px)}
+.explore-wireframe-shell .wire-hero p{font-size:15px}
+.explore-wireframe-shell .wire-button{font-size:12px;padding:12px 19px}
+.explore-wireframe-shell .wire-copy h2,.explore-wireframe-shell .section-heading h2{font-size:clamp(45px,5vw,66px)}
+.explore-wireframe-shell .wire-copy p,.explore-wireframe-shell .wire-copy small,.explore-wireframe-shell .section-heading p{font-size:14px}
+.explore-wireframe-shell .etymology-definition h2,.explore-wireframe-shell .morphology-definition h2{font-size:clamp(52px,7vw,88px)}
+.explore-wireframe-shell .dictionary-type{font-size:19px!important}
+.explore-wireframe-shell .dictionary-meaning{font-size:clamp(19px,2.1vw,27px)!important}
+.explore-wireframe-shell .explain-card{font-size:14px}
+.explore-wireframe-shell .case-study h3{font-size:21px}
+.explore-wireframe-shell .case-study p{font-size:14px}
+.explore-wireframe-shell .game-banner h3{font-size:25px}
+.explore-wireframe-shell .game-banner p{font-size:13px}
+.explore-wireframe-shell .mini-button{font-size:8px;padding:6px 10px}
+.explore-wireframe-shell .gamepad{font-size:34px;padding:14px}
+.explore-wireframe-shell .morphology-intro h2{font-size:clamp(52px,7vw,88px)}
+.explore-wireframe-shell .morphology-intro p{font-size:14px}
+.explore-wireframe-shell .breakdown-card h3{font-size:20px}
+.explore-wireframe-shell .breakdown-card b,.explore-wireframe-shell .breakdown-card strong{font-size:12px}
+.explore-wireframe-shell .breakdown-card small{font-size:12px}
+.explore-wireframe-shell .language-structures h3{font-size:21px}
+.explore-wireframe-shell .language-structures>p{font-size:13px}
+.explore-wireframe-shell .morphology-cards strong{font-size:16px}
+.explore-wireframe-shell .morphology-cards small,.explore-wireframe-shell .morphology-cards p{font-size:12px}
+.explore-wireframe-shell .asl-note p{font-size:12px}
+.explore-wireframe-shell .translation-section .section-heading p{font-size:17px}
+.explore-wireframe-shell .translation-cards h3{font-size:26px}
+.explore-wireframe-shell .translation-cards p{font-size:13px}
+.explore-wireframe-shell .asl-translation p{font-size:15px}
+.explore-wireframe-shell .idiom-section h2{font-size:clamp(42px,5.2vw,64px)}
+.explore-wireframe-shell .idiom-section>p{font-size:14px}
+.explore-wireframe-shell .idiom-card h3{font-size:25px}
+.explore-wireframe-shell .idiom-card p{font-size:13px}
+=======
 /* Etymology + rebracketing wireframe refinement */
 .explore-wireframe-shell .etymology-section{display:flex;justify-content:center;max-width:none;padding:95px 34px 105px}
 .explore-wireframe-shell .etymology-definition{border-left-color:#526171;max-width:1080px;padding:12px 0 12px 30px;width:100%}
@@ -273,3 +310,4 @@
 .explore-wireframe-shell .morphology-definition h2{font-size:clamp(48px,6.5vw,82px);letter-spacing:-3.5px;line-height:.95}
 .explore-wireframe-shell .morphology-definition .dictionary-meaning{font-size:clamp(18px,1.8vw,24px)!important;line-height:1.6!important}
 @media(max-width:750px){.explore-wireframe-shell .etymology-definition h2,.explore-wireframe-shell .morphology-definition h2{font-size:clamp(46px,14vw,60px);letter-spacing:-2.5px}}
+>>>>>>> c60ca7a39381d0b8670659044fd229439c0eb243

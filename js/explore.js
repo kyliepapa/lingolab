@@ -1,11 +1,10 @@
 const worldLanguageSelect = document.querySelector('#world-language-select');
 const worldLanguage = document.querySelector('#world-language');
 const worldDescription = document.querySelector('#world-description');
-const exploreSentenceSelect = document.querySelector('#explore-sentence-select');
-const exploreLanguageSelect = document.querySelector('#explore-language-select');
-const outputLabel = document.querySelector('#output-label');
-const exploreTranslation = document.querySelector('#explore-translation');
-const grammarNote = document.querySelector('#grammar-note');
+const exploreSentenceSelect = document.querySelector('#sentence-select');
+const exploreLanguageSelect = document.querySelector('#language-select');
+const outputLabel = document.querySelector('#language-label');
+const exploreTranslation = document.querySelector('#translation');
 
 const regions = {
   french: { name: 'French', description: 'Explore the many places French is spoken across Europe, Africa, the Americas, and Oceania.', continents: ['europe', 'africa', 'north-america', 'south-america', 'oceania'] },
@@ -19,13 +18,13 @@ const regions = {
 const sentenceData = {
   cook: {
     french: { label: 'In French', html: "J’ <span class='verb'>ai demandé</span> <span class='prep'>à</span> <span class='determiner'>mon</span> <span class='noun'>colocataire</span> <span class='verb'>d’aider</span> <span class='verb'>à cuisiner.</span>", note: 'French keeps the subject close to the verb, then uses a preposition to connect the person being asked and the action.' },
-    'haitian-creole': { label: 'An kreyòl ayisyen', html: "Mwen <span class='verb'>mande</span> <span class='determiner'>kolok mwen</span> pou <span class='verb'>ede m kwit manje.</span>", note: 'Haitian Creole uses familiar markers and a clear verb phrase to connect the request and the action.' },
+    'haitian-creole': { label: 'An kreyòl ayisyen', html: "Mwen <span class='verb'>te mande</span> <span class='noun'>zanmi mwen</span> <span class='prep'>pou</span> <span class='verb'>ede m kwit manje.</span>", note: 'Haitian Creole uses familiar markers and a clear verb phrase to connect the request and the action.' },
     spanish: { label: 'En español', html: "Le <span class='verb'>pedí</span> a <span class='determiner'>mi</span> <span class='noun'>compañero</span> de piso <span class='verb'>que me ayudara</span> a cocinar.", note: 'Spanish can use a pronoun before the verb to show who receives the request.' },
     english: { label: 'In English', html: "I <span class='verb'>asked</span> <span class='determiner'>my roommate</span> to <span class='verb'>help me cook.</span>", note: 'English often makes the subject, verb, and object easy to spot in that order.' },
     asl: { label: 'In ASL', html: "ROOMMATE, <span class='verb'>COOK</span> — <span class='verb'>HELP-ME</span>, I <span class='verb'>ASK.</span>", note: 'ASL uses signing space, facial grammar, and topic-comment structure to organize meaning.' },
     albanian: { label: 'Në shqip', html: "I <span class='verb'>kërkova</span> <span class='determiner'>shokut tim të dhomës</span> të <span class='verb'>më ndihmonte të gatuaja.</span>", note: 'Albanian uses rich verb forms and case endings to show relationships between words.' },
   },
-  museum: {
+  classes: {
     french: { label: 'In French', html: "Nous <span class='verb'>retrouvons</span> <span class='determiner'>nos</span> <span class='noun'>amis</span> au musée.", note: 'French places the subject before the verb, then adds the object and location.' },
     'haitian-creole': { label: 'An kreyòl ayisyen', html: "Nou <span class='verb'>ap rankontre</span> <span class='determiner'>zanmi nou yo</span> nan mize a.", note: 'Haitian Creole uses particles like ap to signal an ongoing action.' },
     spanish: { label: 'En español', html: "<span class='verb'>Nos encontramos</span> con <span class='determiner'>nuestros</span> <span class='noun'>amigos</span> en el museo.", note: 'Spanish often uses a reflexive form to express meeting one another.' },
@@ -33,7 +32,7 @@ const sentenceData = {
     asl: { label: 'In ASL', html: "MUSEUM, <span class='determiner'>OUR FRIENDS</span> — WE <span class='verb'>MEET.</span>", note: 'ASL can establish a place or topic first, then show the action in signing space.' },
     albanian: { label: 'Në shqip', html: "Ne <span class='verb'>po takohemi</span> me <span class='determiner'>miqtë tanë</span> në muze.", note: 'Albanian combines verb forms with noun endings that carry grammatical information.' },
   },
-  garden: {
+  birthday: {
     french: { label: 'In French', html: "Le <span class='determiner'>petit</span> <span class='noun'>renard</span> <span class='verb'>a traversé</span> le jardin calme.", note: 'Adjectives usually follow the noun in French, but petit is one familiar exception.' },
     'haitian-creole': { label: 'An kreyòl ayisyen', html: "<span class='determiner'>Ti</span> <span class='noun'>rena a</span> <span class='verb'>te travèse</span> jaden trankil la.", note: 'Haitian Creole uses small words around the noun phrase to make meaning clear.' },
     spanish: { label: 'En español', html: "El <span class='determiner'>pequeño</span> <span class='noun'>zorro</span> <span class='verb'>cruzó</span> el jardín tranquilo.", note: 'Spanish commonly places descriptive adjectives after nouns, with a few flexible exceptions.' },
@@ -53,11 +52,51 @@ function updateWorld() {
   });
 }
 
+const languageNames = { french: 'French', 'haitian-creole': 'Haitian Creole', spanish: 'Spanish', english: 'English', asl: 'ASL', albanian: 'Albanian' };
+const glosses = {
+  french: { j: 'I', 'j’': 'I', 'ai demandé': 'asked', 'à': 'to', mon: 'my', colocataire: 'roommate', 'd’aider': 'help', 'à cuisiner.': 'to cook', 'nous': 'we', retrouvons: 'are meeting', nos: 'our', amis: 'friends', 'au musée.': 'at the museum' },
+  'haitian-creole': { mwen: 'I', mande: 'asked', 'zanmi mwen': 'my friend', 'kolok mwen': 'my friend', pou: 'to', 'ede m kwit manje.': 'help me cook', nou: 'we', 'ap rankontre': 'are meeting', 'zanmi nou yo': 'our friends', 'nan mize a.': 'at the museum', 'ti': 'little', 'rena a': 'fox', 'te travèse': 'crossed', 'jaden trankil la.': 'the quiet garden' },
+  spanish: { le: 'to him', 'pedí': 'asked', a: 'to', mi: 'my', compañero: 'roommate', 'de piso': 'roommate', 'que me ayudara': 'to help me', 'a cocinar.': 'to cook', 'nos encontramos': 'we are meeting', nuestros: 'our', amigos: 'friends', 'en el museo.': 'at the museum', el: 'the', pequeño: 'little', zorro: 'fox', cruzó: 'crossed', 'el jardín tranquilo.': 'the quiet garden' },
+  english: { i: 'I', asked: 'asked', 'my friend': 'my friend', 'to help me cook.': 'to help me cook', we: 'we', 'are going out': 'are going out', 'to eat': 'to eat', 'because it’s': 'because it is', 'my birthday.': 'my birthday' },
+  asl: { roommate: 'roommate', cook: 'cook', 'help-me': 'help me', ask: 'ask', museum: 'museum', 'our friends': 'our friends', meet: 'meet', little: 'little', fox: 'fox', 'quiet garden': 'quiet garden', cross: 'cross' },
+  albanian: { i: 'I', kërkova: 'asked', 'shokut tim të dhomës': 'my roommate', 'të më ndihmonte të gatuaja.': 'to help me cook', ne: 'we', 'po takohemi': 'are meeting', 'miqtë tanë': 'our friends', 'në muze.': 'at the museum', 'dhelpra e vogël': 'the little fox', kaloi: 'crossed', 'nëpër kopshtin e qetë.': 'through the quiet garden' },
+};
+
+function cleanToken(value) { return value.replace(/[“”‘’.,!?]/g, '').trim().toLowerCase(); }
+function posLabel(className, text, index) {
+  if (className.includes('verb')) return 'Verb';
+  if (className.includes('prep')) return 'Preposition';
+  if (className.includes('determiner')) return 'Determiner';
+  if (className.includes('noun')) return 'Noun';
+  if (className.includes('pronoun')) return 'Pronoun';
+  if (index === 0) return 'Pronoun';
+  if (/^(a|à|de|en|nan|pou|to|because)$/i.test(text.trim())) return 'Preposition';
+  return 'Noun';
+}
+function englishGloss(target, language) { return glosses[language]?.[cleanToken(target)] || glosses[language]?.[target.trim().toLowerCase()] || target.replace(/[.,!?]$/, ''); }
+function renderBreakdown(result, language) {
+  const holder = document.createElement('div');
+  holder.innerHTML = result.html;
+  const blocks = [];
+  [...holder.childNodes].forEach((node) => {
+    const text = node.textContent.trim();
+    if (!text) return;
+    const className = node.nodeType === 1 ? node.className : '';
+    blocks.push({ target: text, pos: posLabel(className, text, blocks.length), translation: englishGloss(text, language) });
+  });
+  return blocks.map((block) => `<div class="word-block ${block.pos.toLowerCase().replaceAll(' ', '-')}" data-pos="${block.pos.toLowerCase()}"><span class="word-target">${block.target}</span><span class="word-pos">${block.pos}</span><span class="word-translation">${block.translation}</span></div>`).join('');
+}
 function updateSentence() {
+  if (!exploreSentenceSelect.value || !exploreLanguageSelect.value) {
+    outputLabel.textContent = '';
+    exploreTranslation.className = 'translation';
+    exploreTranslation.textContent = 'Choose a sentence and language to begin.';
+    return;
+  }
   const result = sentenceData[exploreSentenceSelect.value][exploreLanguageSelect.value];
-  outputLabel.textContent = result.label;
-  exploreTranslation.innerHTML = result.html;
-  grammarNote.textContent = result.note;
+  outputLabel.textContent = `In ${languageNames[exploreLanguageSelect.value]}`;
+  exploreTranslation.className = 'translation word-blocks-grid';
+  exploreTranslation.innerHTML = renderBreakdown(result, exploreLanguageSelect.value);
 }
 
 worldLanguageSelect.addEventListener('change', updateWorld);

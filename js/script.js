@@ -1,86 +1,88 @@
-const token = (word, type, label) => `<span class="token ${type}"><span>${word}</span><small>${label}</small></span>`;
-const translations = {
-  cook: {
-    french: { label: 'In French', html: "J’ <span class='verb'>ai demandé</span> <span class='prep'>à</span> <span class='determiner'>mon</span> <span class='noun'>colocataire</span> <span class='verb'>d’aider</span> <span class='verb'>à cuisiner.</span>" },
-    'haitian-creole': { label: 'An kreyòl ayisyen', html: "Mwen <span class='verb'>mande</span> <span class='determiner'>kolok mwen</span> pou <span class='verb'>ede m kwit manje.</span>" },
-    spanish: { label: 'En español', html: "Le <span class='verb'>pedí</span> a <span class='determiner'>mi</span> <span class='noun'>compañero</span> de piso <span class='verb'>que me ayudara</span> a cocinar." },
-    english: { label: 'In English', html: "I <span class='verb'>asked</span> <span class='determiner'>my roommate</span> to <span class='verb'>help me cook.</span>" },
-    asl: { label: 'In ASL', html: "ROOMMATE, <span class='verb'>COOK</span> — <span class='verb'>HELP-ME</span>, I <span class='verb'>ASK.</span>" },
-    albanian: { label: 'Në shqip', html: "I <span class='verb'>kërkova</span> <span class='determiner'>shokut tim të dhomës</span> të <span class='verb'>më ndihmonte të gatuaja.</span>" },
-  },
-  museum: {
-    french: { label: 'In French', html: "Nous <span class='verb'>retrouvons</span> <span class='determiner'>nos</span> <span class='noun'>amis</span> au musée." },
-    'haitian-creole': { label: 'An kreyòl ayisyen', html: "Nou <span class='verb'>ap rankontre</span> <span class='determiner'>zanmi nou yo</span> nan mize a." },
-    spanish: { label: 'En español', html: "<span class='verb'>Nos encontramos</span> con <span class='determiner'>nuestros</span> <span class='noun'>amigos</span> en el museo." },
-    english: { label: 'In English', html: "We <span class='verb'>are meeting</span> <span class='determiner'>our friends</span> at the museum." },
-    asl: { label: 'In ASL', html: "MUSEUM, <span class='determiner'>OUR FRIENDS</span> — WE <span class='verb'>MEET.</span>" },
-    albanian: { label: 'Në shqip', html: "Ne <span class='verb'>po takohemi</span> me <span class='determiner'>miqtë tanë</span> në muze." },
-  },
-  garden: {
-    french: { label: 'In French', html: "Le <span class='determiner'>petit</span> <span class='noun'>renard</span> <span class='verb'>a traversé</span> le jardin calme." },
-    'haitian-creole': { label: 'An kreyòl ayisyen', html: "<span class='determiner'>Ti</span> <span class='noun'>rena a</span> <span class='verb'>te travèse</span> jaden trankil la." },
-    spanish: { label: 'En español', html: "El <span class='determiner'>pequeño</span> <span class='noun'>zorro</span> <span class='verb'>cruzó</span> el jardín tranquilo." },
-    english: { label: 'In English', html: "The <span class='determiner'>little</span> <span class='noun'>fox</span> <span class='verb'>crossed</span> the quiet garden." },
-    asl: { label: 'In ASL', html: "<span class='determiner'>LITTLE</span> <span class='noun'>FOX</span>, QUIET GARDEN <span class='verb'>CROSS.</span>" },
-    albanian: { label: 'Në shqip', html: "<span class='determiner'>Dhelpra e vogël</span> <span class='verb'>kaloi</span> nëpër kopshtin e qetë." },
-  },
+const POS_LABELS = {
+  pronoun: 'Pronoun',
+  verb: 'Verb',
+  noun: 'Noun',
+  preposition: 'Preposition',
+  determiner: 'Determiner',
+  conjunction: 'Conjunction',
 };
 
-Object.assign(translations, {
+// Each word: [text, part of speech, English meaning]
+const translations = {
   classes: {
-    french: { label: 'In French', english: 'What classes do you want to take next semester?', html: [token('Quels', 'pronoun', 'Pronoun'), token('cours', 'noun', 'Noun'), token('veux-tu', 'verb', 'Verb'), token('suivre', 'verb', 'Verb'), token('le', 'determiner', 'Determiner'), token('semestre', 'noun', 'Noun'), token('prochain', 'determiner', 'Determiner'), '?'].join(' ') },
-    'haitian-creole': { label: 'In Haitian Creole', english: 'What classes do you want to take next semester?', html: [token('Ki', 'pronoun', 'Pronoun'), token('klas', 'noun', 'Noun'), token('ou vle', 'verb', 'Verb'), token('pran', 'verb', 'Verb'), token('semès pwochèn', 'determiner', 'Determiner'), '?'].join(' ') },
-    spanish: { label: 'In Spanish', english: 'What classes do you want to take next semester?', html: [token('¿Qué', 'pronoun', 'Pronoun'), token('clases', 'noun', 'Noun'), token('quieres', 'verb', 'Verb'), token('tomar', 'verb', 'Verb'), token('el próximo semestre', 'determiner', 'Determiner'), '?'].join(' ') },
-    english: { label: 'In English', english: 'What classes are you taking next semester?', html: [token('What', 'pronoun', 'Pronoun'), token('classes', 'noun', 'Noun'), token('are taking', 'verb', 'Verb'), token('you', 'pronoun', 'Pronoun'), token('next semester', 'determiner', 'Determiner'), '?'].join(' ') },
-    asl: { label: 'In ASL', english: 'What classes do you want to take next semester?', html: [token('NEXT SEMESTER', 'determiner', 'Determiner'), token('YOU', 'pronoun', 'Pronoun'), token('WANT TAKE', 'verb', 'Verb'), token('WHAT CLASSES?', 'noun', 'Noun')].join(' ') },
-    albanian: { label: 'In Albanian', english: 'What classes do you want to take next semester?', html: [token('Cilat', 'pronoun', 'Pronoun'), token('klasa', 'noun', 'Noun'), token('dëshiron', 'verb', 'Verb'), token('të marrësh', 'verb', 'Verb'), token('semestrin tjetër', 'determiner', 'Determiner'), '?'].join(' ') },
+    french: [['Quels', 'determiner', 'what'], ['cours', 'noun', 'classes'], ['suis-tu', 'verb', 'are you taking'], ['le semestre prochain ?', 'noun', 'the semester next']],
+    'haitian-creole': [['Ki', 'determiner', 'what'], ['klas', 'noun', 'classes'], ['ou', 'pronoun', 'you'], ['ap pran', 'verb', 'are taking'], ['semès pwochen an ?', 'noun', 'semester next the']],
+    spanish: [['¿Qué', 'determiner', 'what'], ['clases', 'noun', 'classes'], ['tomas', 'verb', 'are you taking'], ['el próximo semestre?', 'noun', 'the next semester']],
+    english: [['What', 'determiner', 'what'], ['classes', 'noun', 'classes'], ['are', 'verb', 'are'], ['you', 'pronoun', 'you'], ['taking', 'verb', 'taking'], ['next semester?', 'noun', 'next semester']],
+    asl: [['NEXT SEMESTER', 'noun', 'next semester'], ['YOU', 'pronoun', 'you'], ['TAKE', 'verb', 'are taking'], ['CLASS', 'noun', 'classes'], ['WHAT?', 'determiner', 'what']],
+    albanian: [['Cilat', 'determiner', 'which'], ['klasa', 'noun', 'classes'], ['po merr', 'verb', 'are you taking'], ['semestrin tjetër?', 'noun', 'semester next']],
   },
   cook: {
-    french: { label: 'In French', english: 'I asked my friend to help me cook.', html: [token('J’', 'pronoun', 'Pronoun'), token('ai demandé', 'verb', 'Verb'), token('à', 'prep', 'Preposition'), token('mon', 'determiner', 'Determiner'), token('ami', 'noun', 'Noun'), token('de m’aider', 'verb', 'Verb'), token('à cuisiner.', 'verb', 'Verb')].join(' ') },
-    'haitian-creole': { label: 'In Haitian Creole', english: 'I asked my friend to help me cook.', html: [token('Mwen', 'pronoun', 'Pronoun'), token('te mande', 'verb', 'Verb'), token('zanmi mwen', 'noun', 'Noun'), token('pou', 'prep', 'Preposition'), token('ede m kwit manje.', 'verb', 'Verb')].join(' ') },
-    spanish: { label: 'In Spanish', english: 'I asked my friend to help me cook.', html: [token('Le', 'pronoun', 'Pronoun'), token('pedí', 'verb', 'Verb'), token('a mi', 'prep', 'Preposition'), token('amigo', 'noun', 'Noun'), token('que me ayudara', 'verb', 'Verb'), token('a cocinar.', 'verb', 'Verb')].join(' ') },
-    english: { label: 'In English', english: 'I asked my friend to help me cook.', html: [token('I', 'pronoun', 'Pronoun'), token('asked', 'verb', 'Verb'), token('my', 'determiner', 'Determiner'), token('friend', 'noun', 'Noun'), token('to help', 'verb', 'Verb'), token('me cook.', 'verb', 'Verb')].join(' ') },
-    asl: { label: 'In ASL', english: 'I asked my friend to help me cook.', html: [token('FRIEND', 'noun', 'Noun'), token('COOK', 'verb', 'Verb'), token('HELP-ME', 'verb', 'Verb'), token('I', 'pronoun', 'Pronoun'), token('ASK.', 'verb', 'Verb')].join(' ') },
-    albanian: { label: 'In Albanian', english: 'I asked my friend to help me cook.', html: [token('I', 'pronoun', 'Pronoun'), token('kërkova', 'verb', 'Verb'), token('shokut tim', 'noun', 'Noun'), token('të më ndihmonte', 'verb', 'Verb'), token('të gatuaja.', 'verb', 'Verb')].join(' ') },
+    french: [['J’', 'pronoun', 'I'], ['ai demandé', 'verb', 'asked'], ['à', 'preposition', 'to'], ['mon ami', 'noun', 'my friend'], ['de m’aider à cuisiner.', 'verb', 'to help me cook']],
+    'haitian-creole': [['Mwen', 'pronoun', 'I'], ['te mande', 'verb', 'asked'], ['zanmi mwen', 'noun', 'friend my'], ['pou', 'preposition', 'to'], ['ede m kwit manje.', 'verb', 'help me cook']],
+    spanish: [['Le', 'pronoun', 'to him/her'], ['pedí', 'verb', 'I asked'], ['a', 'preposition', 'to'], ['mi amigo', 'noun', 'my friend'], ['que me ayudara a cocinar.', 'verb', 'that he help me cook']],
+    english: [['I', 'pronoun', 'I'], ['asked', 'verb', 'asked'], ['my friend', 'noun', 'my friend'], ['to help me cook.', 'verb', 'to help me cook']],
+    asl: [['FRIEND', 'noun', 'friend'], ['COOK', 'verb', 'cook'], ['HELP-ME', 'verb', 'help me'], ['I', 'pronoun', 'I'], ['ASK.', 'verb', 'asked']],
+    albanian: [['I', 'pronoun', 'to him/her'], ['kërkova', 'verb', 'I asked'], ['shokut tim', 'noun', 'friend my'], ['të më ndihmonte të gatuaja.', 'verb', 'to help me cook']],
   },
   birthday: {
-    french: { label: 'In French', english: "My mom, my brother, and I are going out to eat because it's my birthday.", html: [token('Ma mère', 'determiner', 'Determiner'), token(', mon frère', 'noun', 'Noun'), token('et moi', 'pronoun', 'Pronoun'), token('sortons', 'verb', 'Verb'), token('manger', 'verb', 'Verb'), token('parce que', 'prep', 'Preposition'), token('c’est', 'verb', 'Verb'), token('mon anniversaire.', 'noun', 'Noun')].join(' ') },
-    'haitian-creole': { label: 'In Haitian Creole', english: "My mom, my brother, and I are going out to eat because it's my birthday.", html: [token('Manman m', 'determiner', 'Determiner'), token(', frè m', 'noun', 'Noun'), token('ak mwen', 'pronoun', 'Pronoun'), token('pral manje', 'verb', 'Verb'), token('paske', 'prep', 'Preposition'), token('se anivèsè nesans mwen.', 'noun', 'Noun')].join(' ') },
-    spanish: { label: 'In Spanish', english: "My mom, my brother, and I are going out to eat because it's my birthday.", html: [token('Mi mamá', 'determiner', 'Determiner'), token(', mi hermano', 'noun', 'Noun'), token('y yo', 'pronoun', 'Pronoun'), token('vamos', 'verb', 'Verb'), token('a comer', 'verb', 'Verb'), token('porque', 'prep', 'Preposition'), token('es mi cumpleaños.', 'noun', 'Noun')].join(' ') },
-    english: { label: 'In English', english: "My mom, my brother, and I are going out to eat because it's my birthday.", html: [token('My mom', 'determiner', 'Determiner'), token(', my brother', 'noun', 'Noun'), token(', and I', 'pronoun', 'Pronoun'), token('are going', 'verb', 'Verb'), token('out to eat', 'verb', 'Verb'), token('because', 'prep', 'Preposition'), token('it’s', 'verb', 'Verb'), token('my birthday.', 'noun', 'Noun')].join(' ') },
-    asl: { label: 'In ASL', english: "My mom, my brother, and I are going out to eat because it's my birthday.", html: [token('MY MOM', 'determiner', 'Determiner'), token('MY BROTHER', 'noun', 'Noun'), token('ME', 'pronoun', 'Pronoun'), token('GO EAT', 'verb', 'Verb'), token('BECAUSE', 'prep', 'Preposition'), token('MY BIRTHDAY.', 'noun', 'Noun')].join(' ') },
-    albanian: { label: 'In Albanian', english: "My mom, my brother, and I are going out to eat because it's my birthday.", html: [token('Nëna ime', 'determiner', 'Determiner'), token(', vëllai im', 'noun', 'Noun'), token('dhe unë', 'pronoun', 'Pronoun'), token('po dalim', 'verb', 'Verb'), token('për të ngrënë', 'verb', 'Verb'), token('sepse', 'prep', 'Preposition'), token('është ditëlindja ime.', 'noun', 'Noun')].join(' ') },
+    french: [['Ma mère,', 'noun', 'my mom'], ['mon frère', 'noun', 'my brother'], ['et', 'conjunction', 'and'], ['moi', 'pronoun', 'I'], ['sortons manger', 'verb', 'are going out to eat'], ['parce que', 'conjunction', 'because'], ['c’est', 'verb', 'it is'], ['mon anniversaire.', 'noun', 'my birthday']],
+    'haitian-creole': [['Manman m,', 'noun', 'mom my'], ['frè m', 'noun', 'brother my'], ['ak', 'conjunction', 'and'], ['mwen', 'pronoun', 'I'], ['pral soti manje', 'verb', 'going out to eat'], ['paske', 'conjunction', 'because'], ['se', 'verb', 'it is'], ['anivèsè mwen.', 'noun', 'birthday my']],
+    spanish: [['Mi mamá,', 'noun', 'my mom'], ['mi hermano', 'noun', 'my brother'], ['y', 'conjunction', 'and'], ['yo', 'pronoun', 'I'], ['vamos a salir a comer', 'verb', 'are going out to eat'], ['porque', 'conjunction', 'because'], ['es', 'verb', 'it is'], ['mi cumpleaños.', 'noun', 'my birthday']],
+    english: [['My mom,', 'noun', 'my mom'], ['my brother,', 'noun', 'my brother'], ['and', 'conjunction', 'and'], ['I', 'pronoun', 'I'], ['are going out to eat', 'verb', 'are going out to eat'], ['because', 'conjunction', 'because'], ['it’s', 'verb', 'it is'], ['my birthday.', 'noun', 'my birthday']],
+    asl: [['MY MOM', 'noun', 'my mom'], ['MY BROTHER', 'noun', 'my brother'], ['ME', 'pronoun', 'I'], ['GO-OUT EAT', 'verb', 'going out to eat'], ['BECAUSE', 'conjunction', 'because'], ['MY BIRTHDAY.', 'noun', 'my birthday']],
+    albanian: [['Nëna ime,', 'noun', 'mom my'], ['vëllai im', 'noun', 'brother my'], ['dhe', 'conjunction', 'and'], ['unë', 'pronoun', 'I'], ['po dalim për të ngrënë', 'verb', 'are going out to eat'], ['sepse', 'conjunction', 'because'], ['është', 'verb', 'it is'], ['ditëlindja ime.', 'noun', 'birthday my']],
   },
-});
+};
 
 const sentenceSelect = document.querySelector('#sentence-select');
 const languageSelect = document.querySelector('#language-select');
 const languageLabel = document.querySelector('#language-label');
 const translation = document.querySelector('#translation');
-const englishTranslation = document.querySelector('#english-translation');
 const controls = document.querySelector('.controls');
 const languageNames = { french: 'French', 'haitian-creole': 'Haitian Creole', spanish: 'Spanish', english: 'English', asl: 'ASL', albanian: 'Albanian' };
-const englishSources = { classes: 'What classes are you taking next semester?', cook: 'I asked my friend to help me cook.', birthday: "My mom, my brother, and I are going out to eat because it's my birthday." };
+
+function renderWords(words) {
+  translation.textContent = '';
+  translation.classList.add('word-blocks-grid');
+  words.forEach(([text, pos, english]) => {
+    const block = document.createElement('div');
+    block.className = `word-block ${pos}`;
+    [['word-target', text], ['word-pos', POS_LABELS[pos]], ['word-translation', english]].forEach(([cls, content]) => {
+      const el = document.createElement('div');
+      el.className = cls;
+      el.textContent = content;
+      block.appendChild(el);
+    });
+    translation.appendChild(block);
+  });
+}
+
+function showMessage(message) {
+  translation.classList.remove('word-blocks-grid');
+  translation.textContent = message;
+}
 
 function updatePreview() {
   controls.classList.toggle('long-sentence', sentenceSelect.value === 'birthday' || sentenceSelect.options[sentenceSelect.selectedIndex]?.text.length > 55);
   controls.classList.toggle('medium-sentence', sentenceSelect.value === 'classes');
+
   if (!languageSelect.value) {
     languageLabel.textContent = '';
-    translation.textContent = 'Choose a sentence and language to begin.';
-    englishTranslation.textContent = '';
+    showMessage('Choose a sentence and language to begin.');
     return;
   }
-  languageLabel.textContent = `In ${languageNames[languageSelect.value] || ''}`;
+  languageLabel.textContent = `In ${languageNames[languageSelect.value]}`;
   if (!sentenceSelect.value) {
-    translation.textContent = 'Choose a sentence to translate.';
-    englishTranslation.textContent = '';
+    showMessage('Choose a sentence to translate.');
     return;
   }
-  const result = translations[sentenceSelect.value][languageSelect.value] || translations[sentenceSelect.value].english || translations[sentenceSelect.value].french;
-  languageLabel.textContent = result.label;
-  translation.innerHTML = result.html;
-  englishTranslation.innerHTML = `<strong>English:</strong> ${englishSources[sentenceSelect.value]}`;
+  const words = translations[sentenceSelect.value]?.[languageSelect.value];
+  if (!words) {
+    showMessage('Translation coming soon.');
+    return;
+  }
+  renderWords(words);
 }
 
 if (sentenceSelect && languageSelect) {
@@ -125,3 +127,50 @@ document.addEventListener('keydown', (event) => {
 document.querySelector('.help-button').addEventListener('click', () => {
   window.alert('LingoLab helps you learn linguistics by building a language one choice at a time.');
 });
+
+/* Language Atlas: light up continents where the chosen language is spoken */
+const languageRegions = {
+  french: {
+    continents: ['europe', 'africa', 'north-america', 'south-america', 'oceania'],
+    description: 'French is spoken in Europe, Africa, North America, South America, and Oceania.',
+  },
+  'haitian-creole': {
+    continents: ['north-america'],
+    description: 'Haitian Creole is spoken in North America, mainly in Haiti and in Haitian communities abroad.',
+  },
+  spanish: {
+    continents: ['europe', 'north-america', 'south-america', 'africa'],
+    description: 'Spanish is spoken in Europe, North America, South America, and parts of Africa.',
+  },
+  english: {
+    continents: ['north-america', 'europe', 'oceania', 'africa', 'asia', 'south-america'],
+    description: 'English is spoken on nearly every continent, as a first or second language.',
+  },
+  asl: {
+    continents: ['north-america'],
+    description: 'American Sign Language is used by Deaf communities in North America.',
+  },
+  albanian: {
+    continents: ['europe'],
+    description: 'Albanian is spoken in Europe, mainly in Albania, Kosovo, and North Macedonia.',
+  },
+};
+
+const worldSelect = document.querySelector('#world-language-select');
+const worldLanguage = document.querySelector('#world-language');
+const worldDescription = document.querySelector('#world-description');
+const continentHighlights = document.querySelectorAll('.continent-highlight');
+
+function updateGlobe() {
+  const region = languageRegions[worldSelect.value];
+  if (!region) return;
+
+  worldLanguage.textContent = languageNames[worldSelect.value];
+  worldDescription.textContent = region.description;
+
+  continentHighlights.forEach((path) => {
+    path.classList.toggle('active', region.continents.includes(path.dataset.continent));
+  });
+}
+
+if (worldSelect) worldSelect.addEventListener('change', updateGlobe);

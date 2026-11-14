@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Build a tower while discovering how words are made from meaningful parts." />
+    <title>Build-a-Word Tower | LingoLab</title>
+    <link rel="icon" type="image/svg+xml" href="assets/lingolab-ls-favicon.svg" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/morphology.css" />
+    <script src="js/morphology.js" defer></script>
+  </head>
+  <body>
+    <div class="morphology-shell">
+      <header class="site-header">
+        <a class="brand" href="index.html#top" aria-label="LingoLab home"><span class="brand-mark logo-crop" aria-hidden="true"><img src="assets/lingolab-logo.png" alt="" /></span><span class="brand-name"><span>Lingo</span><em>Lab</em></span></a>
+        <nav class="main-nav" aria-label="Main navigation"><a href="index.html#top">Home</a><a class="active" href="explore.html">Explore</a><a href="create.html">Create</a><a href="about.html">About</a></nav>
+        <a class="sign-in" href="index.html#top">Sign in</a>
+      </header>
+      <main>
+        <section class="game-card" aria-labelledby="game-title"><div class="game-topline"><div><p class="card-kicker">Morphology mini-game</p><h2 id="game-title">Build-a-Word Tower</h2></div><div class="tower-score"><strong id="score">0</strong><span>bricks</span></div></div><div class="language-tabs" role="group" aria-label="Choose a language level"><button class="language-tab active" type="button" data-language="english">English</button><button class="language-tab" type="button" data-language="french">French</button><button class="language-tab" type="button" data-language="haitian-creole">Haitian Creole</button><button class="language-tab" type="button" data-language="spanish">Spanish</button><button class="language-tab" type="button" data-language="asl">ASL</button><button class="language-tab" type="button" data-language="albanian">Albanian</button></div><div class="tower-layout"><div class="tower-screen"><canvas id="morphology-canvas" width="760" height="420" aria-label="Growing word tower"></canvas><div class="screen-hud"><span id="level-label">English</span><span id="example-label">Example 1</span></div></div><div class="morphology-prompt" aria-live="polite"><span class="prompt-label">Choose the next brick</span><strong id="prompt-meaning">together</strong><small id="prompt-help">Which piece means “together”? Pick it to add a brick to your tower.</small><div class="answer-controls" id="answer-controls"></div><div class="feedback" id="feedback" role="status"></div></div></div><div class="tower-footer"><span><strong id="tower-height">0</strong> bricks tall</span><span>Keep going—new words appear after every correct build.</span></div></section><section class="morpheme-note" aria-label="Morphology explanation"><div class="note-symbol">+</div><div><p class="card-kicker">What are morphemes?</p><p><strong>con</strong> can mean “together,” <strong>struct</strong> can mean “build,” and <strong>-ion</strong> can turn an action into a thing. Put meaningful pieces together and a whole word appears.</p></div></section>
+      </main>
+      <footer class="site-footer"><div class="footer-main"><div class="footer-brand"><a class="brand" href="index.html" aria-label="LingoLab home"><span class="brand-mark logo-crop" aria-hidden="true"><img src="assets/lingolab-logo.png" alt="" /></span><span class="brand-name"><span>Lingo</span><em>Lab</em></span></a><p>Big ideas start with a single word.</p></div><nav class="footer-nav" aria-label="Footer navigation"><a href="index.html">Home</a><a href="explore.html">Explore</a><a href="create.html">Create</a><a href="about.html">About</a></nav><a class="footer-cta" href="create.html">Start creating <span aria-hidden="true">⟶</span></a></div><div class="footer-bottom"><span>© 2026 LingoLab</span><span>Learn. Create. Communicate.</span></div></footer>
+    </div>
+  </body>
+</html>

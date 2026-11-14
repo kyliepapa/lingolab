@@ -22,5 +22,5 @@ document.querySelector('#finish-tenses').addEventListener('click', (event) => {
   event.currentTarget.innerHTML = 'Language saved ✓';
   event.currentTarget.disabled = true;
   localStorage.setItem('lingolab-tenses-complete', 'true');
-  window.location.href = 'personal-conjugations.html';
+  window.location.href = '../personal-conjugations.html';
 });

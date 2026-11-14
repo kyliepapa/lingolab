@@ -16,8 +16,16 @@ form.addEventListener('submit', (event) => {
   setError('password', password ? '' : 'Please enter your password.');
   if (!email || !password) return;
 
+  const account = JSON.parse(localStorage.getItem('lingolab-account') || 'null');
+  if (!account || account.email !== email.toLowerCase() || account.password !== password) {
+    status.textContent = 'That email and password do not match a saved LingoLab account.';
+    status.classList.add('is-error');
+    return;
+  }
+
   localStorage.setItem('lingolab-authenticated', 'true');
-  localStorage.setItem('lingolab-user-email', email);
+  localStorage.setItem('lingolab-user-email', account.email);
+  localStorage.setItem('lingolab-user-role', account.role);
   const requestedReturn = new URLSearchParams(window.location.search).get('return');
   const returnTo = requestedReturn && !/^(?:[a-z]+:|\/\/)/i.test(requestedReturn)
     ? requestedReturn

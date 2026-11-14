@@ -7,16 +7,17 @@ function setError(name, message) {
 }
 
 function validate() {
-  const { name, email, password, confirm } = form.elements;
+  const { name, role, email, password, confirm } = form.elements;
   const errors = {};
 
   if (!name.value.trim()) errors.name = 'Please enter your name.';
+  if (!role.value) errors.role = 'Please choose Student or Teacher.';
   if (!email.value.trim()) errors.email = 'Please enter your email address.';
   else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())) errors.email = 'That email doesn’t look right.';
   if (password.value.length < 8) errors.password = 'Use at least 8 characters.';
   if (confirm.value !== password.value || !confirm.value) errors.confirm = 'Passwords don’t match.';
 
-  ['name', 'email', 'password', 'confirm'].forEach((field) => setError(field, errors[field] || ''));
+  ['name', 'role', 'email', 'password', 'confirm'].forEach((field) => setError(field, errors[field] || ''));
   const firstInvalid = Object.keys(errors)[0];
   if (firstInvalid) form.elements[firstInvalid].focus();
   return !firstInvalid;
@@ -26,12 +27,24 @@ form.addEventListener('submit', (event) => {
   event.preventDefault();
   if (!validate()) return;
 
-  /* TODO: send { name, email, password } to your sign-up backend here.
-     Never store the password in localStorage or anywhere in the browser. */
+  const account = {
+    name: form.elements.name.value.trim(),
+    role: form.elements.role.value,
+    email: form.elements.email.value.trim().toLowerCase(),
+    password: form.elements.password.value
+  };
+  const existing = JSON.parse(localStorage.getItem('lingolab-account') || 'null');
+  if (existing && existing.email === account.email) {
+    setError('email', 'An account with this email already exists. Please sign in.');
+    form.elements.email.focus();
+    return;
+  }
 
-  document.querySelector('#success-name').textContent = form.elements.name.value.trim();
+  localStorage.setItem('lingolab-account', JSON.stringify(account));
+  document.querySelector('#success-name').textContent = account.name;
   localStorage.setItem('lingolab-authenticated', 'true');
-  localStorage.setItem('lingolab-user-email', form.elements.email.value.trim());
+  localStorage.setItem('lingolab-user-email', account.email);
+  localStorage.setItem('lingolab-user-role', account.role);
   form.hidden = true;
   success.hidden = false;
 });

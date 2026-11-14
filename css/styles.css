@@ -83,6 +83,10 @@
 .site-header .header-actions .sign-in{background:transparent}
 .site-header .create-account-button{align-items:center;background:var(--coral);border:1px solid var(--coral);border-radius:999px;color:#fff;display:inline-flex;font-size:16px;font-weight:700;padding:13px 25px;text-decoration:none;white-space:nowrap}
 .site-header .create-account-button:hover{background:#df5e44;border-color:#df5e44}
+.site-header .teacher-resource-link{color:#249e99;font-size:14px;font-weight:700;text-decoration:none;white-space:nowrap}
+.site-header .teacher-resource-link:hover{color:#173f58;text-decoration:underline}
+.site-header .main-nav .teacher-resource-link{color:var(--ink);font-size:17px;font-weight:400;text-decoration:none;white-space:nowrap}
+.site-header .main-nav .teacher-resource-link:hover{color:var(--coral);text-decoration:none}
 .site-header>.main-nav{margin-left:10%}
 @media(max-width:900px){.site-header>.main-nav{margin-left:auto}.site-header .header-actions{gap:9px}.site-header .create-account-button{padding:11px 16px}}
 @media(max-width:600px){.site-header .header-actions{gap:7px}.site-header .create-account-button{font-size:13px;padding:10px 13px}.site-header .header-actions .sign-in{font-size:13px;padding:10px 13px}}

@@ -1,10 +1,10 @@
 const examples = {
-  SVO: ['The turtle eats the carrot.', 'SVO is the most common order in English.'],
-  SOV: ['The turtle the carrot eats.', 'SOV places the object before the verb.'],
-  VSO: ['Eats the turtle the carrot.', 'VSO leads with the action.'],
-  VOS: ['Eats the carrot the turtle.', 'VOS leads with the action, then names what receives it.'],
-  OVS: ['The carrot eats the turtle.', 'OVS starts with the object, creating a surprising emphasis.'],
-  OSV: ['The carrot the turtle eats.', 'OSV starts with the object, then identifies who acts.'],
+  SVO: ['I eat rice.', 'SVO places the subject first, followed by the verb and object.'],
+  SOV: ['I rice eat.', 'SOV places the object before the verb.'],
+  VSO: ['Eat I rice.', 'VSO leads with the action.'],
+  VOS: ['Eat rice I.', 'VOS leads with the action, then names the object and subject.'],
+  OVS: ['Rice eat I.', 'OVS starts with the object, followed by the verb and subject.'],
+  OSV: ['Rice I eat.', 'OSV starts with the object, then identifies who acts.'],
 };
 
 const preview = document.querySelector('#sentence-preview');

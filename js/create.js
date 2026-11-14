@@ -1,27 +1,28 @@
-const phonemeSets = {
-  consonants: ['p', 'b', 't', 'd', 'k', 'g', 'm', 'n', 'ŋ', 'f', 'v', 's', 'z', 'ʃ', 'ʒ', 'h', 'l', 'r', 'j', 'w', 'θ', 'ð', 'ɲ', 'ʔ'],
-  vowels: ['i', 'e', 'ɛ', 'a', 'ɑ', 'ɔ', 'o', 'u', 'ɪ', 'ʊ', 'ə', 'y', 'ø', 'œ', 'ɐ', 'ɨ'],
-};
-const selectedSounds = new Set();
+const phonemes = ['p', 'b', 't', 'd', 'k', 'g', 'm', 'n', 'f', 's', 'l', 'r', 'h', 'a', 'e', 'i', 'o', 'u'];
+const phonemeSounds = { p: 'pa', b: 'ba', t: 'ta', d: 'da', k: 'ka', g: 'ga', m: 'ma', n: 'na', f: 'fa', s: 'sa', l: 'la', r: 'ra', h: 'ha', a: 'ah', e: 'eh', i: 'ee', o: 'oh', u: 'oo' };
+const selectedSounds = new Set(JSON.parse(localStorage.getItem('lingolab-sounds') || '[]'));
 const chart = document.querySelector('#phoneme-chart');
-const count = document.querySelector('#sound-count');
 
-function renderChart(type) {
-  chart.innerHTML = phonemeSets[type].map((sound) => `<button class="phoneme-button ${selectedSounds.has(sound) ? 'selected' : ''}" type="button" data-sound="${sound}" aria-pressed="${selectedSounds.has(sound)}">/${sound}/</button>`).join('');
+function playPhoneme(sound) {
+  if (!('speechSynthesis' in window)) return;
+  window.speechSynthesis.cancel();
+  const utterance = new SpeechSynthesisUtterance(phonemeSounds[sound]);
+  utterance.lang = 'en-US';
+  utterance.rate = 0.72;
+  utterance.pitch = 1;
+  window.speechSynthesis.speak(utterance);
+}
+
+function renderChart() {
+  chart.innerHTML = phonemes.map((sound) => `<button class="phoneme-button ${selectedSounds.has(sound) ? 'selected' : ''}" type="button" data-sound="${sound}" aria-pressed="${selectedSounds.has(sound)}"><span>${sound}</span><small aria-hidden="true">▶</small></button>`).join('');
   chart.querySelectorAll('.phoneme-button').forEach((button) => button.addEventListener('click', () => {
     const sound = button.dataset.sound;
+    playPhoneme(sound);
     selectedSounds.has(sound) ? selectedSounds.delete(sound) : selectedSounds.add(sound);
     button.classList.toggle('selected', selectedSounds.has(sound));
     button.setAttribute('aria-pressed', selectedSounds.has(sound));
-    count.textContent = selectedSounds.size;
     localStorage.setItem('lingolab-sounds', JSON.stringify([...selectedSounds]));
   }));
 }
 
-document.querySelectorAll('.chart-tab').forEach((tab) => tab.addEventListener('click', () => {
-  document.querySelectorAll('.chart-tab').forEach((item) => item.classList.remove('active'));
-  tab.classList.add('active');
-  renderChart(tab.dataset.chart);
-}));
-
-renderChart('consonants');
+renderChart();

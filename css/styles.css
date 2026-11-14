@@ -39,6 +39,10 @@
 .brand{background-size:72px 72px;height:72px;width:72px}.footer-brand .brand{width:72px}@media(max-width:600px){.brand{background-size:58px 58px;height:58px;width:58px}.footer-brand .brand{width:58px}}
 .brand{background-size:96px 96px;height:96px;width:96px}.footer-brand .brand{background-color:var(--cream);border-radius:12px;width:96px}@media(max-width:600px){.brand{background-size:72px 72px;height:72px;width:72px}.footer-brand .brand{width:72px}}
 .brand:before{background:url('../assets/lingolab-wordmark.png') center/contain no-repeat;content:'';display:block;height:100%;width:100%}.brand{background-image:none!important}.brand>*{display:none!important}
+
+/* Let the footer logo sit directly on the navy footer background. */
+.site-footer .footer-brand .brand{background-color:var(--cream)}
+.site-footer .footer-brand .brand:before{background-image:url('../assets/lingolab-logo.png')}
 /* Homepage Language Atlas */
 .home-world{align-items:center;background:var(--cream);border-top:1px solid var(--line);display:grid;gap:70px;grid-template-columns:minmax(300px,.8fr) minmax(420px,1fr);margin:0 auto;max-width:1400px;min-height:620px;padding:95px 50px;position:relative}
 .world-copy{max-width:500px}

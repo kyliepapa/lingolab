@@ -2,6 +2,11 @@
 
 /* Sound Profile wireframe layout */
 .sound-profile-wireframe{background:var(--cream);margin:0 auto;max-width:930px;padding:54px 55px 78px}
+
+/* Keep the progress controls in the document flow, directly above the site footer. */
+.create-shell{padding-bottom:0}
+.flow-footer{bottom:auto;left:auto;position:relative;right:auto;z-index:auto}
+@media(max-width:600px){.create-shell{padding-bottom:0}}
 .sound-profile-wireframe *{--blue:var(--teal)}
 .sound-profile-title{color:var(--navy);font-family:'DM Sans',Arial,sans-serif;font-size:36px;letter-spacing:-1.2px;margin:0 0 34px;text-align:center}
 .sound-profile-top,.sound-chart-row,.asl-explanation{display:grid;gap:36px;grid-template-columns:1fr 1fr}

@@ -1,12 +1,200 @@
-.explore-shell{background:var(--cream);min-height:100vh;overflow:hidden;position:relative}.explore-orb{background:#f7e7bf;height:330px;opacity:.65;right:-120px;top:90px;width:330px}.explore-header{margin-bottom:0}.main-nav .active{color:var(--coral);font-weight:700}.explore-welcome{margin:0 auto;max-width:1240px;padding:70px 26px 80px;position:relative;text-align:center}.explore-welcome .eyebrow{margin-bottom:25px}.explore-welcome h1{font-family:'Playfair Display',Georgia,serif;font-size:48px;letter-spacing:-1.5px;line-height:1.18;margin:0 auto 22px}.explore-welcome h1 em{color:var(--coral);font-style:italic}.welcome-note{color:var(--muted);font-size:17px;line-height:1.65;margin:auto;max-width:600px}.world-section{align-items:center;background:#f3eee4;display:grid;gap:40px;grid-template-columns:.8fr 1.2fr;min-height:650px;padding:70px max(26px,calc((100% - 1180px)/2));position:relative}.world-copy{max-width:400px}.world-copy h2{font-family:'Playfair Display',Georgia,serif;font-size:43px;letter-spacing:-1.5px;line-height:1.1;margin:0 0 20px}.world-copy h2 span{color:var(--coral);font-style:italic}.world-copy>p:not(.card-kicker){color:var(--muted);font-size:17px;line-height:1.7;margin:0 0 28px}.world-select-label{display:block;max-width:260px}.world-select-label select{background-color:#fffaf1}.map-legend{color:#718086;display:flex;flex-wrap:wrap;font-size:12px;gap:19px;margin-top:22px}.map-legend span{align-items:center;display:flex;gap:7px}.legend-dot{background:#adc4c6;border-radius:50%;display:inline-block;height:9px;width:9px}.legend-dot.active-dot{background:var(--coral);box-shadow:0 0 0 4px #ee6d5226}.globe-stage{align-items:center;display:flex;justify-content:center;min-height:520px;position:relative}.globe-shadow{background:#123d5733;border-radius:50%;bottom:48px;filter:blur(16px);height:28px;position:absolute;width:360px}.globe{max-height:540px;overflow:visible;position:relative;width:min(100%,560px)}.globe-lines{fill:none;opacity:.4;stroke:#a9d8d0;stroke-width:1.2}.continents{fill:#b7d0b9;opacity:.85}.globe-ring{fill:none;stroke:#ef6d52;stroke-dasharray:3 9;stroke-width:2}.language-points circle{animation:pulse 2.2s ease-in-out infinite;fill:#f5b941;stroke:#fff3cc;stroke-width:5}.language-points circle:nth-child(even){animation-delay:.7s}.deep-dive{margin:0 auto;max-width:1240px;padding:92px 26px 110px}.deep-dive-heading{align-items:end;display:flex;justify-content:space-between;margin-bottom:38px}.deep-dive-heading h2{font-family:'Playfair Display',Georgia,serif;font-size:47px;letter-spacing:-1.5px;margin:0}.deep-dive-heading>p{color:var(--muted);font-size:16px;line-height:1.6;max-width:270px}.deep-dive-grid{border:1px solid #d7dedb;border-radius:28px;display:grid;grid-template-columns:310px 1fr;overflow:hidden}.sentence-controls{background:#f3eee4;padding:36px}.sentence-controls .field+.field{margin-top:22px}.sentence-controls select{background:#fffdf9}.sentence-tip{border-top:1px solid #d9d5cb;display:flex;gap:12px;margin-top:34px;padding-top:25px}.tip-icon{color:var(--coral);font-size:21px}.sentence-tip strong{font-size:13px}.sentence-tip p{color:var(--muted);font-size:12px;line-height:1.5;margin:6px 0 0}.language-output{background:var(--navy);color:white;min-height:360px;padding:38px 43px}.output-topline{color:#abc0c8;display:flex;font-size:12px;font-weight:700;justify-content:space-between;letter-spacing:1px;text-transform:uppercase}.output-topline i{background:var(--teal);border:4px solid #2a566c;border-radius:50%;display:inline-block;height:15px;margin-left:6px;vertical-align:-3px;width:15px}.explore-translation{font-family:'Playfair Display',Georgia,serif;font-size:35px;font-weight:700;line-height:1.55;margin:45px 0 43px}.explore-translation span{border-bottom:3px solid;display:inline-block;line-height:1.05;padding-bottom:5px}.explore-translation .verb{border-color:#5fd1c7}.explore-translation .prep{border-color:#9ac7f4}.explore-translation .determiner{border-color:#baa4f4}.explore-translation .noun{border-color:#ff957c}.output-explanation{border-top:1px solid #416379;padding-top:22px}.output-explanation h3{font-size:12px;letter-spacing:1px;margin:0 0 12px;text-transform:uppercase}.element-pills{display:flex;flex-wrap:wrap;gap:8px}.pill{border:1px solid;border-radius:999px;font-size:11px;padding:5px 10px}.pronoun-pill{border-color:#f6c54d;color:#f6c54d}.verb-pill{border-color:#5fd1c7;color:#5fd1c7}.prep-pill{border-color:#9ac7f4;color:#9ac7f4}.determiner-pill{border-color:#baa4f4;color:#baa4f4}.noun-pill{border-color:#ff957c;color:#ff957c}.output-explanation p{color:#b6c5ca;font-size:13px;line-height:1.55;margin:16px 0 0;max-width:640px}@keyframes pulse{0%,100%{opacity:.8;transform:scale(1)}50%{opacity:1;transform:scale(1.18)}}@media(max-width:900px){.world-section{grid-template-columns:1fr;padding-top:60px}.world-copy{max-width:600px}.globe-stage{min-height:460px}.deep-dive-heading{align-items:start;display:block}.deep-dive-heading>p{margin-top:15px}.deep-dive-grid{grid-template-columns:1fr}}@media(max-width:600px){.explore-welcome{padding:50px 17px 65px}.explore-welcome h1{font-size:34px}.world-section{padding-left:17px;padding-right:17px}.world-copy h2{font-size:35px}.globe-stage{min-height:350px}.deep-dive{padding:65px 17px 80px}.deep-dive-heading h2{font-size:38px}.sentence-controls{padding:25px}.language-output{padding:28px 21px}.explore-translation{font-size:25px;margin:38px 0}.output-topline{gap:14px;line-height:1.4}.output-topline span:last-child{text-align:right}}
-.language-region{fill:#f5b941;opacity:0;stroke:#fff3cc;stroke-width:2;transition:opacity .35s ease,filter .35s ease}.language-region.active{filter:drop-shadow(0 0 7px #f5b941);opacity:.96}.language-region:hover{filter:drop-shadow(0 0 9px #fff);opacity:1}
-.continents path{stroke:#d5e2cf;stroke-linejoin:round;stroke-width:1.5}.language-region{mix-blend-mode:screen}
-.continents{fill:#b8d957;opacity:.96;filter:drop-shadow(0 1px 1px #123d5740)}.continents path{stroke:#395e3a;stroke-linejoin:round;stroke-width:1.5}
-.globe-reference{filter:saturate(1.08) contrast(1.02)}.language-region{fill:#fff3a6;opacity:0;stroke:#fffbd8;stroke-width:2;transition:opacity .35s ease,filter .35s ease}.language-region.active{filter:drop-shadow(0 0 8px #fff3a6);opacity:.68}
-.continent-highlight{fill:#fff3a6;opacity:0;stroke:#fffbd8;stroke-width:2;transition:opacity .35s ease,filter .35s ease}.continent-highlight.active{filter:drop-shadow(0 0 8px #fff3a6);opacity:.72}
-.mini-game-promo{align-items:center;background:#e9f3ef;border-radius:24px;display:flex;gap:30px;justify-content:space-between;margin:0 auto 80px;max-width:1100px;padding:30px 36px}.mini-game-promo h2{font-family:'Playfair Display',Georgia,serif;font-size:32px;margin:0 0 8px}.mini-game-promo p:last-child{color:var(--muted);margin:0}.mini-game-promo .primary-button{flex-shrink:0;width:auto}@media(max-width:600px){.mini-game-promo{align-items:stretch;flex-direction:column;margin:0 17px 55px;padding:24px}.mini-game-promo .primary-button{width:100%}}
-.mini-games-intro{margin:0 auto;max-width:1100px;padding:78px 26px 30px;text-align:center}.mini-games-intro .eyebrow{margin-bottom:24px}.mini-games-intro h1{font-family:'Playfair Display',Georgia,serif;font-size:58px;letter-spacing:-2px;line-height:1.08;margin:0 0 22px}.mini-games-intro h1 em{color:var(--coral);font-style:italic}.mini-games-intro>p:last-child{color:var(--muted);font-size:18px;line-height:1.65;margin:0 auto;max-width:630px}.mini-games-hub{padding-top:38px}.mini-games-heading h2{font-size:43px}.mini-games-heading>p{margin-bottom:4px}
-@media(max-width:600px){.mini-games-intro{padding:52px 20px 18px}.mini-games-intro h1{font-size:42px}.mini-games-intro>p:last-child{font-size:16px}.mini-games-hub{padding-top:22px}}
-.mini-games-intro{position:relative}.mini-games-intro .eyebrow{display:none}.mini-games-intro:before,.mini-games-intro:after{border-radius:50%;content:'';position:absolute;z-index:0}.mini-games-intro:before{background:#f7e7bf;height:92px;left:4%;top:70px;width:92px}.mini-games-intro:after{background:#dff2ee;height:58px;right:8%;top:155px;width:58px}.mini-games-intro h1,.mini-games-intro>p:last-child{position:relative;z-index:1}.mini-games-hub{position:relative}.mini-games-hub:before{color:#ee6d50;content:'✦  ✦  ✦';font-size:18px;letter-spacing:12px;position:absolute;right:7%;top:12px;transform:rotate(12deg)}.mini-games-heading h2{color:var(--navy)}.mini-game-card{box-shadow:0 13px 0 #173f5812;overflow:hidden;transition:box-shadow .2s ease,transform .2s ease}.mini-game-card:hover{box-shadow:0 18px 0 #173f5818;transform:translateY(-5px)}.mini-game-card:after{border:2px solid #fff8;border-radius:50%;content:'';height:125px;position:absolute;right:-40px;top:-45px;width:125px}.boundary-game:after{border-color:#f6c54d99}.tower-game:after{border-color:#249e9988}.game-icon{align-items:center;background:#fff9;border:2px solid currentColor;border-radius:18px;display:flex;height:68px;justify-content:center;position:relative;width:68px;z-index:1}.boundary-game .game-icon{color:#c68527}.tower-game .game-icon{color:#168a84}.boundary-game .game-icon:before{content:'🕵️';font-size:35px}.tower-game .game-icon:before{content:'🧱';font-size:35px}.game-icon{font-size:0}.mini-game-card .card-kicker{margin-top:20px}.game-link{align-items:center;background:#fff9;border-radius:999px;display:inline-flex;gap:16px;padding:11px 15px;transition:background .2s ease,transform .2s ease}.game-link:hover{background:#fff;transform:translateX(3px)}
-.games-section{background:#fbf9f2;color:var(--navy);font-family:'DM Sans',Arial,sans-serif;margin:0 auto;max-width:1080px;padding:74px 26px 105px}.games-header{margin:0 auto 42px;text-align:center}.games-kicker{color:var(--coral);font-size:12px;font-weight:800;letter-spacing:2px;margin:0 0 18px}.games-header h1{font-family:'Playfair Display',Georgia,serif;font-size:58px;letter-spacing:-2px;line-height:1.05;margin:0 0 12px}.games-header>p:last-child{color:var(--muted);font-size:18px;margin:0}.games-grid{display:grid;gap:28px;grid-template-columns:repeat(2,minmax(0,1fr))}.game-card{background:#fff;border:2px solid #e2e8f0;border-bottom:6px solid #cbd5e1;border-radius:20px;display:flex;flex-direction:column;min-height:395px;padding:30px;position:relative;transition:border-color .2s ease,box-shadow .2s ease,transform .2s cubic-bezier(.34,1.56,.64,1)}.game-card:nth-child(1):hover{border-color:#d97706;box-shadow:0 14px 28px -8px #d977062e;transform:translateY(-6px)}.game-card:nth-child(2):hover{border-color:#0d9488;box-shadow:0 14px 28px -8px #0d94882e;transform:translateY(-6px)}.card-top{align-items:flex-start;display:flex;justify-content:space-between;margin-bottom:22px}.game-icon{align-items:center;background:#fef3c7;border:2px solid #f59e0b;border-radius:16px;display:flex;font-size:2rem;height:68px;justify-content:center;transition:transform .25s ease;width:68px}.game-card:nth-child(2) .game-icon{background:#ccfbf1;border-color:#14b8a6}.game-card:hover .game-icon{transform:scale(1.08) rotate(-4deg)}.game-number{color:#cbd5e1;font-size:24px;font-variant-numeric:tabular-nums;font-weight:800}.game-tag{align-self:flex-start;background:#ffedd5;border-radius:999px;color:#c2410c;font-size:11px;font-weight:800;letter-spacing:1px;margin-bottom:13px;padding:6px 11px;text-transform:uppercase}.game-card:nth-child(2) .game-tag{background:#d1fae5;color:#047857}.game-title{color:#16324f;font-family:'Playfair Display',Georgia,serif;font-size:30px;letter-spacing:-.5px;margin:0 0 11px}.game-desc{color:#475569;font-size:15px;line-height:1.6;margin:0 0 28px}.play-btn{align-items:center;background:#16324f;border-radius:12px;box-shadow:0 4px 0 #0b1928;color:#fff;display:inline-flex;font-size:14px;font-weight:800;gap:8px;justify-content:center;margin-top:auto;padding:15px 17px;text-decoration:none;transition:background-color .15s ease,box-shadow .12s ease,transform .12s ease}.play-btn:hover{background:#2563eb;box-shadow:0 4px 0 #1d4ed8}.play-btn:active{box-shadow:0 1px 0 #1d4ed8;transform:translateY(3px)}.play-btn .arrow{transition:transform .2s ease}.play-btn:hover .arrow{transform:translateX(4px)}
-@media(max-width:700px){.games-section{padding:52px 18px 70px}.games-header h1{font-size:45px}.games-grid{grid-template-columns:1fr}.game-card{min-height:0;padding:26px}}
+.explore-wireframe-shell{background:#f9f5eb;color:#1c1d2a;min-height:100vh}.explore-wireframe-shell main{overflow:hidden}.wire-hero{align-items:center;background-color:#f9f5eb;background-image:linear-gradient(#e8e0d2 1px,transparent 1px),linear-gradient(90deg,#e8e0d2 1px,transparent 1px);background-size:28px 28px;border-bottom:1px solid #8d8d88;display:flex;flex-direction:column;min-height:540px;justify-content:center;padding:75px 24px;position:relative;text-align:center}.wire-sticker{background:#b9ead3;border:2px solid #18202c;border-radius:999px;box-shadow:3px 3px 0 #18202c;color:#18202c;font-size:10px;font-weight:900;letter-spacing:1.5px;padding:7px 13px;transform:rotate(-2deg)}.wire-hero h1{font-family:'DM Sans',Arial,sans-serif;font-size:clamp(55px,8vw,110px);font-weight:900;letter-spacing:-6px;line-height:.9;margin:24px 0}.wire-hero h1 em{color:#f36a50;font-style:normal}.wire-hero h1 em:after{background:#f36a50;content:'';display:block;height:6px;margin:7px auto 0;transform:rotate(-2deg);width:80%}.wire-hero p{color:#5a6571;font-size:16px;line-height:1.6;max-width:500px}.wire-button,.mini-button{border:0;border-radius:999px;box-shadow:4px 5px 0 #1c1d2a;color:#fff;display:inline-flex;font-size:13px;font-weight:800;gap:18px;padding:13px 20px;text-decoration:none}.blue-button{background:#3155ca}.wire-button:hover,.mini-button:hover{transform:translateY(-2px)}.hero-spark{color:#f9d649;font-size:34px;position:absolute;right:9%;top:100px}.wire-light{background:#f9f5eb}.etymology-section,.morphology-section{align-items:center;display:grid;gap:65px;grid-template-columns:1fr 1fr;margin:0 auto;max-width:950px;padding:95px 26px}.wire-copy h2,.section-heading h2{font-family:'DM Sans',Arial,sans-serif;font-size:53px;font-weight:900;letter-spacing:-3px;line-height:.95;margin:15px 0 25px}.wire-copy h2 em,.section-heading h2 em{color:#3155ca;font-style:normal}.wire-copy p,.wire-copy small,.section-heading p{color:#536272;font-size:15px;line-height:1.6;max-width:470px}.wire-copy small{display:block;font-size:12px;margin-top:12px}.wire-label{color:#1c1d2a;display:block;font-size:9px;font-weight:900;letter-spacing:1.8px;text-transform:uppercase}.word-orbit-art{background:#a9e6c7;border:2px solid #1c1d2a;border-radius:20px;box-shadow:5px 6px 0 #1c1d2a;min-height:285px;padding:30px;position:relative;text-align:center}.orbit-word{background:#3155ca;border:2px solid #1c1d2a;border-radius:50%;color:#1c1d2a;font-size:18px;font-weight:900;margin:0 auto;padding:45px 25px;width:130px}.orbit-chip{background:#f9d649;border:1px solid #1c1d2a;border-radius:999px;font-size:9px;font-weight:800;padding:5px 8px;position:absolute}.chip-one{left:28%;top:73px}.chip-two{right:25%;top:73px}.chip-three{left:37%;top:145px}.orbit-line{border-top:1px solid #1c1d2a;margin:32px 0 20px}.word-orbit-art strong{font-size:10px;letter-spacing:1.3px}.rebracketing-section{background:#3555c9;color:#fff;padding:90px max(26px,calc((100% - 950px)/2))}.section-heading{align-items:start;display:grid;gap:40px;grid-template-columns:1fr 1fr}.wire-blue .wire-label{color:#19264d}.wire-blue h2{color:#fff}.explain-card,.case-study{background:#fff;border:2px solid #1c1d2a;border-radius:15px;box-shadow:4px 5px 0 #1c1d2a;color:#263141;padding:22px}.explain-card{font-size:13px;line-height:1.6}.case-label{color:#b9ead3;margin:45px 0 12px}.case-study{display:grid;gap:18px;grid-template-columns:1fr auto 1fr auto 1fr}.case-study>div{display:flex;flex-direction:column;gap:7px}.case-study span,.translation-cards article>span{color:#3155ca;font-size:9px;font-weight:900;letter-spacing:1px}.case-study strong{font-size:19px}.case-study small{color:#647181}.case-study>b{color:#b5bbc1;font-size:24px}.case-study p{border-top:1px solid #dde0e2;color:#536272;font-size:12px;grid-column:1/-1;line-height:1.5;margin:0;padding-top:16px}.coral-text{color:#f36a50}.game-banner{align-items:center;border:2px solid #1c1d2a;border-radius:17px;box-shadow:4px 5px 0 #1c1d2a;display:flex;justify-content:space-between;margin-top:28px;padding:25px;text-decoration:none}.yellow-banner{background:#f9d84f;color:#1c1d2a}.pink-banner{background:#d83f82;color:#fff}.game-banner h3{font-size:24px;margin:7px 0}.game-banner p{font-size:12px;line-height:1.5;max-width:560px}.gamepad{background:#fff;border:2px solid #1c1d2a;border-radius:15px;box-shadow:3px 4px 0 #1c1d2a;font-size:40px;padding:17px;transform:rotate(-5deg)}.mini-button{background:#fff;box-shadow:none;color:#1c1d2a;font-size:9px;padding:7px 11px}.morphology-section{max-width:950px}.breakdown-card{background:#fff;border:2px solid #1c1d2a;border-radius:15px;box-shadow:4px 5px 0 #1c1d2a;padding:22px}.breakdown-card>div{align-items:center;display:flex;flex-wrap:wrap;gap:6px;margin:18px 0}.breakdown-card b,.breakdown-card strong{background:#f36a50;border-radius:4px;color:#fff;font-size:13px;padding:7px}.breakdown-card b:nth-child(2){background:#f9d84f;color:#1c1d2a}.breakdown-card b:nth-child(3){background:#b9ead3;color:#1c1d2a}.breakdown-card strong{background:transparent;border:1px dashed #1c1d2a;color:#1c1d2a}.breakdown-card small{color:#647181}.language-structures{align-items:end;display:flex;gap:35px;grid-column:1/-1;margin-top:4px}.language-structures h3{font-size:18px;margin:7px 0 0}.language-structures>p{color:#536272;font-size:13px;line-height:1.5;max-width:290px}.blue-label{color:#3155ca}.morphology-cards{display:grid;gap:7px;grid-column:1/-1;grid-template-columns:repeat(4,1fr)}.morphology-cards article{background:#fff;border:1px solid #bfc4c9;border-radius:8px;padding:16px}.language-pill{border-radius:999px;display:inline-block;font-size:8px;font-weight:900;letter-spacing:1px;padding:5px 8px}.yellow-pill{background:#f9d84f}.mint-pill{background:#b9ead3}.coral-pill{background:#f36a50;color:#fff}.blue-pill{background:#3155ca;color:#fff}.pink-pill{background:#d83f82;color:#fff}.morphology-cards strong{display:block;font-size:14px;margin-top:14px}.morphology-cards small,.morphology-cards p{color:#647181;font-size:10px;line-height:1.4}.asl-note{align-items:center;background:#1c1d2a;border-radius:8px;color:#fff;display:flex;gap:13px;grid-column:1/-1;padding:15px}.asl-note p{color:#d1d8df;font-size:11px;line-height:1.4;margin:0}.translation-section{background:#f9d84f;padding:90px max(26px,calc((100% - 950px)/2))}.wire-yellow .section-heading{align-items:start}.translation-cards{display:grid;gap:12px;grid-template-columns:1fr 1fr;margin-top:35px}.translation-cards article{background:#fff;border:2px solid #1c1d2a;border-radius:16px;box-shadow:4px 5px 0 #1c1d2a;padding:24px}.saudade-card{background:#d83f82!important;color:#fff}.saudade-card>span,.saudade-card p,.saudade-card strong{color:#fff}.translation-cards h3{font-size:28px;margin:15px 0}.translation-cards p{font-size:13px;line-height:1.5}.asl-translation{align-items:center;background:#fff;border:2px solid #1c1d2a;border-radius:15px;display:flex;gap:14px;grid-column:1/-1;padding:15px}.asl-translation p{margin:0}.idiom-section{background:#f36a50;color:#fff;padding:80px 26px 120px;text-align:center}.idiom-section>.wire-label{color:#542438}.idiom-section h2{font-size:47px;line-height:.98;margin:14px 0}.idiom-section>p{font-size:13px}.idiom-card{align-items:center;background:#f9f5eb;border:2px solid #1c1d2a;border-radius:18px;box-shadow:5px 6px 0 #1c1d2a;color:#1c1d2a;display:flex;gap:25px;margin:35px auto 0;max-width:760px;padding:25px;text-align:left}.big-gamepad{border-radius:50%;font-size:35px}.idiom-card h3{font-size:23px;margin:8px 0}.idiom-card p{font-size:12px}.dark-button{background:#1c1d2a;color:#fff}
+@media(max-width:750px){.etymology-section,.morphology-section{grid-template-columns:1fr;padding:65px 20px}.wire-copy h2,.section-heading h2{font-size:44px}.rebracketing-section,.translation-section{padding:65px 20px}.section-heading{grid-template-columns:1fr}.case-study{grid-template-columns:1fr}.case-study>b{display:none}.morphology-cards{grid-template-columns:repeat(2,1fr)}.translation-cards{grid-template-columns:1fr}.asl-translation{grid-column:auto}.language-structures{align-items:start;display:block}.idiom-card{align-items:flex-start;flex-direction:column}.wire-hero h1{font-size:54px;letter-spacing:-3px}}
+@media(max-width:480px){.morphology-cards{grid-template-columns:1fr}.game-banner{align-items:flex-start;gap:18px}.gamepad{font-size:28px;padding:12px}}
+
+/* Readability pass: keep the playful wireframe content, but give every section a clearer rhythm. */
+.wire-hero{background-color:#fbf8f1;background-image:none;min-height:500px;padding:96px 24px 110px}
+.wire-hero h1{color:#173f5f;font-size:clamp(64px,9vw,126px);letter-spacing:-6px;line-height:.92;margin:0 0 30px}
+.wire-hero h1 em{color:#ed6b50}
+.wire-hero p{color:#536272;font-size:18px;line-height:1.7;margin:0 0 30px;max-width:560px}
+.wire-button{font-size:14px;padding:15px 23px}
+.etymology-section,.morphology-section{gap:80px;max-width:1080px;padding:120px 34px}
+.wire-copy h2,.section-heading h2{font-size:clamp(52px,5.8vw,78px);letter-spacing:-4px;line-height:.98;margin:18px 0 28px}
+.wire-copy p,.wire-copy small,.section-heading p{font-size:17px;line-height:1.75;max-width:520px}
+.wire-copy small{font-size:14px;margin-top:18px}
+.wire-label{font-size:10px;letter-spacing:2px}
+.word-orbit-art{min-height:330px;padding:38px}
+.rebracketing-section,.translation-section{padding-bottom:120px;padding-top:120px}
+.rebracketing-section>* ,.translation-section>*{max-width:1080px;margin-left:auto;margin-right:auto}
+.section-heading{gap:70px}
+.explain-card,.case-study{padding:30px}
+.explain-card{font-size:16px;line-height:1.75}
+.case-label{margin-bottom:18px;margin-top:64px}
+.case-study{gap:26px}
+.case-study strong{font-size:24px}
+.case-study small,.case-study p{font-size:14px;line-height:1.7}
+.game-banner{margin-top:38px;padding:32px 34px}
+.game-banner h3{font-size:30px;margin:10px 0}
+.game-banner p{font-size:15px;line-height:1.65;max-width:650px}
+.morphology-section{row-gap:48px}
+.breakdown-card{padding:30px}
+.language-structures{gap:55px;margin-top:15px}
+.language-structures h3{font-size:24px}
+.language-structures>p{font-size:15px;line-height:1.65;max-width:380px}
+.morphology-cards{gap:14px}
+.morphology-cards article{padding:20px}
+.morphology-cards strong{font-size:18px;margin-top:16px}
+.morphology-cards small,.morphology-cards p{font-size:13px;line-height:1.55}
+.asl-note{padding:20px}
+.asl-note p{font-size:13px;line-height:1.6}
+.translation-section .section-heading p{padding-top:18px}
+.translation-cards{gap:18px;margin-top:48px}
+.translation-cards article{padding:30px}
+.translation-cards h3{font-size:36px;margin:17px 0}
+.translation-cards p{font-size:15px;line-height:1.7}
+.asl-translation{padding:20px}
+.asl-translation p{font-size:14px;line-height:1.6}
+.idiom-section{padding:110px 26px 140px}
+.idiom-section h2{font-size:clamp(48px,6vw,76px);letter-spacing:-3px;margin:18px 0 24px}
+.idiom-section>p{font-size:16px;line-height:1.6}
+.idiom-card{margin-top:48px;max-width:820px;padding:32px}
+.idiom-card h3{font-size:30px}
+.idiom-card p{font-size:14px;line-height:1.6}
+@media(max-width:750px){.wire-hero{min-height:440px;padding:75px 20px 90px}.wire-hero h1{font-size:58px;letter-spacing:-3px}.wire-hero p{font-size:16px}.etymology-section,.morphology-section{gap:45px;padding:80px 20px}.wire-copy h2,.section-heading h2{font-size:52px;letter-spacing:-3px}.wire-copy p,.wire-copy small,.section-heading p{font-size:16px}.rebracketing-section,.translation-section{padding:80px 20px}.section-heading{gap:30px}.case-label{margin-top:45px}.game-banner{padding:24px}.game-banner h3{font-size:26px}.game-banner p{font-size:14px}.language-structures{gap:20px}.translation-section .section-heading p{padding-top:0}.idiom-section{padding:85px 20px 105px}}
+
+/* Explore palette */
+.explore-wireframe-shell{
+  --cream:#fbf7ef;
+  --navy:#173f58;
+  --coral:#ee6d50;
+  --teal:#249e99;
+  --ink:#173f58;
+  --muted:#60717c;
+  --line:#d9d5cb;
+  --panel:#fffdf9;
+  background:var(--cream);
+  color:var(--ink);
+}
+.explore-wireframe-shell .wire-hero,
+.explore-wireframe-shell .wire-light{background-color:var(--cream)}
+.explore-wireframe-shell .wire-hero{border-color:var(--line)}
+.explore-wireframe-shell .wire-hero h1,
+.explore-wireframe-shell .wire-copy h2,
+.explore-wireframe-shell .section-heading h2,
+.explore-wireframe-shell .language-structures h3,
+.explore-wireframe-shell .idiom-card h3{color:var(--navy)}
+.explore-wireframe-shell .wire-hero h1 em,
+.explore-wireframe-shell .wire-copy h2 em,
+.explore-wireframe-shell .section-heading h2 em,
+.explore-wireframe-shell .coral-text{color:var(--coral)}
+.explore-wireframe-shell .wire-hero h1 em:after{background:var(--coral)}
+.explore-wireframe-shell p,
+.explore-wireframe-shell small,
+.explore-wireframe-shell .wire-copy p,
+.explore-wireframe-shell .wire-copy small,
+.explore-wireframe-shell .section-heading p,
+.explore-wireframe-shell .case-study small,
+.explore-wireframe-shell .case-study p,
+.explore-wireframe-shell .morphology-cards small,
+.explore-wireframe-shell .morphology-cards p{color:var(--muted)}
+.explore-wireframe-shell .blue-button{background:var(--teal)}
+.explore-wireframe-shell .rebracketing-section{background:var(--navy)}
+.explore-wireframe-shell .wire-blue h2{color:var(--panel)}
+.explore-wireframe-shell .wire-blue .wire-label{color:var(--teal)}
+.explore-wireframe-shell .wire-label,
+.explore-wireframe-shell .blue-label{color:var(--teal)}
+.explore-wireframe-shell .explain-card,
+.explore-wireframe-shell .case-study,
+.explore-wireframe-shell .breakdown-card,
+.explore-wireframe-shell .translation-cards article,
+.explore-wireframe-shell .asl-translation,
+.explore-wireframe-shell .idiom-card{background:var(--panel);border-color:var(--line);box-shadow:4px 5px 0 var(--navy)}
+.explore-wireframe-shell .game-banner{border-color:var(--navy);box-shadow:4px 5px 0 var(--navy)}
+.explore-wireframe-shell .yellow-banner{background:var(--teal);color:var(--panel)}
+.explore-wireframe-shell .pink-banner{background:var(--coral);color:var(--panel)}
+.explore-wireframe-shell .game-banner .wire-label,
+.explore-wireframe-shell .game-banner p{color:inherit}
+.explore-wireframe-shell .gamepad{background:var(--panel);border-color:var(--navy);box-shadow:3px 4px 0 var(--navy)}
+.explore-wireframe-shell .mini-button{background:var(--panel);color:var(--navy)}
+.explore-wireframe-shell .morphology-cards article{background:var(--panel);border-color:var(--line)}
+.explore-wireframe-shell .yellow-pill,
+.explore-wireframe-shell .mint-pill{background:var(--teal);color:var(--panel)}
+.explore-wireframe-shell .coral-pill,
+.explore-wireframe-shell .pink-pill{background:var(--coral);color:var(--panel)}
+.explore-wireframe-shell .blue-pill{background:var(--navy);color:var(--panel)}
+.explore-wireframe-shell .breakdown-card b{background:var(--coral);color:var(--panel)}
+.explore-wireframe-shell .breakdown-card b:nth-child(2){background:var(--teal);color:var(--panel)}
+.explore-wireframe-shell .breakdown-card b:nth-child(3){background:var(--cream);color:var(--navy)}
+.explore-wireframe-shell .breakdown-card strong{border-color:var(--navy);color:var(--navy)}
+.explore-wireframe-shell .asl-note{background:var(--navy);color:var(--panel)}
+.explore-wireframe-shell .asl-note p{color:var(--line)}
+.explore-wireframe-shell .translation-section{background:var(--teal)}
+.explore-wireframe-shell .translation-section .wire-label{color:var(--navy)}
+.explore-wireframe-shell .saudade-card{background:var(--coral)!important;border-color:var(--navy);color:var(--panel)}
+.explore-wireframe-shell .saudade-card>span,
+.explore-wireframe-shell .saudade-card p,
+.explore-wireframe-shell .saudade-card strong{color:var(--panel)}
+.explore-wireframe-shell .translation-cards article>span{color:var(--teal)}
+.explore-wireframe-shell .idiom-section{background:var(--coral)}
+.explore-wireframe-shell .idiom-section>.wire-label{color:var(--navy)}
+.explore-wireframe-shell .idiom-card{color:var(--navy)}
+.explore-wireframe-shell .dark-button{background:var(--navy);color:var(--panel)}
+
+/* Clearer reading order for the explanation and morphology sections. */
+.explore-wireframe-shell .wire-label{display:none}
+.explore-wireframe-shell .rebracketing-section{background:var(--cream);color:var(--ink);padding-bottom:105px;padding-top:105px}
+.explore-wireframe-shell .rebracketing-section .section-heading{display:block;max-width:1080px}
+.explore-wireframe-shell .rebracketing-section .section-heading h2{color:var(--navy);margin-bottom:28px}
+.explore-wireframe-shell .rebracketing-section .explain-card{color:var(--navy);font-size:17px;line-height:1.7;margin:0;max-width:none}
+.explore-wireframe-shell .case-study{display:block;margin:42px auto 0;max-width:1080px}
+.explore-wireframe-shell .case-study h3{color:var(--navy);font-size:25px;margin:0 0 14px}
+.explore-wireframe-shell .case-study p{border:0;color:var(--muted);font-size:16px;line-height:1.75;margin:0;padding:0}
+.explore-wireframe-shell .case-study p strong{color:var(--coral)}
+.explore-wireframe-shell .rebracketing-section .game-banner{margin-left:auto;margin-right:auto;max-width:1012px}
+.explore-wireframe-shell .morphology-section{display:block;max-width:1080px}
+.explore-wireframe-shell .morphology-intro{max-width:650px}
+.explore-wireframe-shell .morphology-intro h2{color:var(--navy);font-size:clamp(52px,5.8vw,78px);letter-spacing:-4px;line-height:.98;margin:0 0 28px}
+.explore-wireframe-shell .morphology-intro h2 em{color:var(--coral);font-style:normal}
+.explore-wireframe-shell .morphology-intro p{color:var(--muted);font-size:17px;line-height:1.75;margin:0}
+.explore-wireframe-shell .morphology-section>.game-banner{margin:38px 0 28px;max-width:none}
+.explore-wireframe-shell .morphology-section .breakdown-card{align-items:center;display:flex;gap:28px;justify-content:space-between;margin:0;max-width:none}
+.explore-wireframe-shell .breakdown-card h3{color:var(--navy);font-size:22px;margin:0;white-space:nowrap}
+.explore-wireframe-shell .breakdown-card>div{flex-wrap:nowrap;margin:0}
+.explore-wireframe-shell .breakdown-card small{font-size:13px;line-height:1.5;text-align:right}
+.explore-wireframe-shell .morphology-section .language-structures{margin-top:52px}
+.explore-wireframe-shell .morphology-cards{margin-top:20px}
+@media(max-width:750px){.explore-wireframe-shell .morphology-section .breakdown-card{align-items:flex-start;display:block}.explore-wireframe-shell .breakdown-card h3{margin-bottom:18px}.explore-wireframe-shell .breakdown-card>div{justify-content:flex-start;overflow-x:auto}.explore-wireframe-shell .breakdown-card small{display:block;margin-top:16px;text-align:left}.explore-wireframe-shell .rebracketing-section .explain-card{font-size:16px}.explore-wireframe-shell .case-study p{font-size:15px}}
+
+/* Dictionary-style Etymology definition */
+.explore-wireframe-shell .etymology-section{display:flex;justify-content:center;max-width:none;padding:125px 34px}
+.explore-wireframe-shell .etymology-definition{border-left:5px solid var(--coral);max-width:820px;padding:10px 0 12px 34px;width:100%}
+.explore-wireframe-shell .etymology-definition h2{color:var(--navy);font-family:'DM Sans',Arial,sans-serif;font-size:clamp(58px,8vw,104px);font-weight:900;letter-spacing:-5px;line-height:.9;margin:0 0 18px;text-transform:lowercase}
+.explore-wireframe-shell .dictionary-type{color:var(--coral)!important;font-family:Georgia,serif;font-size:22px!important;font-style:italic;font-weight:700;line-height:1.3!important;margin:0 0 12px!important}
+.explore-wireframe-shell .dictionary-meaning{color:var(--navy)!important;font-family:Georgia,serif;font-size:clamp(22px,2.5vw,32px)!important;line-height:1.45!important;margin:0!important;max-width:760px!important}
+@media(max-width:750px){.explore-wireframe-shell .etymology-section{padding:85px 24px}.explore-wireframe-shell .etymology-definition{padding-left:22px}.explore-wireframe-shell .etymology-definition h2{font-size:62px;letter-spacing:-3px}}
+
+/* Dictionary-style Morphology definition and clearer card spacing. */
+.explore-wireframe-shell .morphology-definition{border-left:5px solid var(--coral);margin-bottom:42px;max-width:820px;padding:10px 0 12px 34px;width:100%}
+.explore-wireframe-shell .morphology-definition h2{color:var(--navy);font-family:'DM Sans',Arial,sans-serif;font-size:clamp(58px,8vw,104px);font-weight:900;letter-spacing:-5px;line-height:.9;margin:0 0 18px;text-transform:lowercase}
+.explore-wireframe-shell .morphology-definition .dictionary-type{color:var(--coral)!important;font-family:Georgia,serif;font-size:22px!important;font-style:italic;font-weight:700;line-height:1.3!important;margin:0 0 12px!important}
+.explore-wireframe-shell .morphology-definition .dictionary-meaning{color:var(--navy)!important;font-family:Georgia,serif;font-size:clamp(22px,2.5vw,32px)!important;line-height:1.45!important;margin:0!important;max-width:780px!important}
+.explore-wireframe-shell .morphology-section>.game-banner{margin-bottom:34px}
+.explore-wireframe-shell .morphology-section>.breakdown-card{margin-bottom:58px}
+.explore-wireframe-shell .morphology-section .language-structures{display:block;margin-bottom:24px;margin-top:0}
+.explore-wireframe-shell .morphology-section .language-structures h3{margin:0 0 10px}
+.explore-wireframe-shell .morphology-section .language-structures p{color:var(--muted);font-size:15px;line-height:1.65;margin:0;max-width:520px}
+.explore-wireframe-shell .morphology-cards{gap:16px;margin-bottom:24px}
+.explore-wireframe-shell .morphology-cards article{min-height:170px}
+@media(max-width:750px){.explore-wireframe-shell .morphology-definition{margin-bottom:32px;padding-left:22px}.explore-wireframe-shell .morphology-definition h2{font-size:62px;letter-spacing:-3px}.explore-wireframe-shell .morphology-section>.breakdown-card{margin-bottom:42px}.explore-wireframe-shell .morphology-cards{gap:16px}}
+
+/* Translation Gap: softer section background, stronger explanation, lighter language cards. */
+.explore-wireframe-shell .translation-section{background:var(--cream);color:var(--ink);padding-bottom:105px;padding-top:105px}
+.explore-wireframe-shell .translation-section .section-heading h2{color:var(--navy)}
+.explore-wireframe-shell .translation-section .section-heading p{color:var(--navy);font-size:20px;line-height:1.75;margin:0;max-width:590px;padding-top:12px}
+.explore-wireframe-shell .translation-cards{margin-top:42px}
+.explore-wireframe-shell .translation-cards article{min-height:0;padding:22px 25px}
+.explore-wireframe-shell .translation-cards h3{font-size:30px;margin:12px 0}
+.explore-wireframe-shell .translation-cards p{font-size:14px;line-height:1.55}
+.explore-wireframe-shell .asl-translation{min-height:110px;padding:26px 28px}
+.explore-wireframe-shell .asl-translation p{color:var(--navy);font-size:18px;line-height:1.65}
+@media(max-width:750px){.explore-wireframe-shell .translation-section{padding-bottom:80px;padding-top:80px}.explore-wireframe-shell .translation-section .section-heading p{font-size:17px}.explore-wireframe-shell .asl-translation p{font-size:16px}}
+
+/* Keep the final idiom section aligned with the Explore page background. */
+.explore-wireframe-shell .idiom-section{background:var(--cream);color:var(--navy)}
+.explore-wireframe-shell .idiom-section h2{color:var(--navy)}
+.explore-wireframe-shell .idiom-section>p{color:var(--muted)}
+
+/* Section separators for a clearer visual rhythm. */
+.explore-wireframe-shell main>section{position:relative}
+.explore-wireframe-shell main>section+section{border-top:1px solid var(--line)}
+.explore-wireframe-shell main>section+section::before{background:var(--coral);border-radius:999px;content:'';height:3px;left:50%;position:absolute;top:-2px;transform:translateX(-50%);width:72px}

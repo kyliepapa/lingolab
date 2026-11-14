@@ -35,11 +35,42 @@
 .footer-bottom{border-top:1px solid #356176;color:#9db5bd;display:flex;font-size:12px;justify-content:space-between;margin:42px auto 0;max-width:1180px;padding-top:20px}
 @media (max-width:900px){.footer-main{grid-template-columns:1fr 1fr}.footer-cta{justify-self:start}.footer-nav{justify-content:flex-end}}
 @media (max-width:600px){.site-footer{padding:42px 24px 22px}.footer-main{gap:28px;grid-template-columns:1fr}.footer-nav{justify-content:flex-start}.footer-cta{justify-self:stretch;justify-content:space-between}.footer-bottom{gap:8px;flex-direction:column;margin-top:32px}}
-<<<<<<< HEAD
 .brand{background:url('../assets/lingolab-wordmark.png') center/contain no-repeat;display:block;height:52px;width:190px}.brand>*{display:none!important}.footer-brand .brand{width:190px}@media(max-width:600px){.brand{height:42px;width:165px}.footer-brand .brand{width:165px}}
 .brand{background-size:72px 72px;height:72px;width:72px}.footer-brand .brand{width:72px}@media(max-width:600px){.brand{background-size:58px 58px;height:58px;width:58px}.footer-brand .brand{width:58px}}
-=======
-.main-nav a,.sign-in,.primary-button,.secondary-button,.footer-cta,.continue-button,.back-link,.contact-submit,.help-button{transition:color .2s ease,background-color .2s ease,border-color .2s ease,box-shadow .2s ease,transform .2s ease}.main-nav a{padding:7px 0;position:relative}.main-nav a::after{background:var(--coral);bottom:0;content:'';height:2px;left:0;position:absolute;transform:scaleX(0);transform-origin:left;transition:transform .2s ease;width:100%}.main-nav a:hover::after,.main-nav a.active::after{transform:scaleX(1)}a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #f6c54d;outline-offset:3px}.sign-in:hover{border-color:var(--teal);color:var(--teal)}.primary-button:active,.secondary-button:active,.continue-button:active,.contact-submit:active{transform:translateY(1px)}.help-button:hover{background:var(--teal);color:#fff;transform:translateY(-2px)}
-.audience-section{background:var(--navy);color:#fff;display:grid;gap:70px;grid-template-columns:minmax(280px,.82fr) minmax(500px,1.18fr);padding:88px max(26px,calc((100% - 1180px)/2))}.audience-heading{max-width:430px}.audience-heading .eyebrow{color:#7ed5ce;margin-bottom:22px}.audience-heading h2{font-family:'Playfair Display',Georgia,serif;font-size:46px;letter-spacing:-1.5px;line-height:1.08;margin:0 0 20px}.audience-heading h2 em{color:#f58a70;font-style:italic}.audience-heading>p:last-child{color:#bfd0d4;font-size:16px;line-height:1.7;margin:0}.audience-grid{display:grid;gap:14px;grid-template-columns:repeat(3,1fr)}.audience-grid article{background:#204e67;border:1px solid #37667a;border-radius:18px;padding:23px 20px}.audience-icon{color:#f6c54d;display:block;font-size:25px;margin-bottom:26px}.audience-grid h3{font-family:'Playfair Display',Georgia,serif;font-size:23px;margin:0 0 11px}.audience-grid p{color:#c3d3d6;font-size:13px;line-height:1.6;margin:0}@media(max-width:900px){.audience-section{gap:38px;grid-template-columns:1fr}.audience-heading{max-width:620px}}@media(max-width:600px){.audience-section{padding:68px 17px}.audience-heading h2{font-size:38px}.audience-grid{grid-template-columns:1fr}.audience-grid article{padding:20px}.audience-icon{margin-bottom:16px}}
-.hero-eyebrow{margin-bottom:22px}.hero-eyebrow .spark{font-size:18px;height:30px;width:30px}
->>>>>>> 3654fdbbc1c230f2a0f6904d52313259415cff57
+.brand{background-size:96px 96px;height:96px;width:96px}.footer-brand .brand{background-color:var(--cream);border-radius:12px;width:96px}@media(max-width:600px){.brand{background-size:72px 72px;height:72px;width:72px}.footer-brand .brand{width:72px}}
+.brand:before{background:url('../assets/lingolab-wordmark.png') center/contain no-repeat;content:'';display:block;height:100%;width:100%}.brand{background-image:none!important}.brand>*{display:none!important}
+/* Homepage Language Atlas */
+.home-world{align-items:center;background:var(--cream);border-top:1px solid var(--line);display:grid;gap:70px;grid-template-columns:minmax(300px,.8fr) minmax(420px,1fr);margin:0 auto;max-width:1400px;min-height:620px;padding:95px 50px;position:relative}
+.world-copy{max-width:500px}
+.world-copy .card-kicker{color:var(--teal);margin-bottom:15px}
+.world-copy h2{color:var(--navy);font-family:'Playfair Display',Georgia,serif;font-size:clamp(46px,5vw,72px);letter-spacing:-2.5px;line-height:1.02;margin:0 0 22px}
+.world-copy h2 span{color:var(--coral)}
+.world-copy>p:not(.card-kicker){color:var(--muted);font-size:18px;line-height:1.65;margin:0 0 26px}
+.world-select-label{color:var(--navy);display:block;max-width:350px}
+.world-select-label select{background-color:var(--panel);border-color:var(--line);min-height:58px}
+.globe-stage{align-items:center;display:flex;justify-content:center;min-height:470px;position:relative}
+.globe-shadow{background:#173f5830;border-radius:50%;bottom:30px;filter:blur(14px);height:34px;position:absolute;width:330px}
+.globe{display:block;max-height:500px;max-width:100%;position:relative;z-index:1}
+.continents path{fill:#9fd04e;stroke:var(--navy);stroke-width:2}
+.continent-highlight{fill:var(--coral)!important;opacity:0;transition:opacity .25s ease}
+.continent-highlight.active{opacity:1}
+.globe-ring{fill:none;stroke:var(--teal);stroke-width:3}
+@media(max-width:900px){.home-world{gap:35px;grid-template-columns:1fr;min-height:auto;padding:75px 26px}.world-copy{max-width:650px}.globe-stage{min-height:420px}.globe{max-height:430px}}
+@media(max-width:600px){.home-world{padding:65px 17px}.world-copy h2{font-size:48px}.world-copy>p:not(.card-kicker){font-size:17px}.globe-stage{min-height:330px}.globe{max-height:350px}.globe-shadow{bottom:18px;width:240px}}
+
+/* Homepage audience section */
+.audience-section{align-items:center;background:var(--cream);border-top:1px solid var(--line);display:grid;gap:72px;grid-template-columns:minmax(300px,.82fr) minmax(500px,1.18fr);margin:0 auto;max-width:1400px;padding:105px 50px}
+.audience-heading{max-width:500px}
+.audience-heading .eyebrow{color:var(--teal);font-size:12px;margin:0 0 18px}
+.audience-heading h2{color:var(--navy);font-family:'Playfair Display',Georgia,serif;font-size:clamp(42px,4.5vw,66px);letter-spacing:-2px;line-height:1.04;margin:0 0 22px}
+.audience-heading h2 em{color:var(--coral);font-style:italic}
+.audience-heading>p:last-child{color:var(--muted);font-size:18px;line-height:1.7;margin:0;max-width:470px}
+.audience-grid{display:grid;gap:16px;grid-template-columns:repeat(3,1fr)}
+.audience-grid article{background:var(--panel);border:1px solid var(--line);border-radius:18px;box-shadow:0 6px 0 #173f5812;min-height:245px;padding:25px 22px}
+.audience-icon{align-items:center;background:#dcefeb;border-radius:50%;color:var(--teal);display:flex;font-size:24px;height:48px;justify-content:center;margin-bottom:25px;width:48px}
+.audience-grid article:nth-child(2) .audience-icon{background:#fbe2d9;color:var(--coral)}
+.audience-grid article:nth-child(3) .audience-icon{background:#e6e1f1;color:var(--navy)}
+.audience-grid h3{color:var(--navy);font-family:'Playfair Display',Georgia,serif;font-size:22px;line-height:1.15;margin:0 0 12px}
+.audience-grid p{color:var(--muted);font-size:14px;line-height:1.65;margin:0}
+@media(max-width:1050px){.audience-section{gap:45px;grid-template-columns:1fr;padding:85px 35px}.audience-heading{max-width:680px}.audience-grid{max-width:900px}}
+@media(max-width:600px){.audience-section{gap:35px;padding:65px 17px}.audience-heading h2{font-size:48px}.audience-heading>p:last-child{font-size:17px}.audience-grid{grid-template-columns:1fr}.audience-grid article{min-height:0;padding:22px}.audience-icon{margin-bottom:18px}}

@@ -27,8 +27,13 @@ form.addEventListener('submit', (event) => {
   localStorage.setItem('lingolab-user-email', account.email);
   localStorage.setItem('lingolab-user-role', account.role);
   const requestedReturn = new URLSearchParams(window.location.search).get('return');
-  const returnTo = requestedReturn && !/^(?:[a-z]+:|\/\/)/i.test(requestedReturn)
-    ? requestedReturn
-    : 'create.html';
+  const createSteps = new Set(['word-origins.html', 'sentence-order.html', 'adjectives.html', 'tenses.html', 'personal-conjugations.html', 'finishing-touches.html']);
+  let returnTo = '/pages/create.html';
+  if (requestedReturn && !/^(?:[a-z]+:|\/\/)/i.test(requestedReturn)) {
+    if (requestedReturn.startsWith('/')) returnTo = requestedReturn;
+    else if (requestedReturn === 'create.html') returnTo = '/pages/create.html';
+    else if (createSteps.has(requestedReturn)) returnTo = `/pages/create/${requestedReturn}`;
+    else if (requestedReturn === 'teacher-resources.html') returnTo = '/pages/teacher/teacher-resources.html';
+  }
   window.location.href = returnTo;
 });

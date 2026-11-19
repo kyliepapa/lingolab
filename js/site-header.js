@@ -4,6 +4,15 @@ document.head.appendChild(headerStyle);
 headerStyle.textContent += `.site-header .logout-link{background:transparent;border:1px solid #b9c1bf;border-radius:999px;color:var(--ink);cursor:pointer;font:700 16px 'DM Sans',Arial;padding:13px 23px;white-space:nowrap}.site-header .logout-link:hover{background:#fff}@media(max-width:700px){.site-header .logout-link{font-size:13px;padding:10px 13px}}`;
 const siteRoot = window.location.pathname.replaceAll('\\', '/').includes('/pages/create/') ? '../../' : '';
 
+const pagePath = window.location.pathname.replaceAll('\\', '/');
+const inPages = pagePath.includes('/pages/');
+const inAuth = pagePath.includes('/pages/auth/');
+const inNestedPage = pagePath.includes('/pages/create/') || pagePath.includes('/pages/games/') || pagePath.includes('/pages/auth/') || pagePath.includes('/pages/teacher/') || pagePath.includes('/pages/legacy/');
+const pagePrefix = inNestedPage ? '../' : '';
+const authPath = inAuth ? '' : inPages ? `${pagePrefix}auth/` : 'pages/auth/';
+const homePath = inPages ? (inNestedPage ? '../../index.html' : '../index.html') : 'index.html';
+const teacherPath = inPages ? `${pagePrefix}teacher/teacher-resources.html` : 'pages/teacher/teacher-resources.html';
+
 document.querySelectorAll('.site-header').forEach((header) => {
   const nav = header.querySelector('.main-nav');
   nav?.querySelectorAll('.sign-in, .create-link').forEach((item) => item.remove());

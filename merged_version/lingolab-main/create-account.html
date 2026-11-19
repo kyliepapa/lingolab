@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="../assets/lingolab-logo.png" />
+    <meta name="description" content="Create your LingoLab account." />
+    <title>Create an Account | LingoLab</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/create.css" />
+    <script src="js/create-account.js" defer></script>
+    <script src="js/site-header.js" defer></script>
+</head>
+  <body>
+    <div class="create-shell tc-shell">
+      <header class="site-header create-header"><a class="brand" href="index.html#top" aria-label="LingoLab home"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="22" fill="#123d57" /><path d="M24 6v36M8 24h32M12 13c7 6 16 9 25 8M12 35c7-6 16-9 25-8" fill="none" stroke="#3d93a1" stroke-width="1.6" opacity=".75" /><path d="M16 11v22h13" fill="none" stroke="#f5b941" stroke-width="4.4" stroke-linecap="round" stroke-linejoin="round" /><path d="M21 8v22h13" fill="none" stroke="#ef6d52" stroke-width="4.4" stroke-linecap="round" stroke-linejoin="round" /></svg></span><span class="brand-name"><span>Lingo</span><em>Lab</em></span></a><nav class="main-nav" aria-label="Main navigation"><a href="index.html#top">Home</a><a href="pages/explore.html">Explore</a><a href="create.html">Create</a><a href="about.html">About</a></nav><div class="header-actions"><a class="sign-in" href="signin.html">Sign in</a><a class="sign-in create-link active-link" href="create-account.html">Create account</a></div></header>
+
+      <main class="create-main ca-wrap">
+        <section class="flow-intro">
+          <p class="eyebrow">Your LingoLab account</p>
+          <h1>Join the <em>lab.</em></h1>
+          <p>Create an account to save your languages, revisit your ideas, and keep creating.</p>
+        </section>
+
+        <section class="tc-card ca-card" aria-labelledby="ca-title">
+          <form id="account-form" novalidate>
+            <h2 id="ca-title" class="ca-title">Create your account</h2>
+
+            <label class="ca-field">Name
+              <input type="text" name="name" placeholder="Your name" autocomplete="name" />
+              <span class="ca-error" data-error-for="name" role="alert"></span>
+            </label>
+
+            <label class="ca-field">I am a...
+              <select name="role" required>
+                <option value="">Choose your role</option>
+                <option value="student">Student</option>
+                <option value="teacher">Teacher</option>
+              </select>
+              <span class="ca-error" data-error-for="role" role="alert"></span>
+            </label>
+
+            <label class="ca-field">Email address
+              <input type="email" name="email" placeholder="you@example.com" autocomplete="email" />
+              <span class="ca-error" data-error-for="email" role="alert"></span>
+            </label>
+
+            <label class="ca-field">Password
+              <input type="password" name="password" placeholder="At least 8 characters" autocomplete="new-password" />
+              <span class="ca-error" data-error-for="password" role="alert"></span>
+            </label>
+
+            <label class="ca-field">Confirm password
+              <input type="password" name="confirm" placeholder="Type your password again" autocomplete="new-password" />
+              <span class="ca-error" data-error-for="confirm" role="alert"></span>
+            </label>
+
+            <button class="tc-btn tc-submit ca-submit" type="submit">Create account</button>
+            <p class="ca-switch">Already have an account? <a href="signin.html">Sign in</a></p>
+          </form>
+
+          <div class="ca-success" id="account-success" hidden>
+            <h2 class="ca-title">Welcome, <span id="success-name">language maker</span>!</h2>
+            <p>Your account is ready. Time to start building your language.</p>
+            <a class="tc-btn tc-back" href="create.html">Start creating</a>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

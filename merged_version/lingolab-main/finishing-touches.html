@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="../assets/lingolab-logo.png" />
+    <meta name="description" content="Add finishing grammar touches to your LingoLab language." />
+    <title>Create — Finishing Touches | LingoLab</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/create.css" />
+    <script src="js/language-store.js" defer></script>
+    <script src="js/create-flow-steps.js" defer></script>
+    <script src="js/finishing-touches.js" defer></script>
+      <script src="js/site-header.js" defer></script>`r`n</head>
+  <body>
+    <div class="create-shell">
+      <header class="site-header create-header"><a class="brand" href="index.html#top" aria-label="LingoLab home"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="22" fill="#123d57" /><path d="M24 6v36M8 24h32M12 13c7 6 16 9 25 8M12 35c7-6 16-9 25-8" fill="none" stroke="#3d93a1" stroke-width="1.6" opacity=".75" /><path d="M16 11v22h13" fill="none" stroke="#f5b941" stroke-width="4.4" stroke-linecap="round" stroke-linejoin="round" /><path d="M21 8v22h13" fill="none" stroke="#ef6d52" stroke-width="4.4" stroke-linecap="round" stroke-linejoin="round" /></svg></span><span class="brand-name"><span>Lingo</span><em>Lab</em></span></a><nav class="main-nav" aria-label="Main navigation"><a href="index.html#top">Home</a><a href="pages/explore.html">Explore</a><a class="active" href="create.html">Create</a><a href="about.html">About</a></nav><a class="sign-in" href="index.html#top">Sign in</a></header>
+      <main class="create-main finishing-main">
+        <section class="flow-intro">
+          <p class="eyebrow">Create your language · Step 7 of 7</p>
+          <h1>Add the <em>finishing touches.</em></h1>
+          <p>Just a few finishing touches left, and your language will be ready.</p>
+        </section>
+        <section class="touch-grid">
+          <article class="touch-card">
+            <h2>Introduction</h2>
+            <p>Your first sample sentence starts with a greeting and uses your real name.</p>
+            <label class="full-touch-field"><span>Your word for hello</span><input data-word="hello" placeholder="Your word for hello" aria-label="Your word for hello" /></label>
+            <label class="full-touch-field"><span>Your name</span><input data-user-name placeholder="e.g. Jane" aria-label="Your name" /></label>
+          </article>
+          <article class="touch-card articles-card">
+            <h2>Articles</h2>
+            <p>An article tells us whether we mean something general or a specific thing. English uses <strong>a</strong> and <strong>the</strong>.</p>
+            <fieldset class="toggle-field">
+              <legend>Do you want articles?</legend>
+              <label><input type="radio" name="articles" value="yes" checked /> Yes</label>
+              <label><input type="radio" name="articles" value="no" /> No</label>
+            </fieldset>
+            <div class="touch-inputs" id="article-inputs">
+              <input data-article="indefinite" placeholder="Your word for a" aria-label="Your word for a" />
+              <input data-article="definite" placeholder="Your word for the" aria-label="Your word for the" />
+            </div>
+          </article>
+          <article class="touch-card">
+            <h2>Question Words</h2>
+            <p>For now, you'll only need one question word, "what". But sentence order often changes when asking questions, so you'll also need to pick a new sentence order for questions from the examples.</p>
+            <label class="full-touch-field"><input data-word="what" placeholder="Your word for what" aria-label="Your word for what" /></label>
+            <label class="full-touch-field"><span>Question Sentence Order</span><select data-question-order aria-label="Question Sentence Order"><option value="wiyn">What is your name?</option><option value="wyni">What your name is?</option><option value="yniw">Your name is what?</option><option value="ynwi">Your name what is</option></select></label>
+          </article>
+          <article class="touch-card">
+            <h2>Negation</h2>
+            <p>Negation is how a language says that something is not happening or is not true. English often uses <strong>not</strong>.</p>
+            <label class="full-touch-field"><input data-negation="marker" placeholder="Your word for not" aria-label="Your word for not" /></label>
+            <label class="full-touch-field"><span>Where does it go?</span><select data-negation="placement" aria-label="Negation placement"><option>Before the verb — not wait</option><option>After the verb — wait not</option></select></label>
+          </article>
+          <article class="touch-card">
+            <h2>Pluralizers</h2>
+            <p>A pluralizer shows that there is more than one of something. What marker will your language use?</p>
+            <label class="full-touch-field"><span>Your plural marker</span><input data-pluralizer="marker" placeholder="e.g. s" aria-label="Your plural marker" /></label>
+            <label class="full-touch-field"><span>Where does it go?</span><select data-pluralizer="placement" aria-label="Pluralizer placement"><option>Word before</option><option>Prefix</option><option>Suffix</option><option>Word after</option></select></label>
+          </article>
+          <article class="touch-card possessive-card">
+            <h2>Possessive pronouns</h2>
+            <p>Possessive pronouns show who something belongs to. English uses words like <strong>my</strong> and <strong>your</strong>.</p>
+            <div class="touch-inputs possessive-inputs">
+              <input data-word="my" placeholder="Your word for my" aria-label="Your word for my" />
+              <input data-word="your" placeholder="Your word for your" aria-label="Your word for your" />
+            </div>
+          </article>
+        </section>
+      </main>
+      <footer class="flow-footer"><div class="progress-wrap"><div class="progress-labels seven-step-labels"><span>Sound profile</span><span>Word origins</span><span>Sentence order</span><span>Adjectives</span><span>Tenses</span><span>Personal conjugations</span><span>Finishing touches</span></div><div class="progress-track seven-step"><span class="progress-fill" style="width:100%"></span><i class="progress-dot complete"></i><i class="progress-dot complete"></i><i class="progress-dot complete"></i><i class="progress-dot complete"></i><i class="progress-dot complete"></i><i class="progress-dot complete"></i><i class="progress-dot current"></i></div></div><div class="flow-actions"><a class="back-link" href="personal-conjugations.html">← Back</a><button class="continue-button" id="finish-language" type="button">Save &amp; continue <span aria-hidden="true">⟶</span></button></div></footer>
+    </div>
+  </body>
+</html>

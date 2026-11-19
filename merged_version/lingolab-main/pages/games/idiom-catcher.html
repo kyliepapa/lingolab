@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Idiom Catcher</title>
+<style>
+:root{--bg:#fdf6e3;--fg:#2b2540;--card:#fff;--accent:#7c3aed;--muted:#6b6485;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1b1730;--fg:#f3efff;--card:#2a2447;--accent:#a78bfa;--muted:#b5accf}}
+:root[data-theme="dark"]{--bg:#1b1730;--fg:#f3efff;--card:#2a2447;--accent:#a78bfa;--muted:#b5accf}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;display:flex;flex-direction:column;align-items:center;padding:12px}
+h1{margin:4px 0;font-size:1.4rem}
+#hud{display:flex;justify-content:space-between;width:100%;max-width:640px;font-weight:700;margin:4px 0}
+#wrap{position:relative;width:100%;max-width:640px}
+canvas{width:100%;height:auto;border-radius:14px;background:linear-gradient(#2d1b69,#5b3fb5);touch-action:none;display:block}
+.ov{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:14px}
+.box{background:var(--card);color:var(--fg);border-radius:14px;padding:18px;text-align:center;max-width:420px;box-shadow:0 8px 30px #0006}
+.box h2{margin:0 0 6px}.box p{margin:6px 0;color:var(--muted)}
+.big{font-size:1.5rem;font-weight:800;color:var(--accent)}
+button{background:var(--accent);color:#fff;border:0;border-radius:10px;padding:10px 20px;font-size:1rem;font-weight:700;cursor:pointer;margin-top:8px}
+#snd{margin:0;padding:2px 10px;font-size:1.2rem;background:var(--card);color:var(--fg);border:2px solid var(--accent)}
+.hide{display:none}
+</style>
+</head>
+<body>
+<h1>⭐ Idiom Catcher</h1>
+<p><a href="../explore.html">← Back to Explore</a></p>
+<div id="hud"><button id="snd" aria-label="Turn sound on or off">🔊</button><span id="hearts"></span><span id="round"></span><span id="score"></span></div>
+<div id="wrap">
+<canvas id="c" width="640" height="480"></canvas>
+<div class="ov" id="start"><div class="box"><h2>Catch the meaning!</h2>
+<p>Idioms don’t mean what the words say. Move your basket (mouse, finger or ← →) to catch the ⭐ with the <b>true meaning</b> of the idiom on your basket.</p>
+<p>Avoid wrong meanings and 💣!</p><button id="go">Play</button></div></div>
+<div class="ov hide" id="reveal"><div class="box"><p id="rlang"></p><div class="big" id="ridiom"></div><p>Literally: <b id="rlit"></b></p><p>Really means: <b id="rmean"></b></p><button id="next">Next idiom</button></div></div>
+<div class="ov hide" id="end"><div class="box"><h2 id="etitle"></h2><p id="esum"></p><button id="again">Play again</button></div></div>
+</div>
+<script>
+const IDIOMS=[
+{l:"Haitian Creole",i:"M’ap boule",lit:"I’m burning",m:"I’m doing good, I’m living"},
+{l:"French",i:"Il pleut des cordes",lit:"It is raining ropes",m:"It’s raining heavily"},
+{l:"Sign language",i:"TRAIN-GONE",lit:"Train gone",m:"You missed it"},
+{l:"Sign language",i:"TOUCH-FINISH",lit:"Touch finish",m:"Been there, done that"},
+{l:"Albanian",i:"Ta ha zemrën",lit:"I’ll eat your heart",m:"I love you so much!"},
+{l:"Albanian",i:"Do dru?",lit:"Do you want wood?",m:"Do you want to get beaten up?"},
+{l:"Spanish",i:"Tirar la casa por la ventana",lit:"To throw the house out the window",m:"To go all out"},
+{l:"Spanish",i:"Estar como una cabra",lit:"To be like a goat",m:"To be crazy, wild"}];
+const cv=document.getElementById("c"),g=cv.getContext("2d"),W=640,H=480;
+const $=id=>document.getElementById(id);
+let order,ri,score,lives,items,bx,tx,state,spawnT,sinceGood,shake,keys={},last=0,learned;
+const BW=250,BH=64;
+let actx=null,soundOn=true;
+try{soundOn=localStorage.getItem("idiomSound")!=="off"}catch(e){}
+function tone(f,d,type,vol,when,slide){if(!soundOn)return;try{actx=actx||new(window.AudioContext||window.webkitAudioContext)();if(actx.state==="suspended")actx.resume();const o=actx.createOscillator(),gn=actx.createGain(),t=actx.currentTime+(when||0);o.type=type||"sine";o.frequency.setValueAtTime(f,t);if(slide)o.frequency.exponentialRampToValueAtTime(slide,t+d);gn.gain.setValueAtTime(vol||0.15,t);gn.gain.exponentialRampToValueAtTime(0.001,t+d);o.connect(gn);gn.connect(actx.destination);o.start(t);o.stop(t+d)}catch(e){}}
+const SFX={
+good(){[523,659,784,1047].forEach((f,k)=>tone(f,0.18,"triangle",0.18,k*0.08))},
+bad(){tone(220,0.35,"sawtooth",0.12,0,110)},
+bomb(){tone(120,0.5,"square",0.15,0,40);tone(80,0.4,"sawtooth",0.12,0.02,30)},
+win(){[523,659,784,1047,1319].forEach((f,k)=>tone(f,0.25,"triangle",0.18,k*0.12))},
+lose(){[392,330,262,196].forEach((f,k)=>tone(f,0.3,"sawtooth",0.12,k*0.18))},
+start(){tone(440,0.1,"square",0.1);tone(660,0.15,"square",0.1,0.1)}
+};
+function updSnd(){$("snd").textContent=soundOn?"🔊":"🔇"}
+function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]]}return a}
+function hud(){$("hearts").textContent="❤️".repeat(lives)+"🖤".repeat(3-lives);$("round").textContent="Idiom "+(ri+1)+"/"+IDIOMS.length;$("score").textContent="⭐ "+score}
+function newGame(){order=shuffle(IDIOMS);ri=0;score=0;lives=3;learned=[];startRound();}
+function startRound(){items=[];spawnT=0.3;sinceGood=0;bx=tx=W/2;state="play";hud();["start","reveal","end"].forEach(x=>$(x).classList.add("hide"))}
+function cur(){return order[ri]}
+function spawn(){
+ const r=Math.random();let type;
+ if(sinceGood>=2||r<0.35)type="good";else if(r<0.7)type="bad";else type="bomb";
+ let text="";
+ if(type==="good"){text=cur().m;sinceGood=0}
+ else{sinceGood++;if(type==="bad"){const o=IDIOMS.filter(x=>x!==cur());text=o[Math.random()*o.length|0].m}}
+ const w=type==="bomb"?44:160;
+ items.push({x:w/2+Math.random()*(W-w),y:-30,vy:90+ri*8+Math.random()*30,type,text,w,h:type==="bomb"?44:46});
+}
+function wrap(t,maxW,font){g.font=font;const ws=t.split(" "),ls=[];let c="";for(const w of ws){const n=c?c+" "+w:w;if(g.measureText(n).width>maxW&&c){ls.push(c);c=w}else c=n}ls.push(c);return ls}
+function lose(){lives--;shake=0.3;hud();if(lives<=0){state="over";finish(false)}}
+function finish(win){win?SFX.win():SFX.lose();$("etitle").textContent=win?"🎉 You did it!":"Game over";
+ $("esum").innerHTML="Score: <b>"+score+"</b><br>Idioms learned: "+(learned.length?learned.map(x=>x.i+" = "+x.m).join("<br>"):"none yet — try again!");$("end").classList.remove("hide")}
+function update(dt){
+ if(state!=="play")return;
+ if(keys.ArrowLeft)tx-=420*dt;if(keys.ArrowRight)tx+=420*dt;
+ tx=Math.max(BW/2,Math.min(W-BW/2,tx));bx+=(tx-bx)*Math.min(1,dt*14);
+ spawnT-=dt;if(spawnT<=0){spawn();spawnT=0.9}
+ if(shake>0)shake-=dt;
+ for(const it of items){it.y+=it.vy*dt;
+  const top=H-BH-10;
+  if(!it.done&&it.y+it.h/2>=top&&it.y<H-10&&Math.abs(it.x-bx)<BW/2+it.w/2-20){
+   it.done=true;
+   if(it.type==="good"){score+=10;learned.push(cur());state="reveal";hud();SFX.good();showReveal();return}
+   else{it.type==="bomb"?SFX.bomb():SFX.bad();lose()}
+  }}
+ items=items.filter(it=>!it.done&&it.y<H+50);
+}
+function showReveal(){const c=cur();$("rlang").textContent=c.l;$("ridiom").textContent=c.i;$("rlit").textContent=c.lit;$("rmean").textContent=c.m;
+ $("next").textContent=ri===IDIOMS.length-1?"Finish":"Next idiom";$("reveal").classList.remove("hide")}
+function draw(){
+ g.clearRect(0,0,W,H);g.save();
+ if(shake>0)g.translate((Math.random()-.5)*8,0);
+ g.fillStyle="#ffffff55";for(let i=0;i<20;i++){g.fillRect((i*97)%W,(i*53+last/40)%H,2,2)}
+ if(order){
+  for(const it of items){
+   if(it.type==="bomb"){g.font="38px serif";g.textAlign="center";g.fillText("💣",it.x,it.y+13)}
+   else{
+    g.fillStyle="#ffe066";g.strokeStyle="#f59f00";g.lineWidth=2;
+    g.beginPath();g.roundRect(it.x-it.w/2,it.y-it.h/2,it.w,it.h,12);g.fill();g.stroke();
+    const ls=wrap(it.text,it.w-12,"bold 12px system-ui");g.fillStyle="#3b2f00";g.textAlign="center";
+    ls.forEach((s,k)=>g.fillText(s,it.x,it.y+4+(k-(ls.length-1)/2)*14));
+    g.font="14px serif";g.fillText("⭐",it.x-it.w/2+2,it.y-it.h/2+4);
+   }}
+  const y=H-BH-10,x0=bx-BW/2,x1=bx+BW/2,ins=22,ry=10,yb=y+BH+4;
+  g.lineCap="round";g.strokeStyle="#8a5a2b";g.lineWidth=6;g.beginPath();g.moveTo(x0+26,y);g.bezierCurveTo(x0+40,y-48,x1-40,y-48,x1-26,y);g.stroke();
+  const P=new Path2D();P.moveTo(x0,y);P.lineTo(x0+ins,yb-16);P.quadraticCurveTo(x0+ins+6,yb,x0+ins+30,yb);P.lineTo(x1-ins-30,yb);P.quadraticCurveTo(x1-ins-6,yb,x1-ins,yb-16);P.lineTo(x1,y);P.closePath();
+  const gr=g.createLinearGradient(0,y,0,yb);gr.addColorStop(0,"#e0a95a");gr.addColorStop(1,"#a8692a");g.fillStyle=gr;g.fill(P);
+  g.save();g.clip(P);g.strokeStyle="#8a5521";g.lineWidth=2;
+  for(let k=0;k<7;k++){const yy=y+8+k*11;g.beginPath();g.moveTo(x0,yy);g.lineTo(x1,yy);g.stroke()}
+  for(let xx=x0-20;xx<x1+20;xx+=16){g.beginPath();g.moveTo(xx,y);g.lineTo(xx+(xx<bx?10:-10),yb);g.stroke()}
+  g.restore();g.strokeStyle="#6b3f14";g.lineWidth=3;g.stroke(P);
+  g.fillStyle="#4a2a0e";g.strokeStyle="#f0c27a";g.lineWidth=6;g.beginPath();g.ellipse(bx,y,BW/2,ry,0,0,Math.PI*2);g.fill();g.stroke();
+  const py=y+ry+3,ph=yb-py-3,pw=BW-70;
+  g.fillStyle="#fff8e7";g.strokeStyle="#8a5521";g.lineWidth=2;g.beginPath();g.roundRect(bx-pw/2,py,pw,ph,8);g.fill();g.stroke();
+  const ls=wrap(cur().i,pw-12,"bold 14px system-ui"),tot=12+ls.length*16,st=py+ph/2-tot/2;
+  g.textAlign="center";g.fillStyle="#8a5521";g.font="bold 10px system-ui";g.fillText(cur().l.toUpperCase(),bx,st+9);
+  g.fillStyle="#2b1a05";g.font="bold 14px system-ui";ls.forEach((s,k)=>g.fillText(s,bx,st+9+(k+1)*16));
+ }
+ g.restore();
+}
+function loop(t){const dt=Math.min(0.05,(t-last)/1000||0);last=t;update(dt);draw();requestAnimationFrame(loop)}
+function pointer(e){const r=cv.getBoundingClientRect();tx=(e.clientX-r.left)/r.width*W}
+cv.addEventListener("pointermove",pointer);cv.addEventListener("pointerdown",pointer);
+addEventListener("keydown",e=>{if(e.key.startsWith("Arrow")){keys[e.key]=true;e.preventDefault()}});
+addEventListener("keyup",e=>{keys[e.key]=false});
+$("go").onclick=()=>{SFX.start();newGame()};
+$("snd").onclick=()=>{soundOn=!soundOn;try{localStorage.setItem("idiomSound",soundOn?"on":"off")}catch(e){}updSnd();if(soundOn)tone(660,0.12,"triangle",0.15)};
+$("again").onclick=()=>newGame();
+$("next").onclick=()=>{$("reveal").classList.add("hide");if(ri===IDIOMS.length-1){state="over";finish(true)}else{ri++;startRound()}};
+lives=3;ri=0;score=0;hud();updSnd();requestAnimationFrame(loop);
+</script>
+</body>
+</html>
+
+

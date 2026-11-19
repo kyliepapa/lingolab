@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="../assets/lingolab-logo.png" />
+    <meta name="description" content="Choose whether verbs change by subject and add pronouns for your LingoLab language." />
+    <title>Create — Subject and Verbs | LingoLab</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/create.css" />
+    <script src="js/language-store.js" defer></script>
+    <script src="js/create-flow-steps.js" defer></script>
+    <script src="js/personal-conjugations.js" defer></script>
+      <script src="js/site-header.js" defer></script>`r`n</head>
+  <body>
+    <div class="create-shell">
+      <header class="site-header create-header"><a class="brand" href="index.html#top" aria-label="LingoLab home"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="22" fill="#123d57" /><path d="M24 6v36M8 24h32M12 13c7 6 16 9 25 8M12 35c7-6 16-9 25-8" fill="none" stroke="#3d93a1" stroke-width="1.6" opacity=".75" /><path d="M16 11v22h13" fill="none" stroke="#f5b941" stroke-width="4.4" stroke-linecap="round" stroke-linejoin="round" /><path d="M21 8v22h13" fill="none" stroke="#ef6d52" stroke-width="4.4" stroke-linecap="round" stroke-linejoin="round" /></svg></span><span class="brand-name"><span>Lingo</span><em>Lab</em></span></a><nav class="main-nav" aria-label="Main navigation"><a href="index.html#top">Home</a><a href="pages/explore.html">Explore</a><a class="active" href="create.html">Create</a><a href="about.html">About</a></nav><a class="sign-in" href="index.html#top">Sign in</a></header>
+      <main class="create-main">
+        <section class="flow-intro">
+          <p class="eyebrow">Create your language · Step 6 of 6</p>
+          <h1>Show <em>who</em> is doing the action.</h1>
+          <p>Some languages use one verb form for every subject. Others change the verb to match who is acting. Decide how your language works, add words for I, you, he, she, they, and we, and—if you chose yes—create a marker for each person using the same prefix, suffix, or separate-word placement you used for tenses.</p>
+        </section>
+        <aside class="did-you-know">
+          <h2>Did you know?</h2>
+          <p>American Sign Language uses the same sign for both 'he' and 'she', but splits 'we' into two separate pronouns with different meanings.</p>
+        </aside>
+        <section class="tense-card" aria-labelledby="english-person-title">
+          <div class="tense-heading">
+            <div>
+              <h2 id="english-person-title">How English handles person</h2>
+            </div>
+          </div>
+          <p class="tense-copy">With the verb <strong>wait</strong>, English only changes the form for <strong>he</strong> and <strong>she</strong> (<em>waits</em>). The rest stay <strong>wait</strong>:</p>
+          <div class="tense-examples conjugation-examples">
+            <div><span>I</span><strong>wait</strong></div>
+            <div><span>you</span><strong>wait</strong></div>
+            <div><span>he / she</span><strong>waits</strong></div>
+            <div><span>they</span><strong>wait</strong></div>
+            <div><span>we</span><strong>wait</strong></div>
+          </div>
+        </section>
+        <section class="conjugation-choice" aria-labelledby="conjugation-choice-title">
+          <h2 id="conjugation-choice-title">Should verbs change by person?</h2>
+          <fieldset class="toggle-field conjugation-toggle">
+            <legend>Do verbs change depending on who is acting?</legend>
+            <label><input type="radio" name="conjugations" value="yes" checked /> Yes</label>
+            <label><input type="radio" name="conjugations" value="no" /> No</label>
+          </fieldset>
+        </section>
+        <section class="conjugation-card" id="conjugation-builder" aria-labelledby="conjugation-title">
+          <div class="conjugation-heading">
+            <h2 id="conjugation-title">Marker for each person</h2>
+          </div>
+          <div class="conjugation-grid">
+            <label><span><strong>I</strong></span><input data-person="I" data-role="marker" placeholder="marker" aria-label="I conjugation marker" /><select data-person="I" data-role="placement" aria-label="I conjugation placement"><option>Prefix</option><option>Suffix</option><option>Separate word before</option><option>Separate word after</option></select></label>
+            <label><span><strong>you</strong></span><input data-person="you" data-role="marker" placeholder="marker" aria-label="you conjugation marker" /><select data-person="you" data-role="placement" aria-label="you conjugation placement"><option>Prefix</option><option>Suffix</option><option>Separate word before</option><option>Separate word after</option></select></label>
+            <label><span><strong>he</strong></span><input data-person="he" data-role="marker" placeholder="marker" aria-label="he conjugation marker" /><select data-person="he" data-role="placement" aria-label="he conjugation placement"><option>Prefix</option><option>Suffix</option><option>Separate word before</option><option>Separate word after</option></select></label>
+            <label><span><strong>she</strong></span><input data-person="she" data-role="marker" placeholder="marker" aria-label="she conjugation marker" /><select data-person="she" data-role="placement" aria-label="she conjugation placement"><option>Prefix</option><option>Suffix</option><option>Separate word before</option><option>Separate word after</option></select></label>
+            <label><span><strong>they</strong></span><input data-person="they" data-role="marker" placeholder="marker" aria-label="they conjugation marker" /><select data-person="they" data-role="placement" aria-label="they conjugation placement"><option>Prefix</option><option>Suffix</option><option>Separate word before</option><option>Separate word after</option></select></label>
+            <label><span><strong>we</strong></span><input data-person="we" data-role="marker" placeholder="marker" aria-label="we conjugation marker" /><select data-person="we" data-role="placement" aria-label="we conjugation placement"><option>Prefix</option><option>Suffix</option><option>Separate word before</option><option>Separate word after</option></select></label>
+          </div>
+        </section>
+        <section class="pronoun-card" aria-labelledby="pronoun-title">
+          <h2 id="pronoun-title">Your pronouns</h2>
+          <div class="word-grid">
+            <label class="word-row"><span class="concept-word">I</span><span class="word-arrow">→</span><input type="text" data-pronoun="I" placeholder="Your word for I" aria-label="Your word for I" /></label>
+            <label class="word-row"><span class="concept-word">you</span><span class="word-arrow">→</span><input type="text" data-pronoun="you" placeholder="Your word for you" aria-label="Your word for you" /></label>
+            <label class="word-row"><span class="concept-word">he</span><span class="word-arrow">→</span><input type="text" data-pronoun="he" placeholder="Your word for he" aria-label="Your word for he" /></label>
+            <label class="word-row"><span class="concept-word">she</span><span class="word-arrow">→</span><input type="text" data-pronoun="she" placeholder="Your word for she" aria-label="Your word for she" /></label>
+            <label class="word-row"><span class="concept-word">they</span><span class="word-arrow">→</span><input type="text" data-pronoun="they" placeholder="Your word for they" aria-label="Your word for they" /></label>
+            <label class="word-row"><span class="concept-word">we</span><span class="word-arrow">→</span><input type="text" data-pronoun="we" placeholder="Your word for we" aria-label="Your word for we" /></label>
+          </div>
+        </section>
+      </main>
+      <footer class="flow-footer"><div class="progress-wrap"><div class="progress-labels"><span>Sound profile</span><span>Word origins</span><span>Sentence order</span><span>Adjectives</span><span>Tenses</span><span>Personal conjugations</span></div><div class="progress-track six-step"><span class="progress-fill" style="width:100%"></span><i class="progress-dot complete"></i><i class="progress-dot complete"></i><i class="progress-dot complete"></i><i class="progress-dot complete"></i><i class="progress-dot complete"></i><i class="progress-dot current"></i></div></div><div class="flow-actions"><a class="back-link" href="tenses.html">← Back</a><button class="continue-button" id="finish-conjugations" type="button">Save &amp; continue <span aria-hidden="true">⟶</span></button></div></footer>
+    </div>
+  </body>
+</html>

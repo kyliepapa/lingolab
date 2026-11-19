@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="../assets/lingolab-logo.png" />
+    <meta name="description" content="Translate preset sentences into your LingoLab language." />
+    <title>Translation Challenge | LingoLab</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/create.css" />
+    <script src="js/language-store.js" defer></script>
+    <script src="js/report-render.js" defer></script>
+    <script src="js/translation-challenge.js" defer></script>
+  </head>
+  <body>
+    <div class="create-shell challenge-shell">
+      <header class="site-header create-header">
+        <a class="brand" href="../index.html#top" aria-label="LingoLab home">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 48 48">
+              <circle cx="24" cy="24" r="22" fill="#123d57" />
+              <path d="M24 6v36M8 24h32M12 13c7 6 16 9 25 8M12 35c7-6 16-9 25-8" fill="none" stroke="#3d93a1" stroke-width="1.6" opacity=".75" />
+              <path d="M16 11v22h13M21 8v22h13" fill="none" stroke="#f5b941" stroke-width="4.4" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </span>
+          <span class="brand-name"><span>Lingo</span><em>Lab</em></span>
+        </a>
+        <nav class="main-nav" aria-label="Main navigation">
+          <a href="../index.html#top">Home</a>
+          <a href="pages/explore.html">Explore</a>
+          <a class="active" href="create.html">Create</a>
+          <a href="about.html">About</a>
+        </nav>
+      </header>
+      <main class="create-main challenge-layout">
+        <aside class="challenge-report-panel" aria-label="Language report reference">
+          <p class="card-kicker">Reference</p>
+          <h2>Your language report</h2>
+          <div class="report-vocab-grid" id="report-vocabulary"></div>
+          <div class="report-sidebar-grammar" id="report-sidebar-grammar">
+            <p id="report-order"></p>
+            <p id="report-adjectives"></p>
+            <p id="report-tenses"></p>
+            <p id="report-conjugations"></p>
+            <p id="report-finishing"></p>
+          </div>
+          <a class="back-link" href="language-report.html">Full report →</a>
+        </aside>
+        <section class="challenge-main">
+          <section class="flow-intro challenge-intro">
+            <p class="eyebrow">Your language · Translation challenge</p>
+            <h1>Can you translate <em>this?</em></h1>
+            <p>Use your report on the left, type each sentence in your language, then press Check.</p>
+          </section>
+          <div class="api-error-banner" id="challenge-error" hidden role="alert"></div>
+          <section class="challenge-card" id="challenge-play" hidden>
+            <div class="challenge-progress">
+              <span id="challenge-number">Challenge 1 of 5</span>
+              <span id="challenge-result"></span>
+            </div>
+            <h2 id="challenge-prompt">Loading…</h2>
+            <label class="challenge-field" id="challenge-input-wrap">
+              <span>Your translation</span>
+              <input id="challenge-answer" type="text" placeholder="Type your new-language sentence" autocomplete="off" />
+            </label>
+            <div class="challenge-actions" id="challenge-actions">
+              <button class="continue-button" id="check-answer" type="button">Check <span aria-hidden="true">⟶</span></button>
+              <button class="challenge-next" id="next-challenge" type="button" hidden>Next sentence</button>
+            </div>
+            <div class="answer-reveal" id="answer-reveal" hidden>
+              <span>Correct translation</span>
+              <strong id="challenge-translation"></strong>
+            </div>
+          </section>
+          <section class="challenge-card challenge-score-card" id="challenge-score" hidden>
+            <p class="card-kicker">Round complete</p>
+            <h2 id="score-headline">You scored 80%</h2>
+            <p id="score-detail">4 of 5 translations matched.</p>
+            <div class="challenge-actions">
+              <button class="continue-button" id="try-again" type="button">Try again</button>
+              <a class="challenge-next" href="end-display.html">Go to end results</a>
+            </div>
+          </section>
+          <div class="api-error-banner" id="challenge-loading"><p>Preparing your challenge…</p></div>
+        </section>
+      </main>
+      <footer class="report-footer">
+        <a class="back-link" href="language-report.html">← Language report</a>
+        <a class="back-link" href="end-display.html">End results</a>
+      </footer>
+    </div>
+  </body>
+</html>

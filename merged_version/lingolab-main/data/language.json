@@ -1,0 +1,66 @@
+{
+  "words": {
+    "name": "nom",
+    "apple": "appel",
+    "turtle": "tur",
+    "carrot": "karrota",
+    "blue": "blurr",
+    "tiny": "tinz",
+    "fast": "flak",
+    "be": "sag",
+    "want": "misk",
+    "like": "vesk",
+    "dance": "drov",
+    "eat": "eeg",
+    "enjoy": "virah",
+    "I": "mi",
+    "you": "ru",
+    "he": "te",
+    "she": "me",
+    "they": "le",
+    "we": "ze",
+    "hello": "halk",
+    "what": "werg",
+    "my": "mik",
+    "your": "ruk",
+    "is": "sag"
+  },
+  "sounds": [],
+  "sentence_order": "OSV",
+  "adj_placement": "after",
+  "tenses": {
+    "infinitive": [
+      "default",
+      "default"
+    ],
+    "present": [
+      "separate-before",
+      "to"
+    ],
+    "past": [
+      "separate-before",
+      "ta"
+    ],
+    "future": [
+      "separate-before",
+      "ti"
+    ]
+  },
+  "has_conjugations": false,
+  "conjugations": {},
+  "has_articles": false,
+  "articles": {
+    "definite": "",
+    "indefinite": ""
+  },
+  "negation": [
+    "after",
+    "nuu"
+  ],
+  "pluralizer": [
+    "before",
+    "mai"
+  ],
+  "question_order": "yniw",
+  "user_name": "Jane"
+}

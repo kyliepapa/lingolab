@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Whack-a-Morpheme</title>
+<style>
+:root{--bg:#fdf6e3;--fg:#2b2540;--card:#fff;--accent:#7c3aed;--muted:#6b6485;--chip:#ede7ff;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1b1730;--fg:#f3efff;--card:#2a2447;--accent:#a78bfa;--muted:#b5accf;--chip:#3a3262}}
+:root[data-theme="dark"]{--bg:#1b1730;--fg:#f3efff;--card:#2a2447;--accent:#a78bfa;--muted:#b5accf;--chip:#3a3262}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;display:flex;flex-direction:column;align-items:center;padding:12px}
+h1{margin:4px 0;font-size:1.4rem}
+#hud{display:flex;justify-content:space-between;align-items:center;width:100%;max-width:520px;font-weight:700;margin:4px 0}
+#wrap{position:relative;width:100%;max-width:520px}
+#board{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:10px;border-radius:14px;background:linear-gradient(#2d1b69,#5b3fb5);touch-action:manipulation}
+#board.shake{animation:sh .3s}
+@keyframes sh{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.hole{position:relative;height:104px;overflow:hidden;cursor:pointer;user-select:none;-webkit-user-select:none}
+.hole::after{content:"";position:absolute;left:6%;right:6%;bottom:0;height:24px;border-radius:50%;background:#12081f;z-index:2}
+.alien{position:absolute;left:0;right:0;bottom:8px;display:flex;flex-direction:column;align-items:center;transform:translateY(115%);transition:transform .12s;z-index:1}
+.up .alien{transform:none}
+.lab{background:#fff;color:#222;font-weight:800;font-size:.8rem;padding:2px 7px;border-radius:8px;max-width:96%;text-align:center;line-height:1.15}
+.em{font-size:2.4rem;line-height:1.1}
+#panel{background:var(--card);border-radius:14px;margin-top:8px;padding:10px 12px;text-align:center}
+.lang{font-size:.75rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;align-items:flex-start;margin:6px 0}
+.chip{background:var(--chip);border-radius:10px;padding:4px 10px;font-weight:800;font-size:1.25rem;min-width:44px}
+.chip small{display:block;font-size:.7rem;font-weight:600;color:var(--muted)}
+.chip.cur{outline:3px solid var(--accent);animation:pl 1s infinite}
+@keyframes pl{50%{background:var(--accent);color:#fff}}
+.plus{align-self:center;color:var(--muted);font-weight:800}
+.ask{font-size:.95rem}.gloss{font-size:.85rem;color:var(--muted);margin-top:2px}
+.ov{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:10px;background:#0007;border-radius:14px}
+.box{background:var(--card);color:var(--fg);border-radius:14px;padding:16px;text-align:center;max-width:440px;box-shadow:0 8px 30px #0006;max-height:100%;overflow:auto}
+.box h2{margin:0 0 6px}.box p{margin:6px 0;color:var(--muted)}
+.big{font-size:1.6rem;font-weight:800;color:var(--accent)}
+.note{background:var(--chip);color:var(--fg)!important;border-radius:10px;padding:8px;font-size:.9rem}
+button{background:var(--accent);color:#fff;border:0;border-radius:10px;padding:10px 20px;font-size:1rem;font-weight:700;cursor:pointer;margin-top:8px}
+#snd{margin:0;padding:2px 10px;font-size:1.2rem;background:var(--card);color:var(--fg);border:2px solid var(--accent)}
+#start{background:linear-gradient(#2d1b69,#5b3fb5)}
+.ov{z-index:10}
+.hole{isolation:isolate}
+.hide{display:none}
+</style>
+</head>
+<body>
+<h1>👾 Whack-a-Morpheme</h1>
+<p><a href="../explore.html">← Back to Explore</a></p>
+<div id="hud"><button id="snd" aria-label="Turn sound on or off">🔊</button><span id="hearts"></span><span id="round"></span><span id="score"></span></div>
+<div id="wrap">
+<div id="board"></div>
+<div id="panel"></div>
+<div class="ov" id="start"><div class="box"><h2>Whack the meaning!</h2>
+<p><b>Morphology</b> is the study of how words are formed. Words are built from smaller parts called <b>morphemes</b>, and each part carries meaning.</p>
+<p>Example: <b>un + kind + ness</b> = not + caring + state of.</p>
+<p>A word sits at the bottom. Whack the alien wearing the meaning of the <b>glowing part</b>, one part at a time. Wrong meaning = lose a heart. Tap, click, or press keys 1–9.</p><button id="go">Play</button></div></div>
+<div class="ov hide" id="reveal"><div class="box"><p id="rlang"></p><div class="big" id="rword"></div><p id="rparts"></p><p>= <b id="rgloss"></b></p><p class="note" id="rnote"></p><button id="next">Next word</button></div></div>
+<div class="ov hide" id="end"><div class="box"><h2 id="etitle"></h2><p id="esum"></p><button id="again">Play again</button></div></div>
+</div>
+<script>
+const R=[
+{lang:"English",w:"construction",p:[["con","together"],["struct","build"],["ion","action of"]],gloss:"the action of building",note:"English borrowed many word parts from Latin. Con- + struct + -ion all come from Latin pieces."},
+{lang:"English",w:"unkindness",p:[["un","not"],["kind","caring or nice"],["ness","state or quality","state"]],gloss:"the state of not being kind",note:"English stacks small parts onto a root: un- (before) and -ness (after)."},
+{lang:"English",w:"unhelpfulness",p:[["un","not"],["help","help"],["ful","full of"],["ness","state or quality","state"]],gloss:"the state of not being helpful",note:"un-help-ful-ness = “not + help + full of + state”. English can chain many parts onto one root."},
+{lang:"Spanish",w:"hablamos",p:[["habl","speak"],["amos","we (present)","we"]],gloss:"we speak",note:"One ending, -amos, shows both the subject (we) and the verb tense. English needs a separate word: “we speak”."},
+{lang:"Albanian",w:"padobishmëria",p:[["pa","not (without)","not"],["dobishmëri","usefulness"],["a","the"]],gloss:"the state of being useless",note:"Albanian can attach “the” to the end of a word: pa-dobishmëri-a. English keeps “the” as its own word."},
+{lang:"French",w:"inutilité",p:[["in","not"],["util","useful"],["ité","state or quality","state"]],gloss:"uselessness",note:"French in-util-ité says “not + useful + state”. Same idea as Albanian, but the pieces look different."},
+{lang:"ASL (approximate)",w:"HELP + NOT",p:[["HELP","help"],["NOT","not"]],gloss:"no help (NO-HELP)",note:"ASL can’t be broken down like written letters in a row. Signs, movement, space, facial expressions and head movements work at the same time, so HELP + NOT is only an approximation."}
+];
+const POOL=[],seen={};R.forEach(r=>r.p.forEach(x=>{const k=x[2]||x[1];if(!seen[k]){seen[k]=1;POOL.push([k,x[1]])}}));
+const EMO=["👾","👻","🐸","👽"],$=id=>document.getElementById(id);
+let ri,pos,score,lives,streak,holes=[],state="idle",timer,sinceGood,actx=null,soundOn=true;
+try{soundOn=localStorage.getItem("morphSound")!=="off"}catch(e){}
+function tone(f,d,type,vol,when,slide){if(!soundOn)return;try{actx=actx||new(window.AudioContext||window.webkitAudioContext)();if(actx.state==="suspended")actx.resume();const o=actx.createOscillator(),gn=actx.createGain(),t=actx.currentTime+(when||0);o.type=type||"sine";o.frequency.setValueAtTime(f,t);if(slide)o.frequency.exponentialRampToValueAtTime(slide,t+d);gn.gain.setValueAtTime(vol||0.15,t);gn.gain.exponentialRampToValueAtTime(0.001,t+d);o.connect(gn);gn.connect(actx.destination);o.start(t);o.stop(t+d)}catch(e){}}
+const SFX={good(){tone(660,0.1,"triangle",0.2);tone(880,0.15,"triangle",0.2,0.08)},bad(){tone(200,0.3,"sawtooth",0.12,0,100)},done(){[523,659,784,1047].forEach((f,k)=>tone(f,0.18,"triangle",0.18,k*0.08))},win(){[523,659,784,1047,1319].forEach((f,k)=>tone(f,0.25,"triangle",0.18,k*0.12))},lose(){[392,330,262,196].forEach((f,k)=>tone(f,0.3,"sawtooth",0.12,k*0.18))}};
+function updSnd(){$("snd").textContent=soundOn?"🔊":"🔇"}
+const cur=()=>R[ri].p[pos],key=x=>x[2]||x[1];
+function hud(){$("hearts").textContent="❤️".repeat(lives)+"🖤".repeat(3-lives);$("round").textContent="Word "+(ri+1)+"/"+R.length;$("score").textContent="⭐ "+score}
+function build(){const b=$("board");b.innerHTML="";holes=[];for(let i=0;i<9;i++){const h=document.createElement("div");h.className="hole";h.innerHTML='<div class="alien"><div class="lab"></div><div class="em"></div></div>';h.addEventListener("pointerdown",e=>{e.preventDefault();whack(i)});b.appendChild(h);holes.push({el:h,lab:h.querySelector(".lab"),em:h.querySelector(".em"),on:false,key:null,t:null})}}
+function panel(){const r=R[ri];let h='<div class="lang">'+r.lang+'</div><div class="chips">';
+ r.p.forEach((x,i)=>{if(i)h+='<span class="plus">+</span>';h+='<span class="chip'+(i===pos?" cur":"")+'">'+x[0]+'<small>'+(i<pos?x[1]:"?")+'</small></span>'});
+ h+='</div><div class="ask">Whack the meaning of <b>'+cur()[0]+'</b></div><div class="gloss">The whole word means: '+r.gloss+'</div>';$("panel").innerHTML=h}
+function hide(i){const h=holes[i];clearTimeout(h.t);h.on=false;h.el.classList.remove("up")}
+function clearAll(){holes.forEach((_,i)=>hide(i))}
+function pop(){const free=holes.map((h,i)=>h.on?-1:i).filter(i=>i>=0);if(!free.length)return;const i=free[Math.random()*free.length|0],h=holes[i],c=cur(),ck=key(c);let m;
+ if(sinceGood>=2||Math.random()<0.4){m=[ck,c[1]];sinceGood=0}else{sinceGood++;const p=POOL.filter(x=>x[0]!==ck);m=p[Math.random()*p.length|0]}
+ h.key=m[0];h.lab.textContent=m[1];h.em.textContent=EMO[Math.random()*4|0];h.on=true;h.el.classList.add("up");
+ h.t=setTimeout(()=>hide(i),Math.max(1100,2100-ri*120))}
+function sched(){clearTimeout(timer);if(state!=="play")return;pop();timer=setTimeout(sched,Math.max(500,850-ri*50))}
+function whack(i){const h=holes[i];if(state!=="play"||!h||!h.on)return;
+ if(h.key===key(cur())){h.em.textContent="💥";clearTimeout(h.t);h.on=false;setTimeout(()=>h.el.classList.remove("up"),200);
+  score+=10+Math.min(streak,5)*2;streak++;pos++;clearAll();
+  if(pos>=R[ri].p.length){state="reveal";clearTimeout(timer);SFX.done();hud();reveal()}else{SFX.good();hud();panel()}}
+ else{SFX.bad();lives--;streak=0;hide(i);const b=$("board");b.classList.remove("shake");void b.offsetWidth;b.classList.add("shake");hud();if(lives<=0){state="over";clearTimeout(timer);clearAll();finish(false)}}}
+function reveal(){const r=R[ri];$("rlang").textContent=r.lang;$("rword").textContent=r.w;$("rparts").textContent=r.p.map(x=>x[0]+" ("+x[1]+")").join(" + ");$("rgloss").textContent=r.gloss;$("rnote").textContent=r.note;$("next").textContent=ri===R.length-1?"Finish":"Next word";$("reveal").classList.remove("hide")}
+function finish(win){win?SFX.win():SFX.lose();$("etitle").textContent=win?"🎉 Morpheme master!":"Game over";
+ const done=R.slice(0,win?R.length:ri);$("esum").innerHTML="Score: <b>"+score+"</b><br>Words you decoded: "+(done.length?"<br>"+done.map(r=>r.w+" = "+r.gloss).join("<br>"):"none yet, try again!");$("end").classList.remove("hide")}
+function round(){pos=0;sinceGood=0;state="play";clearAll();hud();panel();["start","reveal","end"].forEach(x=>$(x).classList.add("hide"));clearTimeout(timer);timer=setTimeout(sched,500)}
+function newGame(){ri=0;score=0;lives=3;streak=0;round()}
+$("go").onclick=()=>{tone(440,0.1,"square",0.1);tone(660,0.15,"square",0.1,0.1);newGame()};
+$("again").onclick=newGame;
+$("next").onclick=()=>{if(ri===R.length-1){state="over";$("reveal").classList.add("hide");finish(true)}else{ri++;round()}};
+$("snd").onclick=()=>{soundOn=!soundOn;try{localStorage.setItem("morphSound",soundOn?"on":"off")}catch(e){}updSnd();if(soundOn)tone(660,0.12,"triangle",0.15)};
+addEventListener("keydown",e=>{if(e.key>="1"&&e.key<="9")whack(+e.key-1)});
+ri=0;pos=0;score=0;lives=3;build();hud();updSnd();panel();
+</script>
+</body>
+</html>
+
+

@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="../assets/lingolab-logo.png" />
+    <meta name="description" content="See your LingoLab language translations in action." />
+    <title>End Results | LingoLab</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/create.css" />
+    <script src="js/language-store.js" defer></script>
+    <script src="js/end-display.js" defer></script>
+  </head>
+  <body>
+    <div class="create-shell">
+      <header class="site-header create-header">
+        <a class="brand" href="../index.html#top" aria-label="LingoLab home">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 48 48">
+              <circle cx="24" cy="24" r="22" fill="#123d57" />
+              <path d="M24 6v36M8 24h32M12 13c7 6 16 9 25 8M12 35c7-6 16-9 25-8" fill="none" stroke="#3d93a1" stroke-width="1.6" opacity=".75" />
+              <path d="M16 11v22h13M21 8v22h13" fill="none" stroke="#f5b941" stroke-width="4.4" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </span>
+          <span class="brand-name"><span>Lingo</span><em>Lab</em></span>
+        </a>
+        <nav class="main-nav" aria-label="Main navigation">
+          <a href="../index.html#top">Home</a>
+          <a href="pages/explore.html">Explore</a>
+          <a class="active" href="create.html">Create</a>
+          <a href="about.html">About</a>
+        </nav>
+      </header>
+      <main class="create-main">
+        <section class="flow-intro">
+          <p class="eyebrow">Your language · End results</p>
+          <h1>See your language <em>in action.</em></h1>
+          <p>
+            Pick any preset sentence and read how your grammar choices turn English into your new language.
+            <a class="inline-report-link" href="language-report.html">Open your language report</a>
+          </p>
+        </section>
+        <div class="api-error-banner" id="end-display-error" hidden role="alert"></div>
+        <section class="display-card" id="end-display-card" hidden>
+          <p class="card-kicker">Preset sentences</p>
+          <h2>Your translations</h2>
+          <label class="sentence-picker">
+            <span>Choose a sentence</span>
+            <select id="sentence-select" aria-label="Choose a preset sentence"></select>
+          </label>
+          <div class="display-sentence" id="sentence-pair">
+            <span>English</span>
+            <p id="sentence-english"></p>
+            <span>Your language</span>
+            <strong id="sentence-translation"></strong>
+          </div>
+        </section>
+        <div class="api-error-banner" id="end-display-loading">
+          <p>Loading translations…</p>
+        </div>
+      </main>
+      <footer class="report-footer">
+        <a class="back-link" href="language-report.html">← Language report</a>
+        <a class="continue-button" href="translation-challenge.html">Translation challenge <span aria-hidden="true">⟶</span></a>
+      </footer>
+    </div>
+  </body>
+</html>

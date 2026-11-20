@@ -29,6 +29,6 @@ form.addEventListener('submit', (event) => {
   const requestedReturn = new URLSearchParams(window.location.search).get('return');
   const returnTo = requestedReturn && !/^(?:[a-z]+:|\/\/)/i.test(requestedReturn)
     ? requestedReturn
-    : 'create.html';
+    : '../create.html';
   window.location.href = returnTo;
 });

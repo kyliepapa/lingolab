@@ -3,6 +3,14 @@ headerStyle.textContent = `.site-header .header-actions{align-items:center;displ
 document.head.appendChild(headerStyle);
 headerStyle.textContent += `.site-header .logout-link{background:transparent;border:1px solid #b9c1bf;border-radius:999px;color:var(--ink);cursor:pointer;font:700 16px 'DM Sans',Arial;padding:13px 23px;white-space:nowrap}.site-header .logout-link:hover{background:#fff}@media(max-width:700px){.site-header .logout-link{font-size:13px;padding:10px 13px}}`;
 
+const pathname = window.location.pathname.replace(/\\/g, '/');
+const projectRootPrefix = pathname.includes('/pages/create/') || pathname.includes('/pages/games/') || pathname.includes('/pages/auth/')
+  ? '../../'
+  : pathname.includes('/pages/')
+    ? '../'
+    : '';
+const projectLink = (target) => `${projectRootPrefix}${target}`;
+
 document.querySelectorAll('.site-header').forEach((header) => {
   const nav = header.querySelector('.main-nav');
   nav?.querySelectorAll('.sign-in, .create-link').forEach((item) => item.remove());
@@ -11,7 +19,7 @@ document.querySelectorAll('.site-header').forEach((header) => {
   if (teacherRole && nav) {
     const teacherNavLink = document.createElement('a');
     teacherNavLink.className = 'teacher-nav-link teacher-resource-link';
-    teacherNavLink.href = 'teacher-resources.html';
+    teacherNavLink.href = projectLink('pages/teacher/teacher-resources.html');
     teacherNavLink.textContent = 'Teacher resources';
     const aboutLink = [...nav.querySelectorAll('a')].find((item) => item.textContent.trim().toLowerCase() === 'about');
     if (aboutLink) aboutLink.insertAdjacentElement('afterend', teacherNavLink);
@@ -32,7 +40,7 @@ document.querySelectorAll('.site-header').forEach((header) => {
     if (!directSignIn) {
       signIn.className = 'sign-in';
       signIn.textContent = 'Sign in';
-      signIn.href = 'index.html#auth';
+      signIn.href = projectLink('index.html#auth');
     }
     actions.prepend(signIn);
   } else if (directSignIn && directSignIn !== signIn) {
@@ -47,7 +55,7 @@ document.querySelectorAll('.site-header').forEach((header) => {
   if (!createAccount) {
     createAccount = document.createElement('a');
     createAccount.className = 'create-account-button';
-    createAccount.href = 'create-account.html';
+    createAccount.href = projectLink('pages/auth/create-account.html');
     createAccount.textContent = 'Create account';
     actions.append(createAccount);
   }
@@ -55,13 +63,13 @@ document.querySelectorAll('.site-header').forEach((header) => {
   if (signIn.tagName === 'BUTTON') {
     const link = document.createElement('a');
     link.className = signIn.className;
-    link.href = 'signin.html';
+    link.href = projectLink('pages/auth/signin.html');
     link.textContent = 'Sign in';
     signIn.replaceWith(link);
   } else {
-    signIn.href = 'signin.html';
+    signIn.href = projectLink('pages/auth/signin.html');
   }
-  createAccount.href = 'create-account.html';
+  createAccount.href = projectLink('pages/auth/create-account.html');
 
   actions.querySelectorAll('.teacher-resource-link').forEach((item) => item.remove());
 
@@ -76,7 +84,7 @@ document.querySelectorAll('.site-header').forEach((header) => {
       localStorage.removeItem('lingolab-authenticated');
       localStorage.removeItem('lingolab-user-email');
       localStorage.removeItem('lingolab-user-role');
-      window.location.href = 'index.html';
+      window.location.href = projectLink('index.html');
     });
     actions.append(logout);
   }

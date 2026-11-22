@@ -1,7 +1,7 @@
 const STORAGE_KEY = 'lingolab-language';
 const API_BASE =
   typeof window !== 'undefined' && window.location?.protocol?.startsWith('http')
-    ? window.location.origin
+    ? (window.location.port === '5000' ? window.location.origin : 'http://127.0.0.1:5000')
     : 'http://127.0.0.1:5000';
 
 const PERSON_TO_CONJ = {
@@ -120,16 +120,18 @@ function getLanguagePayload() {
 
 async function syncToBackend() {
   const payload = getLanguagePayload();
-  const response = await fetch(`${API_BASE}/api/language`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(payload),
-  });
-  if (!response.ok) {
-    const detail = await response.text();
-    throw new Error(detail || `Sync failed (${response.status})`);
+  try {
+    const response = await fetch(`${API_BASE}/api/language`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+    if (!response.ok) throw new Error(`Sync failed (${response.status})`);
+    return response.json();
+  } catch (error) {
+    console.info('Language server unavailable; continuing with local storage.', error);
+    return { ok: true, localOnly: true };
   }
-  return response.json();
 }
 
 function normalizeAnswer(text) {
@@ -142,16 +144,55 @@ function normalizeAnswer(text) {
 
 async function fetchSentencePackage() {
   const payload = getLanguagePayload();
-  const response = await fetch(`${API_BASE}/api/sentences`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(payload),
-  });
-  if (!response.ok) {
-    const detail = await response.text();
-    throw new Error(detail || `Could not load sentences (${response.status})`);
+  try {
+    const response = await fetch(`${API_BASE}/api/sentences`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+    if (!response.ok) throw new Error(`Could not load sentences (${response.status})`);
+    return response.json();
+  } catch (error) {
+    console.info('Using local sentence preview because the language server is unavailable.', error);
+    return buildLocalSentencePackage(payload);
   }
-  return response.json();
+}
+
+function buildLocalSentencePackage(payload) {
+  const words = { ...emptyLanguage().words, ...(payload.words || {}) };
+  const word = (key) => words[key] || key;
+  const userName = payload.user_name || '____';
+  const plural = (value) => `${value}${payload.pluralizer?.[1] || 's'}`;
+  const article = (value, type) => payload.has_articles === false ? value : `${payload.articles?.[type] || ''} ${value}`.trim();
+  const translations = {
+    intro: `${word('hello')} ${word('my')} ${word('name')} ${word('is')} ${userName}. ${word('what')} ${word('is')} ${word('your')} ${word('name')}?`,
+    dancing_yes: `${word('I')} ${word('want')} ${word('dance')}.`,
+    dancing_no: `${word('I')} ${word('want')} ${word('dance')}.`,
+    turtle_I: `${word('I')} ${word('like')} ${word('blue')} ${plural(word('turtle'))}.`,
+    turtle_you: `${word('you')} ${word('like')} ${word('tiny')} ${plural(word('turtle'))}.`,
+    turtle_she: `${word('she')} ${word('like')} ${word('fast')} ${plural(word('turtle'))}.`,
+    turtle_he: `${word('he')} ${word('like')} ${word('blue')} ${plural(word('turtle'))}.`,
+    turtle_they: `${word('they')} ${word('like')} ${word('tiny')} ${plural(word('turtle'))}.`,
+    turtle_we: `${word('we')} ${word('like')} ${word('fast')} ${plural(word('turtle'))}.`,
+    apple_past: `${word('I')} ${word('eat')} ${article(word('apple'), 'indefinite')}.`,
+    apple_present: `${word('I')} ${word('eat')} ${article(word('apple'), 'indefinite')}.`,
+    apple_future: `${word('I')} ${word('eat')} ${article(word('apple'), 'indefinite')}.`,
+    the_carrot: `${word('I')} ${word('enjoy')} ${article(word('carrot'), 'definite')}.`,
+    the_carrots: `${word('I')} ${word('enjoy')} ${article(plural(word('carrot')), 'definite')}.`,
+    a_carrot: `${word('I')} ${word('enjoy')} ${article(word('carrot'), 'indefinite')}.`,
+    carrots: `${word('I')} ${word('enjoy')} ${plural(word('carrot'))}.`,
+  };
+  return {
+    english: {
+      intro: "Hello! My name is ____. What's your name?",
+      dancing_yes: 'I want to dance.', dancing_no: "I don't want to dance.",
+      turtle_I: 'I like blue turtles.', turtle_you: 'You like tiny turtles.', turtle_she: 'She likes fast turtles.', turtle_he: 'He likes blue turtles.', turtle_they: 'They like tiny turtles.', turtle_we: 'We like fast turtles.',
+      apple_past: 'I ate an apple.', apple_present: 'I eat an apple.', apple_future: 'I will eat an apple.',
+      the_carrot: 'I enjoyed the carrot.', the_carrots: 'I enjoyed the carrots.', a_carrot: 'I enjoyed a carrot.', carrots: 'I enjoyed carrots.',
+    },
+    translations,
+    groups: { dancing: ['dancing_yes', 'dancing_no'], turtle: ['turtle_I', 'turtle_you', 'turtle_she', 'turtle_he', 'turtle_they', 'turtle_we'], apple: ['apple_past', 'apple_present', 'apple_future'], carrot: ['the_carrot', 'the_carrots', 'a_carrot', 'carrots'] },
+  };
 }
 
 window.LingoLabStore = {

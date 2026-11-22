@@ -1,49 +1,49 @@
 {
   "words": {
-    "name": "nom",
-    "apple": "appel",
-    "turtle": "tur",
+    "name": "emri",
+    "apple": "molla",
+    "turtle": "breshka",
     "carrot": "karrota",
-    "blue": "blurr",
-    "tiny": "tinz",
-    "fast": "flak",
-    "be": "sag",
-    "want": "misk",
-    "like": "vesk",
-    "dance": "drov",
-    "eat": "eeg",
-    "enjoy": "virah",
-    "I": "mi",
-    "you": "ru",
-    "he": "te",
-    "she": "me",
-    "they": "le",
-    "we": "ze",
-    "hello": "halk",
-    "what": "werg",
-    "my": "mik",
-    "your": "ruk",
-    "is": "sag"
+    "blue": "blu",
+    "tiny": "e vogel",
+    "fast": "shpejt",
+    "like": "si",
+    "eat": "ha",
+    "want": "dua",
+    "dance": "kercej",
+    "enjoy": "shijoj",
+    "be": "jam",
+    "I": "Une",
+    "you": "Ti",
+    "he": "ai",
+    "she": "ajo",
+    "they": "ata/ato",
+    "we": "ne",
+    "hello": "C'kemi!",
+    "what": "Cfare",
+    "my": "im",
+    "your": "jot",
+    "is": "jam"
   },
   "sounds": [],
-  "sentence_order": "OSV",
-  "adj_placement": "after",
+  "sentence_order": "VSO",
+  "adj_placement": "before",
   "tenses": {
     "infinitive": [
-      "default",
-      "default"
-    ],
-    "present": [
       "separate-before",
       "to"
     ],
-    "past": [
+    "present": [
       "separate-before",
-      "ta"
+      "walk"
+    ],
+    "past": [
+      "separate-after",
+      "ed"
     ],
     "future": [
       "separate-before",
-      "ti"
+      "will"
     ]
   },
   "has_conjugations": false,
@@ -54,13 +54,13 @@
     "indefinite": ""
   },
   "negation": [
-    "after",
-    "nuu"
+    "before",
+    "nuk"
   ],
   "pluralizer": [
-    "before",
-    "mai"
+    "after",
+    "s"
   ],
-  "question_order": "yniw",
-  "user_name": "Jane"
+  "question_order": "wiyn",
+  "user_name": "Hera"
 }

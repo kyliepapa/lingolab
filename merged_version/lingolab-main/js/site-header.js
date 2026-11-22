@@ -71,6 +71,40 @@ document.querySelectorAll('.site-header').forEach((header) => {
   }
   createAccount.href = projectLink('pages/auth/create-account.html');
 
+  let mobileToggle = header.querySelector(':scope > .mobile-menu-toggle');
+  let mobileNav = header.querySelector(':scope > .mobile-nav');
+  if (!mobileToggle) {
+    mobileToggle = document.createElement('button');
+    mobileToggle.className = 'mobile-menu-toggle';
+    mobileToggle.type = 'button';
+    mobileToggle.setAttribute('aria-expanded', 'false');
+    mobileToggle.setAttribute('aria-label', 'Open navigation');
+    mobileToggle.innerHTML = '<span></span><span></span><span></span>';
+    header.append(mobileToggle);
+  }
+  if (!mobileNav) {
+    mobileNav = document.createElement('div');
+    mobileNav.className = 'mobile-nav';
+    mobileNav.id = `mobile-nav-${Math.random().toString(36).slice(2)}`;
+    mobileNav.setAttribute('aria-hidden', 'true');
+    header.append(mobileNav);
+  }
+  mobileToggle.setAttribute('aria-controls', mobileNav.id);
+  mobileNav.innerHTML = '';
+  nav?.querySelectorAll('a').forEach((item) => mobileNav.append(item.cloneNode(true)));
+  actions.querySelectorAll('a, button').forEach((item) => mobileNav.append(item.cloneNode(true)));
+  mobileToggle.addEventListener('click', () => {
+    const open = header.classList.toggle('menu-open');
+    mobileToggle.setAttribute('aria-expanded', String(open));
+    mobileToggle.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
+    mobileNav.setAttribute('aria-hidden', String(!open));
+  });
+  mobileNav.addEventListener('click', () => {
+    header.classList.remove('menu-open');
+    mobileToggle.setAttribute('aria-expanded', 'false');
+    mobileNav.setAttribute('aria-hidden', 'true');
+  });
+
   actions.querySelectorAll('.teacher-resource-link').forEach((item) => item.remove());
 
   const authenticated = localStorage.getItem('lingolab-authenticated') === 'true';

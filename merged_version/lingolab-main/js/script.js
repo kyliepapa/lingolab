@@ -137,7 +137,39 @@ document.querySelector('[data-action="forgot-password"]')?.addEventListener('cli
 });
 document.querySelector('#signin-form')?.addEventListener('submit', (event) => {
   event.preventDefault();
-  window.alert('Thanks! Account authentication will connect here next.');
+  const form = event.currentTarget;
+  const status = form.querySelector('.auth-status') || document.createElement('p');
+  status.className = 'auth-status';
+  status.setAttribute('role', 'status');
+  if (!status.parentElement) form.appendChild(status);
+
+  const email = form.elements.email.value.trim().toLowerCase();
+  const password = form.elements.password.value;
+  if (!email || !password) {
+    status.textContent = 'Please enter your email address and password.';
+    return;
+  }
+
+  let account = null;
+  try {
+    account = JSON.parse(localStorage.getItem('lingolab-account') || 'null');
+  } catch (error) {
+    account = null;
+  }
+
+  if (!account || account.email !== email || account.password !== password) {
+    status.textContent = 'That email and password do not match a saved LingoLab account.';
+    return;
+  }
+
+  localStorage.setItem('lingolab-authenticated', 'true');
+  localStorage.setItem('lingolab-user-email', account.email);
+  localStorage.setItem('lingolab-user-role', account.role || 'student');
+  status.textContent = 'You are signed in.';
+  const destination = account.role === 'teacher'
+    ? 'pages/teacher/teacher-resources.html'
+    : 'pages/create.html';
+  window.setTimeout(() => { window.location.href = destination; }, 300);
 });
 document.addEventListener('keydown', (event) => {
   if (event.key === 'Escape' && authOverlay?.classList.contains('is-visible')) closeAuth();

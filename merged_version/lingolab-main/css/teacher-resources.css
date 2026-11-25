@@ -1,4 +1,5 @@
 .teacher-page{background:var(--cream);color:var(--navy)}
+.accessibility-prompt{background:#e9f3ef;border:1px solid #b8d7d1;border-radius:20px;padding:30px}.accessibility-prompt h2{font-family:'Playfair Display',Georgia,serif;font-size:clamp(30px,4vw,46px);line-height:1.08;margin:8px 0 14px;max-width:700px}.accessibility-prompt p{margin:0 0 24px;max-width:700px}.accessibility-prompt .teacher-button{display:inline-flex;gap:14px;align-items:center}
 .teacher-shell{min-height:100vh}
 .teacher-header{background:var(--cream)}
 .teacher-main{margin:0 auto;max-width:1120px;padding:76px 26px 100px}

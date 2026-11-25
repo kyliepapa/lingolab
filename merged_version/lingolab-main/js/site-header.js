@@ -4,7 +4,7 @@ document.head.appendChild(headerStyle);
 headerStyle.textContent += `.site-header .logout-link{background:transparent;border:1px solid #b9c1bf;border-radius:999px;color:var(--ink);cursor:pointer;font:700 16px 'DM Sans',Arial;padding:13px 23px;white-space:nowrap}.site-header .logout-link:hover{background:#fff}@media(max-width:700px){.site-header .logout-link{font-size:13px;padding:10px 13px}}`;
 
 const pathname = window.location.pathname.replace(/\\/g, '/');
-const projectRootPrefix = pathname.includes('/pages/create/') || pathname.includes('/pages/games/') || pathname.includes('/pages/auth/')
+const projectRootPrefix = pathname.includes('/pages/create/') || pathname.includes('/pages/games/') || pathname.includes('/pages/auth/') || pathname.includes('/pages/teacher/')
   ? '../../'
   : pathname.includes('/pages/')
     ? '../'
@@ -18,7 +18,7 @@ document.querySelectorAll('.site-header').forEach((header) => {
   nav?.querySelectorAll('.teacher-nav-link').forEach((item) => item.remove());
   if (teacherRole && nav) {
     const teacherNavLink = document.createElement('a');
-    teacherNavLink.className = 'teacher-nav-link teacher-resource-link';
+    teacherNavLink.className = `teacher-nav-link teacher-resource-link${pathname.includes('/pages/teacher/') ? ' active' : ''}`;
     teacherNavLink.href = projectLink('pages/teacher/teacher-resources.html');
     teacherNavLink.textContent = 'Teacher resources';
     const aboutLink = [...nav.querySelectorAll('a')].find((item) => item.textContent.trim().toLowerCase() === 'about');

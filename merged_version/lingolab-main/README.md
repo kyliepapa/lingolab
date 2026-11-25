@@ -2,6 +2,8 @@
 
 ## Backend (create-flow integration)
 
+On Windows, double-click **Open LingoLab.vbs** to open the site directly in your browser. No terminal window or Python server is needed for the browser experience; language progress is saved locally.
+
 ```bash
 pip install -r requirements.txt
 python app.py

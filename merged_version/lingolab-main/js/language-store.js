@@ -181,6 +181,9 @@ function buildLocalSentencePackage(payload) {
     the_carrots: `${word('I')} ${word('enjoy')} ${article(plural(word('carrot')), 'definite')}.`,
     a_carrot: `${word('I')} ${word('enjoy')} ${article(word('carrot'), 'indefinite')}.`,
     carrots: `${word('I')} ${word('enjoy')} ${plural(word('carrot'))}.`,
+    advanced_she_no: `${word('she')} ${word('like')} ${word('tiny')} ${plural(word('turtle'))}.`,
+    advanced_they_future: `${word('they')} ${word('eat')} ${article(plural(word('apple')), 'definite')}.`,
+    advanced_we_no: `${word('we')} ${word('enjoy')} ${plural(word('carrot'))}.`,
   };
   return {
     english: {
@@ -189,9 +192,10 @@ function buildLocalSentencePackage(payload) {
       turtle_I: 'I like blue turtles.', turtle_you: 'You like tiny turtles.', turtle_she: 'She likes fast turtles.', turtle_he: 'He likes blue turtles.', turtle_they: 'They like tiny turtles.', turtle_we: 'We like fast turtles.',
       apple_past: 'I ate an apple.', apple_present: 'I eat an apple.', apple_future: 'I will eat an apple.',
       the_carrot: 'I enjoyed the carrot.', the_carrots: 'I enjoyed the carrots.', a_carrot: 'I enjoyed a carrot.', carrots: 'I enjoyed carrots.',
+      advanced_she_no: "She doesn't like tiny turtles.", advanced_they_future: 'They will eat the apples.', advanced_we_no: 'We did not enjoy carrots.',
     },
     translations,
-    groups: { dancing: ['dancing_yes', 'dancing_no'], turtle: ['turtle_I', 'turtle_you', 'turtle_she', 'turtle_he', 'turtle_they', 'turtle_we'], apple: ['apple_past', 'apple_present', 'apple_future'], carrot: ['the_carrot', 'the_carrots', 'a_carrot', 'carrots'] },
+    groups: { dancing: ['dancing_yes', 'dancing_no'], turtle: ['turtle_I', 'turtle_you', 'turtle_she', 'turtle_he', 'turtle_they', 'turtle_we'], apple: ['apple_past', 'apple_present', 'apple_future'], carrot: ['the_carrot', 'the_carrots', 'a_carrot', 'carrots'], advanced: ['advanced_she_no', 'advanced_they_future', 'advanced_we_no'] },
   };
 }
 

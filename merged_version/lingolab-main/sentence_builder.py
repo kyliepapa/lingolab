@@ -55,6 +55,9 @@ sentence_dict = {
     "the_carrots": "I enjoyed the carrots.",
     "a_carrot": "I enjoyed a carrot",
     "carrots": "I enjoyed carrots"
+    ,"advanced_she_no": "She doesn't like tiny turtles."
+    ,"advanced_they_future": "They will eat the apples."
+    ,"advanced_we_no": "We did not enjoy carrots."
 }
 
 # Establish sentence groups (by key)
@@ -62,6 +65,7 @@ dancing_sentences = ["dancing_yes", "dancing_no"]
 turtle_sentences = ["turtle_I", "turtle_you", "turtle_she", "turtle_he", "turtle_they", "turtle_we"]
 apple_sentences = ["apple_past", "apple_present", "apple_future"]
 carrot_sentences = ["the_carrot", "the_carrots", "a_carrot", "carrots"]
+advanced_sentences = ["advanced_she_no", "advanced_they_future", "advanced_we_no"]
 
 # Language config (populated by apply_language_config from the create flow)
 words = {}
@@ -252,6 +256,7 @@ def build_sentence_package():
             "turtle": list(turtle_sentences),
             "apple": list(apple_sentences),
             "carrot": list(carrot_sentences),
+            "advanced": list(advanced_sentences),
         },
     }
 
@@ -265,7 +270,7 @@ def pluralize(word, pluralizer):
     elif pluralizer[0] == "suffix":
         return str(word + pluralizer[1])
     elif pluralizer[0] == "after":
-        return str(word + " " + pluralizer)
+        return str(word + " " + pluralizer[1])
 
 # Negate a word
 def negate(word, negation):
@@ -325,15 +330,19 @@ def add_article(word, has_articles, articles, article_key):
 
 # Build subject for every sentence except intro
 def make_subject(sentence_key, words, tenses, has_conjugations, conjugations, has_articles, articles, negation, pluralizer):
-    if sentence_key == "dancing_yes" or sentence_key == "dancing_no" or sentence_key == "turtle_I" or sentence_key == "apple_past" or sentence_key == "apple_present" or sentence_key == "apple_future" or sentence_key == "the_carrot" or sentence_key == "the_carrots" or sentence_key == "a_carrot" or sentence_key == "carrots":
+    if sentence_key == "dancing_yes" or sentence_key == "dancing_no" or sentence_key == "turtle_I" or sentence_key == "apple_past" or sentence_key == "apple_present" or sentence_key == "apple_future" or sentence_key == "the_carrot" or sentence_key == "the_carrots" or sentence_key == "a_carrot" or sentence_key == "carrots" or sentence_key == "advanced_we_no":
         return words["I"]
     elif sentence_key == "turtle_you":
         return words["you"]
     elif sentence_key == "turtle_she":
         return words["she"]
+    elif sentence_key == "advanced_she_no":
+        return words["she"]
     elif sentence_key == "turtle_he":
         return words["he"]
     elif sentence_key == "turtle_they":
+        return words["they"]
+    elif sentence_key == "advanced_they_future":
         return words["they"]
     elif sentence_key == "turtle_we":
         return words["we"]
@@ -347,6 +356,11 @@ def make_verb(sentence_key, words, has_conjugations, conjugations, tenses, negat
     elif sentence_key == "dancing_no":
         verb = words["want"]
         verb = conjugate(verb, has_conjugations, conjugations, "first_single")
+        verb = tensify(verb, tenses, "present")
+        verb = negate(verb, negation)
+    elif sentence_key == "advanced_she_no":
+        verb = words["like"]
+        verb = conjugate(verb, has_conjugations, conjugations, "third_single_female")
         verb = tensify(verb, tenses, "present")
         verb = negate(verb, negation)
     elif sentence_key == "turtle_I":
@@ -382,10 +396,19 @@ def make_verb(sentence_key, words, has_conjugations, conjugations, tenses, negat
             verb = tensify(verb, tenses, "present")
         elif sentence_key == "apple_future":
             verb = tensify(verb, tenses, "future")
+    elif sentence_key == "advanced_they_future":
+        verb = words["eat"]
+        verb = conjugate(verb, has_conjugations, conjugations, "third_plural")
+        verb = tensify(verb, tenses, "future")
     elif sentence_key == "the_carrot" or sentence_key == "the_carrots" or sentence_key == "a_carrot" or sentence_key == "carrots":
         verb = words["enjoy"]
         verb = conjugate(verb, has_conjugations, conjugations, "first_single")
         verb = tensify(verb, tenses, "past")
+    elif sentence_key == "advanced_we_no":
+        verb = words["enjoy"]
+        verb = conjugate(verb, has_conjugations, conjugations, "first_plural")
+        verb = tensify(verb, tenses, "past")
+        verb = negate(verb, negation)
     return verb
 
 # Build object for every sentence except intro
@@ -428,6 +451,17 @@ def make_object(sentence_key, words, tenses, pluralizer, adj_placement, has_arti
         obj = words["carrot"]
         obj = add_article(obj, has_articles, articles, "indefinite")
     elif sentence_key == "carrots":
+        obj = words["carrot"]
+        obj = pluralize(obj, pluralizer)
+    elif sentence_key == "advanced_she_no":
+        obj = words["tiny"]
+        turtle = pluralize(words["turtle"], pluralizer)
+        obj = str(obj + " " + turtle) if adj_placement == "before" else str(turtle + " " + obj)
+    elif sentence_key == "advanced_they_future":
+        obj = words["apple"]
+        obj = pluralize(obj, pluralizer)
+        obj = add_article(obj, has_articles, articles, "definite")
+    elif sentence_key == "advanced_we_no":
         obj = words["carrot"]
         obj = pluralize(obj, pluralizer)
     return obj

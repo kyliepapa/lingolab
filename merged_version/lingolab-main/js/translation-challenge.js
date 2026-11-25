@@ -1,6 +1,6 @@
 (function () {
-  const TOTAL_ROUNDS = 5;
-  const GROUP_ORDER = ['dancing', 'turtle', 'apple', 'carrot'];
+  const TOTAL_ROUNDS = 6;
+  const GROUP_ORDER = ['dancing', 'turtle', 'apple', 'carrot', 'advanced'];
 
   const reportPanel = document.querySelector('.challenge-report-panel');
   const errorEl = document.querySelector('#challenge-error');

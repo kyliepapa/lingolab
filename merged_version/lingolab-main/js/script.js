@@ -1,18 +1,3 @@
-function setupMobileNavigation() {
-  const header = document.querySelector('.site-header');
-  const nav = header?.querySelector('.main-nav');
-  const menu = header?.querySelector('.mobile-nav');
-  const toggle = header?.querySelector('.mobile-menu-toggle');
-  if (!header || !nav || !menu || !toggle) return;
-  nav.querySelectorAll('a').forEach((link) => menu.append(link.cloneNode(true)));
-  const signIn = header.querySelector(':scope > .sign-in');
-  if (signIn) menu.append(signIn.cloneNode(true));
-  const closeMenu = () => { header.classList.remove('menu-open'); toggle.setAttribute('aria-expanded', 'false'); toggle.setAttribute('aria-label', 'Open navigation'); menu.setAttribute('aria-hidden', 'true'); };
-  toggle.addEventListener('click', () => { const open = !header.classList.contains('menu-open'); header.classList.toggle('menu-open', open); toggle.setAttribute('aria-expanded', String(open)); toggle.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation'); menu.setAttribute('aria-hidden', String(!open)); });
-  menu.addEventListener('click', closeMenu);
-}
-setupMobileNavigation();
-
 const POS_LABELS = {
   pronoun: 'Pronoun',
   verb: 'Verb',

@@ -3,6 +3,61 @@ headerStyle.textContent = `.site-header .header-actions{align-items:center;displ
 document.head.appendChild(headerStyle);
 headerStyle.textContent += `.site-header .logout-link{background:transparent;border:1px solid #b9c1bf;border-radius:999px;color:var(--ink);cursor:pointer;font:700 16px 'DM Sans',Arial;padding:13px 23px;white-space:nowrap}.site-header .logout-link:hover{background:#fff}@media(max-width:700px){.site-header .logout-link{font-size:13px;padding:10px 13px}}`;
 
+const accessibilityStorageKey = 'lingolab-accessibility-preferences';
+const setupAccessibilityTools = (header) => {
+  if (header.querySelector(':scope > .accessibility-tools')) return;
+
+  const tools = document.createElement('div');
+  tools.className = 'accessibility-tools';
+  tools.innerHTML = `
+    <button class="accessibility-toggle" type="button" aria-expanded="false" aria-controls="accessibility-panel">
+      Accessibility
+    </button>
+    <div class="accessibility-panel" id="accessibility-panel" hidden>
+      <p class="accessibility-title">Reading tools</p>
+      <button class="accessibility-option" type="button" data-accessibility="magnifier" aria-pressed="false">
+        <span aria-hidden="true">⌕</span><span><strong>Magnifier</strong><small>Increase page size</small></span>
+      </button>
+      <button class="accessibility-option" type="button" data-accessibility="dyslexia" aria-pressed="false">
+        <span aria-hidden="true">A</span><span><strong>Dyslexic-friendly text</strong><small>Improve spacing and readability</small></span>
+      </button>
+      <button class="accessibility-reset" type="button" data-accessibility="reset">Reset tools</button>
+    </div>`;
+  const mobileToggle = header.querySelector(':scope > .mobile-menu-toggle');
+  if (mobileToggle) header.insertBefore(tools, mobileToggle);
+  else header.append(tools);
+
+  const toggle = tools.querySelector('.accessibility-toggle');
+  const panel = tools.querySelector('.accessibility-panel');
+  panel.id = `accessibility-panel-${Math.random().toString(36).slice(2)}`;
+  toggle.setAttribute('aria-controls', panel.id);
+  const options = tools.querySelectorAll('[data-accessibility]');
+  let preferences = {};
+  try { preferences = JSON.parse(localStorage.getItem(accessibilityStorageKey) || '{}'); } catch { preferences = {}; }
+
+  const applyPreferences = () => {
+    document.documentElement.classList.toggle('accessibility-magnified', preferences.magnifier === true);
+    document.documentElement.classList.toggle('accessibility-dyslexia', preferences.dyslexia === true);
+    tools.querySelector('[data-accessibility="magnifier"]').setAttribute('aria-pressed', String(preferences.magnifier === true));
+    tools.querySelector('[data-accessibility="dyslexia"]').setAttribute('aria-pressed', String(preferences.dyslexia === true));
+    localStorage.setItem(accessibilityStorageKey, JSON.stringify(preferences));
+  };
+
+  toggle.addEventListener('click', () => {
+    const open = panel.hidden;
+    panel.hidden = !open;
+    toggle.setAttribute('aria-expanded', String(open));
+  });
+  options.forEach((option) => option.addEventListener('click', () => {
+    const setting = option.dataset.accessibility;
+    if (setting === 'reset') preferences = {};
+    else preferences[setting] = !preferences[setting];
+    applyPreferences();
+  }));
+  applyPreferences();
+  return tools;
+};
+
 const pathname = window.location.pathname.replace(/\\/g, '/');
 const projectRootPrefix = pathname.includes('/pages/create/') || pathname.includes('/pages/games/') || pathname.includes('/pages/auth/') || pathname.includes('/pages/teacher/')
   ? '../../'
@@ -12,7 +67,10 @@ const projectRootPrefix = pathname.includes('/pages/create/') || pathname.includ
 const projectLink = (target) => `${projectRootPrefix}${target}`;
 
 document.querySelectorAll('.site-header').forEach((header) => {
+  const accessibilityTools = setupAccessibilityTools(header);
   const nav = header.querySelector('.main-nav');
+  const aboutLink = [...(nav?.querySelectorAll('a') || [])].find((item) => item.textContent.trim().toLowerCase() === 'about');
+  if (aboutLink) aboutLink.insertAdjacentElement('afterend', accessibilityTools);
   nav?.querySelectorAll('.sign-in, .create-link').forEach((item) => item.remove());
   const teacherRole = localStorage.getItem('lingolab-user-role') === 'teacher';
   nav?.querySelectorAll('.teacher-nav-link').forEach((item) => item.remove());
@@ -92,6 +150,8 @@ document.querySelectorAll('.site-header').forEach((header) => {
   mobileToggle.setAttribute('aria-controls', mobileNav.id);
   mobileNav.innerHTML = '';
   nav?.querySelectorAll('a').forEach((item) => mobileNav.append(item.cloneNode(true)));
+  const mobileAccessibilityTools = setupAccessibilityTools(mobileNav);
+  mobileAccessibilityTools.classList.add('mobile-accessibility-tools');
   actions.querySelectorAll('a, button').forEach((item) => mobileNav.append(item.cloneNode(true)));
   mobileToggle.addEventListener('click', () => {
     const open = header.classList.toggle('menu-open');
@@ -99,7 +159,8 @@ document.querySelectorAll('.site-header').forEach((header) => {
     mobileToggle.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
     mobileNav.setAttribute('aria-hidden', String(!open));
   });
-  mobileNav.addEventListener('click', () => {
+  mobileNav.addEventListener('click', (event) => {
+    if (event.target.closest('.accessibility-tools')) return;
     header.classList.remove('menu-open');
     mobileToggle.setAttribute('aria-expanded', 'false');
     mobileNav.setAttribute('aria-hidden', 'true');
